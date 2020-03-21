@@ -1,3 +1,3 @@
 (ns env.dev)
 (def hostname "diegos-MBP")
-(def ip "localhost")
+(def ip "192.168.1.168")

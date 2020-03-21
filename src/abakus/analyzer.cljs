@@ -44,27 +44,31 @@
    :hoa 0
    :rent-per-unit 800})
 
-(let [result
-      (->> test-prop
-        (compute :purchase-price)
-        (compute :hoa)
-        (compute :five-yr-apprec)
-        (compute :monthly-maint)
-        (compute :loan-amt)
-        (compute :loan-principal-interest)
-        (compute :property-tax-and-insurance)
-        (compute :mortgage)
-        (compute :down)
-        (compute :closing-costs)
-        (compute :monthly-exp)
-        (compute :cash-flow-per-unit)
-        (compute :rehab)
-        (compute :total-cost)
-        (compute :annual-profit)
-        (compute :cocroi)
-        (compute :five-yr-value)
-        (compute :five-yr-profit)
-        (compute :five-yr-return)
-        (compute :stock-market-ret)
-        (compute :mkt-beat))]
+(defn recompute
+  [prop]
+  (->> prop
+    (compute :purchase-price)
+    (compute :hoa)
+    (compute :five-yr-apprec)
+    (compute :monthly-maint)
+    (compute :loan-amt)
+    (compute :loan-principal-interest)
+    (compute :property-tax-and-insurance)
+    (compute :mortgage)
+    (compute :down)
+    (compute :closing-costs)
+    (compute :monthly-exp)
+    (compute :cash-flow-per-unit)
+    (compute :rehab)
+    (compute :total-cost)
+    (compute :annual-profit)
+    (compute :cocroi)
+    (compute :five-yr-value)
+    (compute :five-yr-profit)
+    (compute :five-yr-return)
+    (compute :stock-market-ret)
+    (compute :mkt-beat)))
+
+
+(let [result (recompute test-prop)]
   (:mkt-beat result))
