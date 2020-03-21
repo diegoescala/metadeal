@@ -17,11 +17,13 @@
    :loan-amt        (fn [p] (* 0.8 (:purchase-price p)))
    :loan-principal-interest    (fn [p] (* (:loan-amt p) mortgage-multiplier))
    :property-tax-and-insurance (fn [p] (* (:five-year-price p) taxes-insur-multiplier))
-   :mortgage        (fn [p] ())
-   :down            (fn [p] ())
-   :closing-costs   (fn [p] ())
-   :monthly-exp     (fn [p] ())
-   :cash-flow-per-unit (fn [p] ())
+   :mortgage        (fn [p] (+ (:loan-principal-interest p) (:property-tax-and-insurance p)))
+   :down            (fn [p] (- (:purchase-price p) (:loan-amt p)))
+   :closing-costs   (fn [p] (* 0.02 (:purchase-price p)))
+   :monthly-exp     (fn [p] (+ (:mortgage p) (:hoa p) (:monthly-maint p)))
+   :cash-flow-per-unit (fn [p] (/ (- (* (:rent-per-unit p) (:num-units p))
+                                     (:monthly-exp p))
+                                  (:num-units p)))
    :annual-profit   (fn [p] ())
    :first-yr-profit (fn [p] ())
    :cocroi          (fn [p] ())
@@ -30,7 +32,7 @@
    :stock-market-ret (fn [p] ())})
 
 (defn compute
-  [property param]
+  [param property]
   (if (some? (get property param))
       property
       (assoc property param ((get params param) property))))
@@ -40,4 +42,16 @@
    :num-units 9
    :rent-per-unit 800})
 
-(compute test-prop :monthly-exp)
+(->> test-prop
+     (compute :purchase-price)
+     (compute :hoa)
+     (compute :monthly-maint)
+     (compute :loan-amt)
+     (compute :loan-principal-interest)
+     (compute :property-tax-and-insurance)
+     (compute :mortgage)
+     (compute :down)
+     (compute :closing-costs)
+     (compute :monthly-exp)
+     (compute :cash-flow-per-unit)
+     (compute :rehab))
