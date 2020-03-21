@@ -20,6 +20,7 @@
      label]]
    [rn/view {:style {:bottom-border-width 1}}
     [rn/input {:style {:background-color "#ccc" :font-size 18}
+               :keyboard-type "numeric"
                :on-change-text #(do
                                   (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
                                   (reset! computed (analyzer/recompute (scrub @prop-info))))}]]])
