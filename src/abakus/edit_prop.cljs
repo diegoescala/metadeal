@@ -14,11 +14,15 @@
 
 (defn input
   [label param]
-  [rn/view
-   [rn/text label]
-   [rn/input {:on-change-text #(do
-                                 (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
-                                 (reset! computed (analyzer/recompute (scrub @prop-info))))}]])
+  [rn/view {:style {:font-size 18}}
+   [rn/view {:style {:align-text "center"}}
+    [rn/text {:style {:font-weight "bold" :font-size 18}}
+     label]]
+   [rn/view {:style {:bottom-border-width 1}}
+    [rn/input {:style {:background-color "#ccc" :font-size 18}
+               :on-change-text #(do
+                                  (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
+                                  (reset! computed (analyzer/recompute (scrub @prop-info))))}]]])
 
 
 (defn summary-header
@@ -41,7 +45,7 @@
 (defn basic-questions
   []
   [rn/view
-   [rn/text {:style {:font-weight 800}}
+   [rn/text {:style {:font-weight "bold"}}
     "Answer some basic questions"]
    [input "Purchase price" :purchase-price]
    [input "Cash down" :down]
