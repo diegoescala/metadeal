@@ -28,6 +28,7 @@
 (defn summary-header
   []
   (let [vs-mkt (:mkt-beat @computed)
+        cash-in (:total-cost @computed)
         good? (pos? vs-mkt)]
     [rn/view {:style {:margin-top 0 :background-color "#96ccb8"  :flex-direction "row" :align-text "center"}}
      [rn/view {:style {:margin-left 20 :margin-top 30 :flex-direction "column" :align-text "center"}}
@@ -37,7 +38,12 @@
        (if good? "Yes" "No")]]
      [rn/view {:style {:margin-left 20 :margin-top 30 :flex-direction "column" :align-text "center"}}
       [rn/text {:style {:color "#fff" :font-size 20}}
-       "vs Stock Market"]
+       "Cash In"]
+      [rn/text {:style {:font-size 25}}
+       (Math/floor cash-in)]]
+     [rn/view {:style {:margin-left 20 :margin-top 30 :flex-direction "column" :align-text "center"}}
+      [rn/text {:style {:color "#fff" :font-size 20}}
+       "Return vs Stock Market"]
       [rn/text {:style {:font-size 25}}
        (Math/floor vs-mkt)]]]))
 
@@ -60,7 +66,4 @@
   (swap! prop-info merge prop @prop-info)
   [rn/view
    [summary-header]
-   [basic-questions]
-   [rn/text
-    (prn-str (scrub @prop-info))
-    (prn-str (select-keys @computed [:mkt-beat :mortgage :cash-flow-per-unit]))]])
+   [basic-questions]])
