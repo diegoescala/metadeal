@@ -4,8 +4,8 @@
 (def taxes-insur-multiplier (/ 522.0 135000))
 
 (def params
-  {:five-year-price (fn [p])
-   :purchase-price  (fn [p] (* 0.80 (:five-year-price p)))
+  {:five-year-price (fn [p] (* 1.2 (:purchase-price p)))
+   :purchase-price  (fn [p] 0.0)
    :hoa             (fn [p] (let [v 100] v))
    :rehab           (fn [p] (* 5.0 (:closing-costs p)))
    :monthly-maint   (fn [p] (/ (:five-year-price p) 2000.0))
@@ -48,6 +48,7 @@
   [prop]
   (->> prop
     (compute :purchase-price)
+    (compute :five-year-price)
     (compute :hoa)
     (compute :num-units)
     (compute :rent-per-unit)
