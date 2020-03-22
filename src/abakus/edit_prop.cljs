@@ -19,8 +19,10 @@
     [rn/text {:style {:font-weight "bold" :font-size 18}}
      label]]
    [rn/view {:style {:bottom-border-width 1}}
-    [rn/input {:style {:background-color "#ccc" :font-size 18}
+    [rn/input {:style {:background-color "#fff" :font-size 18 :border-bottom-width 1 :margin-bottom 10}
                :keyboard-type "numeric"
+               :placeholder (str (get @computed param))
+               :placeholder-text-color "#faa"
                :on-change-text #(do
                                   (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
                                   (reset! computed (analyzer/recompute (scrub @prop-info))))}]]])
@@ -93,7 +95,9 @@
    [input "# units" :num-units]
    [input "Rent/unit" :rent-per-unit]
    [input "Rehab cost" :rehab]
-   [input "Expected value in 5 yrs" :five-year-price]])
+   [input "Expected value in 5 yrs" :five-year-price]
+   [input "Loan P&I" :loan-principal-interest]
+   [input "Taxes & Insurance" :property-tax-and-insurance]])
 
 (defn edit-prop
   [prop]

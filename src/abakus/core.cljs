@@ -9,7 +9,7 @@
 
 
 (defn app-root []
-  [edit-prop/edit-prop {:hoa 20}])
+  [edit-prop/edit-prop {}])
 
 (defn init []
   (dispatch-sync [:initialize-db])
