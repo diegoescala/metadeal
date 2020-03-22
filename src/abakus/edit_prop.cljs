@@ -21,7 +21,7 @@
    [rn/view {:style {:bottom-border-width 1}}
     [rn/input {:style {:background-color "#fff" :font-size 18 :border-bottom-width 1 :margin-bottom 10}
                :keyboard-type "numeric"
-               :placeholder (str (get @computed param))
+               :placeholder (str (Math/floor (get @computed param)))
                :placeholder-text-color "#faa"
                :on-change-text #(do
                                   (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
