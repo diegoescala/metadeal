@@ -1,5 +1,6 @@
 (ns abakus.edit-prop
   (:require [abakus.rn :as rn]
+            [abakus.styles :as styles]
             [reagent.core :as r]
             [re-frame.core :as rf]
             [abakus.analyzer :as analyzer]))
@@ -23,14 +24,16 @@
                :keyboard-type "numeric"
                :placeholder (str (Math/floor (get @computed param)))
                :placeholder-text-color "#faa"
+               :value (str (get @prop-info param))
                :on-change-text #(do
                                   (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
                                   (reset! computed (analyzer/recompute (scrub @prop-info))))}]]])
 
 (defn localize
   [cur]
-  (let [f (js/Intl.NumberFormat. "en-US" (clj->js {:style "currency" :currency "USD"}))]
-    (-> f (.format cur))))
+  ; (let [f (js/Intl.NumberFormat. "en-US" (clj->js {:style "currency" :currency "USD"}))]
+    ; (-> f (.format cur))])
+  (str "$" cur))
 
 (defn localize-currency-vals
   [m]
@@ -52,6 +55,25 @@
          five-yr-profit " over the next 5 years. If you put your " total-cost " into the stock market instead, "
          "you would make " stock-market-ret " over the next 5 years.")))
 
+(defn good-deal-summary
+  [good?]
+  [rn/view {:style {:margin-left 20 :margin-top 30 :flex-direction "column"}}
+   [rn/text {:style {:color "#fff" :font-size 25 :font-weight "bold" :text-align "center"}}
+    "Good Deal?"]
+   (if good?
+     [rn/text {:style {:font-size 33 :color "green" :text-align "center"}}
+      "Yes"]
+     [rn/text {:style {:font-size 33 :color "red" :text-align "center"}}
+      "No"])])
+
+(defn summary-section
+  [title param prop]
+  [rn/view {:style styles/summary-section-view}
+   [rn/text {:style styles/summary-title}
+    title]
+   [rn/text {:style styles/summary-details}
+    (localize value)]])
+
 (defn summary-header
   [prop]
   (let [vs-mkt (:mkt-beat prop)
@@ -59,25 +81,12 @@
         cash-flow (:cash-flow-per-unit prop)
         good? (pos? vs-mkt)]
     [rn/view {:style {:flex-direction "column" :background-color "#96ccb8"}}
-     [rn/view {:style {:margin-top 0   :flex-direction "row" :align-text "center"}}
-      [rn/view {:style {:margin-left 20 :margin-top 30 :flex-direction "column" :align-text "center"}}
-       [rn/text {:style {:color "#fff" :font-size 20}}
-        "Good Deal?"]
-       (if good?
-         [rn/text {:style {:font-size 25 :color "green"}}
-          "Yes"]
-         [rn/text {:style {:font-size 25 :color "red"}}
-          "No"])]
-      [rn/view {:style {:margin-left 20 :margin-top 30 :flex-direction "column" :align-text "center"}}
-       [rn/text {:style {:color "#fff" :font-size 20}}
-        "Cash In"]
-       [rn/text {:style {:font-size 25}}
-        (localize cash-in)]]
-      [rn/view {:style {:margin-left 20 :margin-top 30 :flex-direction "column" :align-text "center"}}
-       [rn/text {:style {:color "#fff" :font-size 20}}
-        "Return vs Stock Market"]
-       [rn/text {:style {:font-size 25}}
-        (localize vs-mkt)]]]
+     [good-deal-summary good?]
+     [rn/view {:style {:margin-top 0 :flex-direction "row" :align-text "center"}}
+      [summary-section "Cash Required" :total-cost prop]
+      [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]
+      [summary-section "vs. Stock Market" :total-cost prop]
+      [summary-section "Cash In" :total-cost prop]]
      [rn/view
        [rn/touchable-highlight
           {:on-press #(rn/alert (explanation (localize-currency-vals prop)))}
