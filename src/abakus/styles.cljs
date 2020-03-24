@@ -6,7 +6,7 @@
 (def container {:margin-left 30 :margin-right 30})
 (def summary-details {:font-size 17})
 
-(def input-field {:background-color "#fff" :font-size 18 :border-bottom-width 0 :margin-bottom 10 :border-radius 10 :padding 5})
+(def input-field {:background-color "#fff" :font-size 18 :border-bottom-width 0 :margin-bottom 0 :border-radius 10 :padding 5})
 (def input-field-container {:bottom-border-width 1 :padding-top 15 :padding-bottom 0})
 (def input-view-container {:padding 20})
 
