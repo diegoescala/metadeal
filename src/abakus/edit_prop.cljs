@@ -24,7 +24,7 @@
                :keyboard-type "numeric"
                :placeholder (str (Math/floor (get @computed param)))
                :placeholder-text-color "#faa"
-               :value (str (get @prop-info param))
+               ; :value (str (get @prop-info param))
                :on-change-text #(do
                                   (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
                                   (reset! computed (analyzer/recompute (scrub @prop-info))))}]]])
@@ -109,6 +109,8 @@
      [input "Monthly HOA" :hoa]
      [input "# units" :num-units]
      [input "Rent/unit" :rent-per-unit]
+     [input "Monthly maintenance" :monthly-maint]
+     [input "Annual management fee" :management-fee]
      [input "Rehab cost" :rehab]
      [input "Expected value in 5 yrs" :five-year-price]
      [input "Loan P&I" :loan-principal-interest]
