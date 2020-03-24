@@ -15,12 +15,12 @@
 
 (defn input
   [label param]
-  [rn/view {:style {:font-size 18}}
-   [rn/view {:style {:align-text "center"}}
-    [rn/text {:style {:font-weight "bold" :font-size 18}}
+  [rn/view {:style styles/input-view-container}
+   [rn/view {:style styles/label-container}
+    [rn/text {:style styles/label}
      label]]
-   [rn/view {:style {:bottom-border-width 1}}
-    [rn/input {:style {:background-color "#fff" :font-size 18 :border-bottom-width 1 :margin-bottom 10}
+   [rn/view {:style styles/input-field-container}
+    [rn/input {:style styles/input-field
                :keyboard-type "numeric"
                :placeholder (str (Math/floor (get @computed param)))
                :placeholder-text-color "#faa"
@@ -43,7 +43,7 @@
                           m)]
     localized))
 
-(defn explanation
+(defn explanation-str
   [prop]
   (let [{:keys [total-cost down five-yr-profit closing-costs rehab five-yr-apprec mortgage cash-flow-per-unit stock-market-ret]} prop]
     (str "With a down payment of " down
@@ -77,7 +77,7 @@
   [prop]
   [rn/view
     [rn/touchable-highlight
-       {:on-press #(rn/alert (explanation (localize-currency-vals prop)))}
+       {:on-press #(rn/alert (explanation-str (localize-currency-vals prop)))}
       [rn/text "Explanation"]]])
 
 (defn summary-header
@@ -99,8 +99,10 @@
   []
   [rn/safe-area-view {:style {:flex 3 :margin-top 100}}
    [rn/scroll-view {:style (merge {:flex 1} styles/container)}
-    [rn/text {:style {:font-weight "bold"}}
+    [rn/text {:style styles/section-title}
      "Answer some basic questions"]
+    [rn/text {:style styles/section-subtitle}
+     "All fields are optional. Defaults are in red."]
     [input "Purchase price" :purchase-price]
     [input "Cash down" :down]
     [input "Monthly HOA" :hoa]
