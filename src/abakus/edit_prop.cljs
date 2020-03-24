@@ -31,9 +31,9 @@
 
 (defn localize
   [cur]
-  ; (let [f (js/Intl.NumberFormat. "en-US" (clj->js {:style "currency" :currency "USD"}))]
-    ; (-> f (.format cur))])
-  (str "$" cur))
+  (let [f (js/Intl.NumberFormat. "en-US" (clj->js {:style "currency" :currency "USD"}))]
+    (-> f (.format cur))))
+  ; (str "$" cur))
 
 (defn localize-currency-vals
   [m]
@@ -71,7 +71,14 @@
    [rn/text {:style styles/summary-title}
     title]
    [rn/text {:style styles/summary-details}
-    (localize value)]])
+    (localize (get prop param))]])
+
+(defn explanation
+  [prop]
+  [rn/view
+    [rn/touchable-highlight
+       {:on-press #(rn/alert (explanation (localize-currency-vals prop)))}
+      [rn/text "Explanation"]]])
 
 (defn summary-header
   [prop]
@@ -84,17 +91,14 @@
      [rn/view {:style {:margin-top 0 :flex-direction "row" :align-text "center"}}
       [summary-section "Cash Required" :total-cost prop]
       [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]
-      [summary-section "vs. Stock Market" :mkt-beat prop]]
-     [rn/view
-       [rn/touchable-highlight
-          {:on-press #(rn/alert (explanation (localize-currency-vals prop)))}
-         [rn/text "Explanation"]]]]))
+      [summary-section "vs. Stock Market" :mkt-beat prop]]]))
+     ; [explanation prop]]))
 
 
 (defn basic-questions
   []
   [rn/safe-area-view {:style {:flex 3 :margin-top 100}}
-   [rn/scroll-view {:style {:flex 1}}
+   [rn/scroll-view {:style (merge {:flex 1} styles/container)}
     [rn/text {:style {:font-weight "bold"}}
      "Answer some basic questions"]
     [input "Purchase price" :purchase-price]
