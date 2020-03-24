@@ -9,6 +9,9 @@
 
 (def text (r/adapt-react-class (.-Text ReactNative)))
 (def view (r/adapt-react-class (.-View ReactNative)))
+(def safe-area-view (r/adapt-react-class (.-SafeAreaView ReactNative)))
+(def scroll-view (r/adapt-react-class (.-ScrollView ReactNative)))
+(def flat-list (r/adapt-react-class (.-FlatList ReactNative)))
 (def input (r/adapt-react-class (.-TextInput ReactNative)))
 (def image (r/adapt-react-class (.-Image ReactNative)))
 (def touchable-highlight (r/adapt-react-class (.-TouchableHighlight ReactNative)))

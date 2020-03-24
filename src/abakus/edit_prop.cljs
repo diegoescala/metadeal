@@ -41,7 +41,6 @@
                             (assoc a k (localize v)))
                           {}
                           m)]
-    (println (prn-str localized))
     localized))
 
 (defn explanation
@@ -68,7 +67,7 @@
 
 (defn summary-section
   [title param prop]
-  [rn/view {:style styles/summary-section-view}
+  [rn/view {:style (merge styles/summary-section-view {:flex 3})}
    [rn/text {:style styles/summary-title}
     title]
    [rn/text {:style styles/summary-details}
@@ -85,8 +84,7 @@
      [rn/view {:style {:margin-top 0 :flex-direction "row" :align-text "center"}}
       [summary-section "Cash Required" :total-cost prop]
       [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]
-      [summary-section "vs. Stock Market" :total-cost prop]
-      [summary-section "Cash In" :total-cost prop]]
+      [summary-section "vs. Stock Market" :mkt-beat prop]]
      [rn/view
        [rn/touchable-highlight
           {:on-press #(rn/alert (explanation (localize-currency-vals prop)))}
@@ -95,22 +93,23 @@
 
 (defn basic-questions
   []
-  [rn/view
-   [rn/text {:style {:font-weight "bold"}}
-    "Answer some basic questions"]
-   [input "Purchase price" :purchase-price]
-   [input "Cash down" :down]
-   [input "Monthly HOA" :hoa]
-   [input "# units" :num-units]
-   [input "Rent/unit" :rent-per-unit]
-   [input "Rehab cost" :rehab]
-   [input "Expected value in 5 yrs" :five-year-price]
-   [input "Loan P&I" :loan-principal-interest]
-   [input "Taxes & Insurance" :property-tax-and-insurance]])
+  [rn/safe-area-view {:style {:flex 3 :margin-top 100}}
+   [rn/scroll-view {:style {:flex 1}}
+    [rn/text {:style {:font-weight "bold"}}
+     "Answer some basic questions"]
+    [input "Purchase price" :purchase-price]
+    [input "Cash down" :down]
+    [input "Monthly HOA" :hoa]
+    [input "# units" :num-units]
+    [input "Rent/unit" :rent-per-unit]
+    [input "Rehab cost" :rehab]
+    [input "Expected value in 5 yrs" :five-year-price]
+    [input "Loan P&I" :loan-principal-interest]
+    [input "Taxes & Insurance" :property-tax-and-insurance]]])
 
 (defn edit-prop
   [prop]
   (swap! prop-info merge prop @prop-info)
-  [rn/view
+  [rn/view {:style {:flex-direction "column" :flex 1}}
    [summary-header @computed]
    [basic-questions]])
