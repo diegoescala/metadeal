@@ -103,15 +103,16 @@
      "Answer some basic questions"]
     [rn/text {:style styles/section-subtitle}
      "All fields are optional. Defaults are in red."]
-    [input "Purchase price" :purchase-price]
-    [input "Cash down" :down]
-    [input "Monthly HOA" :hoa]
-    [input "# units" :num-units]
-    [input "Rent/unit" :rent-per-unit]
-    [input "Rehab cost" :rehab]
-    [input "Expected value in 5 yrs" :five-year-price]
-    [input "Loan P&I" :loan-principal-interest]
-    [input "Taxes & Insurance" :property-tax-and-insurance]]])
+    [rn/view {:style styles/input-section}
+     [input "Purchase price" :purchase-price]
+     [input "Cash down" :down]
+     [input "Monthly HOA" :hoa]
+     [input "# units" :num-units]
+     [input "Rent/unit" :rent-per-unit]
+     [input "Rehab cost" :rehab]
+     [input "Expected value in 5 yrs" :five-year-price]
+     [input "Loan P&I" :loan-principal-interest]
+     [input "Taxes & Insurance" :property-tax-and-insurance]]]])
 
 (defn edit-prop
   [prop]
