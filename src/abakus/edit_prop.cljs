@@ -56,7 +56,7 @@
 
 (defn good-deal-summary
   [good?]
-  [rn/view {:style {:margin-left 20 :margin-top 30 :flex-direction "column"}}
+  [rn/view {:style styles/good-deal-container}
    [rn/text {:style styles/good-deal-title}
     "Good Deal?"]
    (if good?
@@ -87,22 +87,24 @@
         cash-flow (:cash-flow-per-unit prop)
         good? (pos? vs-mkt)]
     [rn/view {:style styles/summary-header}
-     [good-deal-summary good?]
-     [rn/view {:style {:margin-top 0 :flex-direction "row" :align-text "center"}}
-      [summary-section "Cash Required" :total-cost prop]
-      [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]
-      [summary-section "vs. Stock Market" :mkt-beat prop]]]))
-     ; [explanation prop]]))
+     [rn/view {:style styles/container}
+      [good-deal-summary good?]
+      [rn/view {:style styles/analysis-info-bar}
+       [summary-section "Cash Required" :total-cost prop]
+       [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]
+       [summary-section "vs. Stock Market" :mkt-beat prop]]]]))
+       ; [explanation prop]]))
 
 
 (defn basic-questions
   []
   [rn/safe-area-view {:style {:flex 3}}
    [rn/scroll-view {:style (merge {:flex 3} styles/container)}
-    [rn/text {:style styles/section-title}
-     "Answer some basic questions"]
-    [rn/text {:style styles/section-subtitle}
-     "All fields are optional. Defaults are in red."]
+    [rn/view {:style (merge styles/input-section styles/info-section-header)}
+     [rn/text {:style styles/section-title}
+      "Answer some basic questions"]
+     [rn/text {:style styles/section-subtitle}
+      "All fields are optional. Defaults are in red."]]
     [rn/view {:style styles/input-section}
      [input "Purchase price" :purchase-price]
      [input "Cash down" :down]
@@ -119,6 +121,6 @@
 (defn edit-prop
   [prop]
   (swap! prop-info merge prop @prop-info)
-  [rn/view {:style {:flex-direction "column" :flex 1}}
+  [rn/view {:style (merge styles/edit-screen {:flex-direction "column" :flex 1})}
    [summary-header @computed]
    [basic-questions]])
