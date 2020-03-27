@@ -57,12 +57,12 @@
 (defn good-deal-summary
   [good?]
   [rn/view {:style {:margin-left 20 :margin-top 30 :flex-direction "column"}}
-   [rn/text {:style {:color "#fff" :font-size 25 :font-weight "bold" :text-align "center"}}
+   [rn/text {:style styles/good-deal-title}
     "Good Deal?"]
    (if good?
-     [rn/text {:style {:font-size 33 :color "green" :text-align "center"}}
+     [rn/text {:style styles/good-deal-yes-text}
       "Yes"]
-     [rn/text {:style {:font-size 33 :color "red" :text-align "center"}}
+     [rn/text {:style styles/good-deal-no-text}
       "No"])])
 
 (defn summary-section
@@ -86,7 +86,7 @@
         cash-in (:total-cost prop)
         cash-flow (:cash-flow-per-unit prop)
         good? (pos? vs-mkt)]
-    [rn/view {:style {:flex-direction "column" :background-color "#96ccb8"}}
+    [rn/view {:style styles/summary-header}
      [good-deal-summary good?]
      [rn/view {:style {:margin-top 0 :flex-direction "row" :align-text "center"}}
       [summary-section "Cash Required" :total-cost prop]
@@ -97,8 +97,8 @@
 
 (defn basic-questions
   []
-  [rn/safe-area-view {:style {:flex 3 :margin-top 100}}
-   [rn/scroll-view {:style (merge {:flex 1} styles/container)}
+  [rn/safe-area-view {:style {:flex 3}}
+   [rn/scroll-view {:style (merge {:flex 3} styles/container)}
     [rn/text {:style styles/section-title}
      "Answer some basic questions"]
     [rn/text {:style styles/section-subtitle}
