@@ -43,6 +43,10 @@
                           m)]
     localized))
 
+(defn percentize
+  [v]
+  (str (Math/floor (* 100 (+ 0.005 v))) "%"))
+
 (defn explanation-str
   [prop]
   (let [{:keys [total-cost down five-yr-profit closing-costs rehab five-yr-apprec mortgage cash-flow-per-unit stock-market-ret]} prop]
@@ -66,12 +70,15 @@
       "No"])])
 
 (defn summary-section
-  [title param prop]
-  [rn/view {:style (merge styles/summary-section-view {:flex 3})}
-   [rn/text {:style styles/summary-title}
-    title]
-   [rn/text {:style styles/summary-details}
-    (localize (get prop param))]])
+  [title param prop & data-type]
+  (let [value-type (or (first data-type) :currency)]
+    [rn/view {:style (merge styles/summary-section-view {:flex 3})}
+     [rn/text {:style styles/summary-title}
+      title]
+     [rn/text {:style styles/summary-details}
+      (case value-type
+        :currency (localize (get prop param))
+        :percent (percentize (get prop param)))]]))
 
 (defn explanation
   [prop]
@@ -92,7 +99,11 @@
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "Cash Required" :total-cost prop]
        [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]
-       [summary-section "vs. Stock Market" :mkt-beat prop]]]]))
+       [summary-section "vs. Stock Market" :mkt-beat prop]]
+      [rn/view {:style styles/analysis-info-bar}
+       [summary-section "CoCROI" :cocroi prop :percent]
+       [summary-section "Monthly Exp." :monthly-exp prop]
+       [summary-section "Annual Profit" :annual-profit prop]]]]))
        ; [explanation prop]]))
 
 
@@ -116,7 +127,8 @@
      [input "Rehab cost" :rehab]
      [input "Expected value in 5 yrs" :five-year-price]
      [input "Loan P&I" :loan-principal-interest]
-     [input "Taxes & Insurance" :property-tax-and-insurance]]]])
+     [input "Taxes & Insurance" :property-tax-and-insurance]
+     [rn/view {:style {:min-height 220}}]]]])
 
 (defn edit-prop
   [prop]
