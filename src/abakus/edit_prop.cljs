@@ -106,6 +106,12 @@
        [summary-section "Annual Profit" :annual-profit prop]]]]))
        ; [explanation prop]]))
 
+(defn no-info-summary
+  []
+  [rn/view {:style styles/summary-header}
+   [rn/view {:style styles/good-deal-container}
+    [rn/text {:style styles/good-deal-title}
+     "Provide a purchase price to get started"]]])
 
 (defn basic-questions
   []
@@ -130,9 +136,16 @@
      [input "Taxes & Insurance" :property-tax-and-insurance]
      [rn/view {:style {:min-height 220}}]]]])
 
+(defn no-value-provided?
+  [value]
+  (let [sval (str value)]
+    (< (count sval) 4)))
+
 (defn edit-prop
   [prop]
   (swap! prop-info merge prop @prop-info)
   [rn/view {:style (merge styles/edit-screen {:flex-direction "column" :flex 1})}
-   [summary-header @computed]
+   (if (no-value-provided? (:purchase-price @prop-info))
+     [no-info-summary]
+     [summary-header @computed])
    [basic-questions]])
