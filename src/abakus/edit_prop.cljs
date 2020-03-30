@@ -144,7 +144,7 @@
      [input 9 "Expected value in 5 yrs" :five-year-price]
      [input 7 "Loan P&I" :loan-principal-interest]
      [input 7 "Taxes & Insurance" :property-tax-and-insurance]
-     [rn/view {:style {:min-height 220}}]]]])
+     [rn/view {:style {:min-height 330}}]]]])
 
 (defn no-value-provided?
   [value]
