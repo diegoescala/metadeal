@@ -128,6 +128,7 @@
      [input "Monthly HOA" :hoa]
      [input "# units" :num-units]
      [input "Rent/unit" :rent-per-unit]
+     [input "Vacancy (%)" :vacancy-percentage]
      [input "Monthly maintenance" :monthly-maint]
      [input "Annual management fee" :management-fee]
      [input "Rehab cost" :rehab]
