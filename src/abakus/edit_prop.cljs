@@ -3,6 +3,7 @@
             [abakus.styles :as styles]
             [reagent.core :as r]
             [re-frame.core :as rf]
+            [clojure.string :as s]
             [abakus.analyzer :as analyzer]))
 
 (def prop-info (r/atom {}))
@@ -14,7 +15,7 @@
     (reduce #(dissoc %1 %2) m empties)))
 
 (defn input
-  [label param]
+  [max-length label param]
   [rn/view {:style styles/input-view-container}
    [rn/view {:style styles/label-container}
     [rn/text {:style styles/label}
@@ -22,6 +23,7 @@
    [rn/view {:style styles/input-field-container}
     [rn/input {:style styles/input-field
                :keyboard-type "numeric"
+               :max-length max-length
                :placeholder (str (Math/floor (get @computed param)))
                :placeholder-text-color "#faa"
                ; :value (str (get @prop-info param))
@@ -54,8 +56,8 @@
          ", closing costs of " closing-costs ", and estimated rehab costs of " rehab
          ", you would be putting in " total-cost " in cash. "
          "Considering a projected cash flow/month of " cash-flow-per-unit ", "
-         "and 5-year appreciation of " five-yr-apprec ", you could expect to make about "
-         five-yr-profit " over the next 5 years. If you put your " total-cost " into the stock market instead, "
+         "and 5-year appreciation of " five-yr-apprec ", you could expect to "
+         (if (s/starts-with? five-yr-profit "-") "lose" "make") " about " (s/replace five-yr-profit #"\-" "") " over the next 5 years. If you put your " total-cost " into the stock market instead, "
          "you would make " stock-market-ret " over the next 5 years.")))
 
 (defn good-deal-summary
@@ -82,10 +84,17 @@
 
 (defn explanation
   [prop]
-  [rn/view
-    [rn/touchable-highlight
-       {:on-press #(rn/alert (explanation-str (localize-currency-vals prop)))}
-      [rn/text "Explanation"]]])
+  (let [show? (r/atom false)]
+   (fn [prop]
+    [rn/view {:style {:align-items "center" :margin-bottom 10}}
+     [rn/touchable-highlight
+        {:style {:background-color "#bd6996" :width 160 :padding 10 :border-radius 10}
+         :on-press #(swap! show? not)}
+                     ;rn/alert (explanation-str (localize-currency-vals prop)))}
+       [rn/text {:style {:color "white" :font-size 23 :text-align "center"}}
+        (str (if @show? "Hide" "Show") " Explanation")]]
+     (if @show?
+       [rn/text (explanation-str (localize-currency-vals prop))])])))
 
 (defn summary-header
   [prop]
@@ -96,15 +105,15 @@
     [rn/view {:style styles/summary-header}
      [rn/view {:style styles/container}
       [good-deal-summary good?]
+      [explanation prop]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "Cash Required" :total-cost prop]
-       [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]
+       [summary-section "Monthly Cash Flow/Unit" :cash-flow-per-unit prop]
        [summary-section "vs. Stock Market" :mkt-beat prop]]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "CoCROI" :cocroi prop :percent]
        [summary-section "Monthly Exp." :monthly-exp prop]
        [summary-section "Annual Profit" :annual-profit prop]]]]))
-       ; [explanation prop]]))
 
 (defn no-info-summary
   []
@@ -123,18 +132,18 @@
      [rn/text {:style styles/section-subtitle}
       "All fields are optional. Defaults are in red."]]
     [rn/view {:style styles/input-section}
-     [input "Purchase price" :purchase-price]
-     [input "Cash down" :down]
-     [input "Monthly HOA" :hoa]
-     [input "# units" :num-units]
-     [input "Rent/unit" :rent-per-unit]
-     [input "Vacancy (%)" :vacancy-percentage]
-     [input "Monthly maintenance" :monthly-maint]
-     [input "Annual management fee" :management-fee]
-     [input "Rehab cost" :rehab]
-     [input "Expected value in 5 yrs" :five-year-price]
-     [input "Loan P&I" :loan-principal-interest]
-     [input "Taxes & Insurance" :property-tax-and-insurance]
+     [input 8 "Purchase price" :purchase-price]
+     [input 7 "Cash down" :down]
+     [input 5 "Monthly HOA" :hoa]
+     [input 4 "# units" :num-units]
+     [input 5 "Rent/unit" :rent-per-unit]
+     [input 3 "Vacancy (%)" :vacancy-percentage]
+     [input 5 "Monthly maintenance" :monthly-maint]
+     [input 7 "Annual management fee" :management-fee]
+     [input 7 "Rehab cost" :rehab]
+     [input 9 "Expected value in 5 yrs" :five-year-price]
+     [input 7 "Loan P&I" :loan-principal-interest]
+     [input 7 "Taxes & Insurance" :property-tax-and-insurance]
      [rn/view {:style {:min-height 220}}]]]])
 
 (defn no-value-provided?
