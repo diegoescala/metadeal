@@ -33,8 +33,10 @@
 
 (defn localize
   [cur]
-  (let [f (js/Intl.NumberFormat. "en-US" (clj->js {:style "currency" :currency "USD"}))]
-    (-> f (.format cur))))
+  (let [f (js/Intl.NumberFormat. "en-US" (clj->js {:style "currency" :currency "USD" :maximum-fraction-digits 0}))]
+    (-> f (.format cur)
+        (s/split #"\.")
+        first)))
   ; (str "$" cur))
 
 (defn localize-currency-vals
@@ -79,13 +81,15 @@
 (defn summary-section
   [title param prop & data-type]
   (let [value-type (or (first data-type) :currency)]
-    [rn/view {:style (merge styles/summary-section-view {:flex 3})}
-     [rn/text {:style styles/summary-title}
-      title]
-     [rn/text {:style styles/summary-details}
-      (case value-type
-        :currency (localize (get prop param))
-        :percent (percentize (get prop param)))]]))
+    [rn/view {:style (merge styles/summary-section-view {:flex 2})}
+     [rn/view {:style {:flex 6}}
+      [rn/text {:style styles/summary-title}
+       title]]
+     [rn/view {:style {:flex 4}}
+      [rn/text {:style styles/summary-details}
+       (case value-type
+         :currency (localize (get prop param))
+         :percent (percentize (get prop param)))]]]))
 
 (defn explanation
   [prop]
@@ -114,12 +118,10 @@
       [explanation prop]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "Cash Required" :total-cost prop]
-       [summary-section "Monthly Cash Flow/Unit" :cash-flow-per-unit prop]
-       [summary-section "vs. Stock Market" :mkt-beat prop]]
+       [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "CoCROI" :cocroi prop :percent]
-       [summary-section "Monthly Exp." :monthly-exp prop]
-       [summary-section "Annual Profit" :annual-profit prop]]]]))
+       [summary-section "Monthly Exp." :monthly-exp prop]]]]))
 
 (defn no-info-summary
   []
@@ -128,15 +130,19 @@
     [rn/text {:style styles/good-deal-title}
      "Provide a purchase price to get started"]]])
 
+(defn input-intro
+  []
+  [rn/view {:style (merge styles/input-section styles/info-section-header)}
+   [rn/text {:style styles/section-title}
+    "Answer some basic questions"]
+   [rn/text {:style styles/section-subtitle}
+    "All fields are optional. Defaults are in red."]])
+
 (defn basic-questions
   []
   [rn/safe-area-view {:style {:flex 3}}
    [rn/scroll-view {:style (merge {:flex 3} styles/container)}
-    [rn/view {:style (merge styles/input-section styles/info-section-header)}
-     [rn/text {:style styles/section-title}
-      "Answer some basic questions"]
-     [rn/text {:style styles/section-subtitle}
-      "All fields are optional. Defaults are in red."]]
+    ; [input-intro]
     [rn/view {:style styles/input-section}
      [input 8 "Purchase price" :purchase-price]
      [input 7 "Cash down" :down]

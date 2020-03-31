@@ -9,6 +9,7 @@
    :light-green "#d4ecd3"
    :medium-green "#63bc61"
    :medium-red "#f23016"
+   :batman "#2f2f2f"
    :dark-gray "#4f4f4f"
    :medium-gray "#a8a8a8"
    :light-gray "#eee"
@@ -17,13 +18,13 @@
 
 (def container {:margin-left 15 :margin-right 15})
 (def summary-header {:flex-direction "column"})
-(def summary-section-view {:margin-top 0 :flex-direction "column" :text-align "center" :padding 8})
-(def summary-title {:color (:white app-colors) :font-size 16 :min-height 40 :font-weight "600" :text-align "center"})
-(def summary-details {:font-size 16 :color (:white app-colors) :text-align :center})
+(def summary-section-view {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8})
+(def summary-title {:color (:dark-gray app-colors) :font-size 12 :min-height 40 :font-weight "400" :text-align :left})
+(def summary-details {:font-size 12 :font-weight "600" :color (:batman app-colors) :text-align :right})
 
 (def edit-screen {:background-color (:light-gray app-colors)})
 
-(def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:medium-green app-colors)})
+(def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:light-gray app-colors)})
 
 (def good-deal-container {:margin-top 40 :margin-bottom 10 :background-color (:light-gray app-colors)})
 (def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "400" :text-align "center"})
