@@ -18,8 +18,8 @@
 
 (def container {:margin-left 15 :margin-right 15})
 (def summary-header {:flex-direction "column"})
-(def summary-section-view {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8})
-(def summary-title {:color (:dark-gray app-colors) :font-size 12 :min-height 40 :font-weight "400" :text-align :left})
+(def summary-section-view {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8 :border-bottom-width 1 :border-bottom-color (:medium-gray app-colors)})
+(def summary-title {:color (:dark-gray app-colors) :font-size 12 :font-weight "400" :text-align :left})
 (def summary-details {:font-size 12 :font-weight "600" :color (:batman app-colors) :text-align :right})
 
 (def edit-screen {:background-color (:light-gray app-colors)})
@@ -34,11 +34,11 @@
 (def deal-justification-text {:text-align "center" :color (:dark-gray app-colors)})
 (def good-deal-explanation {:color ""})
 
-(def input-field {:background-color (:light-gray app-colors) :font-size 18 :border-bottom-width 0 :margin-bottom 0 :border-radius 10 :padding 5})
-(def input-field-container {:bottom-border-width 1 :padding-top 10 :padding-bottom 0})
-(def input-view-container {:padding-left 20 :padding-right 20 :margin-top 15})
+(def input-field {:background-color (:light-gray app-colors) :font-size 16 :border-width 1 :border-color (:medium-gray app-colors) :margin-bottom 0 :border-radius 5 :padding 5})
+(def input-field-container {:bottom-border-width 1 :padding-top 5 :padding-bottom 0})
+(def input-view-container {:padding-left 15 :padding-right 15 :margin-top 15})
 
-(def input-section {:border-radius 0 :background-color (:white app-colors)})
+(def input-section {:border-radius 0 :background-color (:light-gray app-colors)})
 
 (def info-section-header {:margin-bottom 5 :padding-left 20 :padding-right 20 :margin-top 10})
 
@@ -46,4 +46,4 @@
 (def section-subtitle {:font-weight "300" :font-size 15 :font-style "italic" :margin-bottom 30})
 
 (def label-container {:align-text "center"})
-(def label {:font-weight "200" :font-size 19})
+(def label {:font-weight "400" :font-size 15})

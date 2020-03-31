@@ -33,11 +33,12 @@
 
 (defn localize
   [cur]
-  (let [f (js/Intl.NumberFormat. "en-US" (clj->js {:style "currency" :currency "USD" :maximum-fraction-digits 0}))]
-    (-> f (.format cur)
-        (s/split #"\.")
-        first)))
-  ; (str "$" cur))
+  ; (let [f (js/Intl.NumberFormat. "en-US" (clj->js {:style "currency" :currency "USD" :maximum-fraction-digits 0}))]
+  ;   (-> f (.format cur)
+  ;       (s/split #"\.")
+  ;       first)))
+  (let [numstr (map #(apply str %) (partition 3 3 nil (s/reverse (str (Math/floor (Math/abs cur))))))]
+    (str (when (neg? cur) "-") "$" (s/reverse (s/join "," numstr)))))
 
 (defn localize-currency-vals
   [m]
@@ -115,7 +116,7 @@
      [rn/view {:style styles/container}
       [good-deal-summary good?]
       [deal-justification prop]
-      [explanation prop]
+      ; [explanation prop]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "Cash Required" :total-cost prop]
        [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]]
