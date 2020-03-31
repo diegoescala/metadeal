@@ -58,7 +58,7 @@
          "Considering a projected cash flow/month of " cash-flow-per-unit ", "
          "and 5-year appreciation of " five-yr-apprec ", you could expect to "
          (if (s/starts-with? five-yr-profit "-") "lose" "make") " about " (s/replace five-yr-profit #"\-" "") " over the next 5 years. If you put your " total-cost " into the stock market instead, "
-         "you would make " stock-market-ret " over the next 5 years.")))
+         "you would make " stock-market-ret " over the next 5 years, assuming 7% annual growth.")))
 
 (defn good-deal-summary
   [good?]
@@ -155,7 +155,7 @@
   [prop]
   (swap! prop-info merge prop @prop-info)
   [rn/view {:style (merge styles/edit-screen {:flex-direction "column" :flex 1})}
-   (if (no-value-provided? (:purchase-price @prop-info))
+   (if false;(no-value-provided? (:purchase-price @prop-info))
      [no-info-summary]
      [summary-header @computed])
    [basic-questions]])
