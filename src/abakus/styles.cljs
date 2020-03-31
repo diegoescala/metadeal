@@ -9,6 +9,7 @@
    :light-green "#d4ecd3"
    :medium-green "#63bc61"
    :medium-red "#f23016"
+   :dark-gray "#4f4f4f"
    :medium-gray "#a8a8a8"
    :light-gray "#eee"
    :white "#fff"
@@ -24,11 +25,12 @@
 
 (def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:medium-green app-colors)})
 
-(def good-deal-container {:margin-top 40 :margin-bottom 10 :background-color (:white app-colors)})
-(def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "200" :text-align "center"})
-(def good-deal-result {:font-size 37 :text-align "center" :font-weight "800"})
+(def good-deal-container {:margin-top 40 :margin-bottom 10 :background-color (:light-gray app-colors)})
+(def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "400" :text-align "center"})
+(def good-deal-result {:font-size 25 :font-weight "400" :text-align "center"})
 (def good-deal-yes-text (merge good-deal-result {:color (:medium-green app-colors)}))
 (def good-deal-no-text (merge good-deal-result {:color (:medium-red app-colors)}))
+(def deal-justification-text {:text-align "center" :color (:dark-gray app-colors)})
 (def good-deal-explanation {:color ""})
 
 (def input-field {:background-color (:light-gray app-colors) :font-size 18 :border-bottom-width 0 :margin-bottom 0 :border-radius 10 :padding 5})

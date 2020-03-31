@@ -63,13 +63,18 @@
 (defn good-deal-summary
   [good?]
   [rn/view {:style styles/good-deal-container}
-   [rn/text {:style styles/good-deal-title}
-    "Good Deal?"]
-   (if good?
-     [rn/text {:style styles/good-deal-yes-text}
-      "Yes"]
-     [rn/text {:style styles/good-deal-no-text}
-      "No"])])
+   (let [content {:style (if good? styles/good-deal-yes-text styles/good-deal-no-text)
+                  :word (if good? "Good" "Bad")}]
+     [rn/text {:style (get content :style)}
+      (str (get content :word) " Deal")])])
+
+(defn deal-justification
+  [prop]
+  (let [m (:mkt-beat prop)]
+    [rn/text {:style styles/deal-justification-text}
+     (if (pos? m)
+       (str "Better than 5-yr stock market by " (localize m))
+       (str "Worse than 5-yr stock market by " (localize (Math/abs m))))]))
 
 (defn summary-section
   [title param prop & data-type]
@@ -105,6 +110,7 @@
     [rn/view {:style styles/summary-header}
      [rn/view {:style styles/container}
       [good-deal-summary good?]
+      [deal-justification prop]
       [explanation prop]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "Cash Required" :total-cost prop]
