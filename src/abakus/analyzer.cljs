@@ -4,7 +4,8 @@
 (def taxes-insur-multiplier (/ 522.0 135000))
 
 (def params
-  {:five-year-price             (fn [p] (* 1.2 (:purchase-price p)))
+  {:five-year-price             (fn [p] (* (+ 1.0 (* (:time-horizon-years p) 0.04))
+                                           (:purchase-price p)))
    :purchase-price              (fn [p] 0.0)
    :hoa                         (fn [p] 0)
    :rehab                       (fn [p] (* 5.0 (:closing-costs p)))
@@ -32,9 +33,13 @@
    :annual-profit               (fn [p] (* (:cash-flow-per-unit p) (:num-units p) 12.0))
    :first-yr-profit             (fn [p] (- (:annual-profit p) (:total-cost p)))
    :cocroi                      (fn [p] (/ (:annual-profit p) (:total-cost p)))
-   :five-yr-value               (fn [p] (+ (* (:annual-profit p) 5.0) (:down p)))
+   :time-horizon-years          (fn [p] 5.0)
+   :stock-mkt-growth-percent    (fn [p] 7.0)
+   :five-yr-value               (fn [p] (+ (* (:annual-profit p) (:time-horizon-years p)) (:down p)))
    :five-yr-return              (fn [p] (- (/ (:five-yr-value p) (:total-cost p)) 1.0))
-   :stock-market-ret            (fn [p] (- (* (:total-cost p) (Math/pow 1.07 5.0)) (:total-cost p)))})
+   :stock-market-ret            (fn [p] (- (* (:total-cost p) (Math/pow (+ 1.0 (* 0.01 (:stock-mkt-growth-percent p)))
+                                                                        (:time-horizon-years p)))
+                                           (:total-cost p)))})
 
 (defn compute
   [param property]
@@ -52,8 +57,10 @@
   [prop]
   (->> prop
     (compute :purchase-price)
+    (compute :time-horizon-years)
     (compute :five-year-price)
     (compute :hoa)
+    (compute :stock-mkt-growth-percent)
     (compute :vacancy-percentage)
     (compute :num-units)
     (compute :rent-per-unit)

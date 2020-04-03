@@ -24,6 +24,7 @@
     [rn/input {:style styles/input-field
                :keyboard-type "numeric"
                :max-length max-length
+               ; :value (str (Math/floor (get @computed param)))
                :placeholder (str (Math/floor (get @computed param)))
                :placeholder-text-color "#faa"
                ; :value (str (get @prop-info param))
@@ -154,7 +155,9 @@
      [input 5 "Monthly maintenance" :monthly-maint]
      [input 7 "Annual management fee" :management-fee]
      [input 7 "Rehab cost" :rehab]
-     [input 9 "Expected value in 5 yrs" :five-year-price]
+     [input 9 "Expected value at time horizon" :five-year-price]
+     [input 2 "Time horizon (years)" :time-horizon-years]
+     [input 2 "Stock market expected YoY return (%)" :stock-mkt-growth-percent]
      [input 7 "Loan P&I" :loan-principal-interest]
      [input 7 "Taxes & Insurance" :property-tax-and-insurance]
      [rn/view {:style {:min-height 330}}]]]])
