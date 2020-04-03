@@ -55,14 +55,14 @@
 
 (defn explanation-str
   [prop]
-  (let [{:keys [total-cost down five-yr-profit closing-costs rehab five-yr-apprec mortgage cash-flow-per-unit stock-market-ret]} prop]
+  (let [{:keys [total-cost down five-yr-profit time-horizon-years stock-mkt-growth-percent closing-costs rehab five-yr-apprec mortgage cash-flow-per-unit stock-market-ret]} prop]
     (str "With a down payment of " down
          ", closing costs of " closing-costs ", and estimated rehab costs of " rehab
          ", you would be putting in " total-cost " in cash. "
          "Considering a projected cash flow/month of " cash-flow-per-unit ", "
-         "and 5-year appreciation of " five-yr-apprec ", you could expect to "
-         (if (s/starts-with? five-yr-profit "-") "lose" "make") " about " (s/replace five-yr-profit #"\-" "") " over the next 5 years. If you put your " total-cost " into the stock market instead, "
-         "you would make " stock-market-ret " over the next 5 years, assuming 7% annual growth.")))
+         "and " (subs time-horizon-years 1) "-year appreciation of " five-yr-apprec ", you could expect to "
+         (if (s/starts-with? five-yr-profit "-") "lose" "make") " about " (s/replace five-yr-profit #"\-" "") " over the next " (subs time-horizon-years 1) " years. If you put your " total-cost " into the stock market instead, "
+         "you would make " stock-market-ret " over the next " (subs time-horizon-years 1) " years, assuming " (subs stock-mkt-growth-percent 1) "% annual growth.")))
 
 (defn good-deal-summary
   [good?]
@@ -77,8 +77,8 @@
   (let [m (:mkt-beat prop)]
     [rn/text {:style styles/deal-justification-text}
      (if (pos? m)
-       (str "Better than 5-yr stock market by " (localize m))
-       (str "Worse than 5-yr stock market by " (localize (Math/abs m))))]))
+       (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m))
+       (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m))))]))
 
 (defn summary-section
   [title param prop & data-type]
@@ -117,13 +117,14 @@
      [rn/view {:style styles/container}
       [good-deal-summary good?]
       [deal-justification prop]
-      ; [explanation prop]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "Cash Required" :total-cost prop]
        [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "CoCROI" :cocroi prop :percent]
-       [summary-section "Monthly Exp." :monthly-exp prop]]]]))
+       [summary-section "Monthly Exp." :monthly-exp prop]]]
+     [rn/view
+      [explanation prop]]]))
 
 (defn no-info-summary
   []
