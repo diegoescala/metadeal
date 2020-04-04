@@ -17,7 +17,7 @@
    :black "#111"})
 
 (def container {:margin-left 15 :margin-right 15})
-(def summary-header {:flex-direction "column"})
+(def summary-header {:flex-direction "column" :background-color "#2f043e"})
 (def summary-section-view {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8 :border-bottom-width 1 :border-bottom-color (:medium-gray app-colors)})
 (def summary-title {:color (:dark-gray app-colors) :font-size 12 :font-weight "400" :text-align :left})
 (def summary-details {:font-size 12 :font-weight "600" :color (:batman app-colors) :text-align :right})
