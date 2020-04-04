@@ -32,7 +32,11 @@
 (def good-deal-yes-text (merge good-deal-result {:color (:medium-green app-colors)}))
 (def good-deal-no-text (merge good-deal-result {:color (:medium-red app-colors)}))
 (def deal-justification-text {:text-align "center" :color (:dark-gray app-colors)})
-(def good-deal-explanation {:color ""})
+(def good-deal-explanation {:color (:dark-gray app-colors) :font-size 12 :text-align :justify
+                            :margin-left 30 :margin-right 30
+                            :padding 20
+                            :border-left-width 1 :border-right-width 1
+                            :border-left-color (:medium-gray app-colors)})
 
 (def input-field {:background-color (:light-gray app-colors) :font-size 16 :border-width 1 :border-color (:medium-gray app-colors) :margin-bottom 0 :border-radius 5 :padding 5})
 (def input-field-container {:bottom-border-width 1 :padding-top 5 :padding-bottom 0})

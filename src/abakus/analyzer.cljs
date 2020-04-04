@@ -6,7 +6,7 @@
 (def params
   {:five-year-price             (fn [p] (* (+ 1.0 (* (:time-horizon-years p) 0.04))
                                            (:purchase-price p)))
-   :purchase-price              (fn [p] 0.0)
+   :purchase-price              (fn [p] 100000.0)
    :hoa                         (fn [p] 0)
    :rehab                       (fn [p] (* 5.0 (:closing-costs p)))
    :monthly-maint               (fn [p] (/ (:five-year-price p) 2000.0))
@@ -37,9 +37,9 @@
    :stock-mkt-growth-percent    (fn [p] 7.0)
    :five-yr-value               (fn [p] (+ (* (:annual-profit p) (:time-horizon-years p)) (:down p)))
    :five-yr-return              (fn [p] (- (/ (:five-yr-value p) (:total-cost p)) 1.0))
-   :stock-market-ret            (fn [p] (- (* (:total-cost p) (Math/pow (+ 1.0 (* 0.01 (:stock-mkt-growth-percent p)))
-                                                                        (:time-horizon-years p)))
-                                           (:total-cost p)))})
+   :stock-market-ret            (fn [p] (* (:total-cost p) (Math/pow (+ 1.0 (* 0.01 (:stock-mkt-growth-percent p)))
+                                                                     (:time-horizon-years p))))})
+
 
 (defn compute
   [param property]

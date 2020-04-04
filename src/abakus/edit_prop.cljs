@@ -6,13 +6,13 @@
             [clojure.string :as s]
             [abakus.analyzer :as analyzer]))
 
-(def prop-info (r/atom {}))
-(def computed (r/atom {}))
-
 (defn scrub
   [m]
   (let [empties (filter #(empty? (str (get m %))) (keys m))]
     (reduce #(dissoc %1 %2) m empties)))
+
+(def prop-info (r/atom {}))
+(def computed (r/atom (analyzer/recompute (scrub @prop-info))))
 
 (defn input
   [max-length label param]
@@ -95,17 +95,19 @@
 
 (defn explanation
   [prop]
-  (let [show? (r/atom false)]
+  (let [show? (r/atom true)]
    (fn [prop]
     [rn/view {:style {:align-items "center" :margin-bottom 10}}
-     [rn/touchable-highlight
-        {:style {:background-color "#bd6996" :width 160 :padding 10 :border-radius 10}
-         :on-press #(swap! show? not)}
-                     ;rn/alert (explanation-str (localize-currency-vals prop)))}
-       [rn/text {:style {:color "white" :font-size 23 :text-align "center"}}
-        (str (if @show? "Hide" "Show") " Explanation")]]
+
+     ; [rn/touchable-highlight
+     ;    {:style {:background-color "#bd6996" :width 160 :padding 10 :border-radius 10}
+     ;     :on-press #(swap! show? not)}
+     ;                 ;rn/alert (explanation-str (localize-currency-vals prop)))}
+     ;   [rn/text {:style {:color "white" :font-size 23 :text-align "center"}}
+     ;    (str (if @show? "Hide" "Show") " Explanation")]]
+
      (if @show?
-       [rn/text (explanation-str (localize-currency-vals prop))])])))
+       [rn/text {:style styles/good-deal-explanation} (explanation-str (localize-currency-vals prop))])])))
 
 (defn summary-header
   [prop]
