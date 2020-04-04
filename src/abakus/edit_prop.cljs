@@ -24,7 +24,7 @@
     [rn/input {:style styles/input-field
                :keyboard-type "numeric"
                :max-length max-length
-               ; :value (str (Math/floor (get @computed param)))
+               ; :value (str (if (number? (get @prop-info param)) (Math/floor (get @prop-info param)) ""))
                :placeholder (str (Math/floor (get @computed param)))
                :placeholder-text-color "#faa"
                ; :value (str (get @prop-info param))
@@ -57,9 +57,9 @@
   [prop]
   (let [{:keys [total-cost down five-yr-profit time-horizon-years stock-mkt-growth-percent closing-costs rehab five-yr-apprec mortgage cash-flow-per-unit stock-market-ret]} prop]
     (str "With a down payment of " down
-         ", closing costs of " closing-costs ", and estimated rehab costs of " rehab
+         ", closing costs of " closing-costs ", and rehab costs of " rehab
          ", you would be putting in " total-cost " in cash. "
-         "Considering a projected cash flow/month of " cash-flow-per-unit ", "
+         "With a projected cash flow/month of " cash-flow-per-unit ", "
          "and " (subs time-horizon-years 1) "-year appreciation of " five-yr-apprec ", you could expect to "
          (if (s/starts-with? five-yr-profit "-") "lose" "make") " about " (s/replace five-yr-profit #"\-" "") " over the next " (subs time-horizon-years 1) " years. If you put your " total-cost " into the stock market instead, "
          "you would make " stock-market-ret " over the next " (subs time-horizon-years 1) " years, assuming " (subs stock-mkt-growth-percent 1) "% annual growth.")))
