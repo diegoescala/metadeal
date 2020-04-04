@@ -25,7 +25,7 @@
 (def summary-title {:color (:white app-colors) :font-size 12 :font-weight "400" :text-align :left})
 (def summary-details {:font-size 12 :font-weight "600" :color (:white app-colors) :text-align :right})
 
-(def edit-screen {:background-color (:light-gray app-colors)})
+(def edit-screen {:background-color (:dark-purple app-colors)})
 
 (def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:dark-purple app-colors)})
 
@@ -45,11 +45,11 @@
 
 (def label-container {:align-text "center"})
 (def label {:font-weight "400" :font-size 12})
-(def input-field {:background-color (:light-gray app-colors) :font-size 13 :border-width 1 :border-color (:medium-gray app-colors) :margin-bottom 0 :border-radius 5 :padding 3})
+(def input-field {:background-color (:white app-colors) :font-size 13 :border-width 1 :border-color (:medium-gray app-colors) :margin-bottom 0 :border-radius 5 :padding 3})
 (def input-field-container {:bottom-border-width 1 :padding-top 5 :padding-bottom 0})
 (def input-view-container {:padding-left 15 :padding-right 15 :margin-top 15})
 
-(def input-section {:border-radius 0 :background-color (:light-gray app-colors)})
+(def input-section {:border-radius 10 :background-color (:light-gray app-colors)})
 
 (def info-section-header {:margin-bottom 5 :padding-left 20 :padding-right 20 :margin-top 10})
 

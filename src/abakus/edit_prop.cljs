@@ -14,23 +14,31 @@
 (def prop-info (r/atom {}))
 (def computed (r/atom (analyzer/recompute (scrub @prop-info))))
 
+(defn recompute
+  []
+  (reset! computed (analyzer/recompute (scrub @prop-info))))
+
 (defn input
   [max-length label param]
-  [rn/view {:style styles/input-view-container}
-   [rn/view {:style styles/label-container}
-    [rn/text {:style styles/label}
-     label]]
-   [rn/view {:style styles/input-field-container}
-    [rn/input {:style styles/input-field
-               :keyboard-type "numeric"
-               :max-length max-length
-               ; :value (str (if (number? (get @prop-info param)) (Math/floor (get @prop-info param)) ""))
-               :placeholder (str (Math/floor (get @computed param)))
-               :placeholder-text-color "#faa"
-               ; :value (str (get @prop-info param))
-               :on-change-text #(do
-                                  (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
-                                  (reset! computed (analyzer/recompute (scrub @prop-info))))}]]])
+  (let [value (r/atom "")]
+   (fn [max-length label param]
+    [rn/view {:style styles/input-view-container}
+     [rn/view {:style styles/label-container}
+      [rn/text {:style styles/label}
+       label]]
+     [rn/view {:style styles/input-field-container}
+      [rn/input {:style styles/input-field
+                 :keyboard-type "numeric"
+                 :max-length max-length
+                 ; :value (str (if (number? (get @prop-info param)) (Math/floor (get @prop-info param)) ""))
+                 ; :value @value
+                 :placeholder (str (Math/floor (get @computed param)))
+                 :placeholder-text-color "#faa"
+                 ; :value (str (get @prop-info param))
+                 :on-change-text #(do
+                                    (reset! value %)
+                                    (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
+                                    (recompute))}]]])))
 
 (defn localize
   [cur]
@@ -97,16 +105,16 @@
 
 (defn explanation
   [prop]
-  (let [show? (r/atom true)]
+  (let [show? (r/atom false)]
    (fn [prop]
     [rn/view {:style {:align-items "center" :margin-bottom 10}}
 
-     ; [rn/touchable-highlight
-     ;    {:style {:background-color "#bd6996" :width 160 :padding 10 :border-radius 10}
-     ;     :on-press #(swap! show? not)}
-     ;                 ;rn/alert (explanation-str (localize-currency-vals prop)))}
-     ;   [rn/text {:style {:color "white" :font-size 23 :text-align "center"}}
-     ;    (str (if @show? "Hide" "Show") " Explanation")]]
+     [rn/touchable-highlight
+        {:style {:background-color "#bd6996"  :padding 5 :border-radius 5}
+         :on-press #(swap! show? not)}
+                     ;rn/alert (explanation-str (localize-currency-vals prop)))}
+       [rn/text {:style {:color "white" :font-size 13 :text-align "center"}}
+        (str (if @show? "Hide" "Show") " Explanation")]]
 
      (if @show?
        [rn/text {:style styles/good-deal-explanation} (explanation-str (localize-currency-vals prop))])])))
@@ -166,7 +174,7 @@
        [input 7 "Rehab cost" :rehab]
        [input 9 "Expected value at time horizon" :five-year-price]
        [input 2 "Time horizon (years)" :time-horizon-years]
-       [input 2 "Stock market expected YoY return (%)" :stock-mkt-growth-percent]
+       [input 2 "Stock market YoY return (%)" :stock-mkt-growth-percent]
        [input 7 "Loan P&I" :loan-principal-interest]
        [input 7 "Taxes & Insurance" :property-tax-and-insurance]]
       [rn/view {:style {:min-height 630}}]]]]])
@@ -178,9 +186,9 @@
 
 (defn edit-prop
   [prop]
-  (swap! prop-info merge prop @prop-info)
+  ; (swap! prop-info merge prop @prop-info)
   [rn/view {:style (merge styles/edit-screen {:flex-direction "column" :flex 1})}
-   (if false;(no-value-provided? (:purchase-price @prop-info))
-     [no-info-summary]
-     [summary-header @computed])
+   ; (if false;(no-value-provided? (:purchase-price @prop-info))
+     ; [no-info-summary]
+   [summary-header @computed]
    [basic-questions]])
