@@ -152,21 +152,24 @@
    [rn/scroll-view {:style (merge {:flex 3} styles/container)}
     ; [input-intro]
     [rn/view {:style styles/input-section}
-     [input 8 "Purchase price" :purchase-price]
-     [input 7 "Cash down" :down]
-     [input 5 "Monthly HOA" :hoa]
-     [input 4 "# units" :num-units]
-     [input 5 "Rent/unit" :rent-per-unit]
-     [input 3 "Vacancy (%)" :vacancy-percentage]
-     [input 5 "Monthly maintenance" :monthly-maint]
-     [input 7 "Annual management fee" :management-fee]
-     [input 7 "Rehab cost" :rehab]
-     [input 9 "Expected value at time horizon" :five-year-price]
-     [input 2 "Time horizon (years)" :time-horizon-years]
-     [input 2 "Stock market expected YoY return (%)" :stock-mkt-growth-percent]
-     [input 7 "Loan P&I" :loan-principal-interest]
-     [input 7 "Taxes & Insurance" :property-tax-and-insurance]
-     [rn/view {:style {:min-height 330}}]]]])
+     [rn/view {:style styles/questionnaire-container}
+      [rn/view
+       [input 8 "Purchase price" :purchase-price]
+       [input 7 "Cash down" :down]
+       [input 5 "Monthly HOA" :hoa]
+       [input 4 "# units" :num-units]
+       [input 5 "Rent/unit" :rent-per-unit]
+       [input 3 "Vacancy (%)" :vacancy-percentage]
+       [input 5 "Monthly maintenance" :monthly-maint]]
+      [rn/view
+       [input 7 "Annual management fee" :management-fee]
+       [input 7 "Rehab cost" :rehab]
+       [input 9 "Expected value at time horizon" :five-year-price]
+       [input 2 "Time horizon (years)" :time-horizon-years]
+       [input 2 "Stock market expected YoY return (%)" :stock-mkt-growth-percent]
+       [input 7 "Loan P&I" :loan-principal-interest]
+       [input 7 "Taxes & Insurance" :property-tax-and-insurance]]
+      [rn/view {:style {:min-height 630}}]]]]])
 
 (defn no-value-provided?
   [value]

@@ -41,7 +41,11 @@
                             :border-left-width 1 :border-right-width 1
                             :border-left-color (:medium-gray app-colors)})
 
-(def input-field {:background-color (:light-gray app-colors) :font-size 16 :border-width 1 :border-color (:medium-gray app-colors) :margin-bottom 0 :border-radius 5 :padding 5})
+(def questionnaire-container {:flex-direction "row"})
+
+(def label-container {:align-text "center"})
+(def label {:font-weight "400" :font-size 12})
+(def input-field {:background-color (:light-gray app-colors) :font-size 13 :border-width 1 :border-color (:medium-gray app-colors) :margin-bottom 0 :border-radius 5 :padding 3})
 (def input-field-container {:bottom-border-width 1 :padding-top 5 :padding-bottom 0})
 (def input-view-container {:padding-left 15 :padding-right 15 :margin-top 15})
 
@@ -51,6 +55,3 @@
 
 (def section-title {:font-weight "200" :font-size 25 :margin-bottom 10})
 (def section-subtitle {:font-weight "300" :font-size 15 :font-style "italic" :margin-bottom 30})
-
-(def label-container {:align-text "center"})
-(def label {:font-weight "400" :font-size 15})
