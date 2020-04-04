@@ -2,6 +2,10 @@
   (:require [reagent.core :as r :refer [atom]]))
 
 (def ReactNative (js/require "react-native"))
+
+(def status-bar (.-StatusBar ReactNative))
+(.setBarStyle status-bar "light-content" true)
+
 (def expo (js/require "expo"))
 (def AtExpo (js/require "@expo/vector-icons"))
 (def ionicons (.-Ionicons AtExpo))
@@ -20,3 +24,8 @@
 
 (defn alert [title]
   (.alert Alert title))
+
+(defn spacer
+  [thickness margin-top margin-bottom]
+  [view {:style {:background-color "#fff" :min-height thickness :margin-top margin-top :margin-bottom margin-bottom}}
+   [text {:style {:font-size 1}} " "]])

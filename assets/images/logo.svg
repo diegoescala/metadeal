@@ -35,14 +35,14 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#2f043e"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.56568542"
-     inkscape:cx="-318.22863"
-     inkscape:cy="9518.0308"
+     inkscape:zoom="0.2"
+     inkscape:cx="-637.08182"
+     inkscape:cy="9788.248"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -168,7 +168,7 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
        x="-211.41019"
        y="-2286.6946"
        id="text4806"><tspan
@@ -176,6 +176,132 @@
          id="tspan4804"
          x="-211.41019"
          y="-2286.6946"
-         style="stroke-width:0.26458332;fill:#a8a8a8;fill-opacity:1;-inkscape-font-specification:'Sukhumvit Set, Bold';font-family:'Sukhumvit Set';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:22.93055556px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">rental property deal analyzer</tspan></text>
+         style="stroke-width:0.26458332;fill:#a0a0a0;fill-opacity:1;-inkscape-font-specification:'Sukhumvit Set, Bold';font-family:'Sukhumvit Set';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:22.93055556px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">rental property deal analyzer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-275.95578"
+       y="-2789.0276"
+       id="text859"><tspan
+         sodipodi:role="line"
+         id="tspan857"
+         x="-275.95578"
+         y="-2779.6638"
+         style="stroke-width:0.26458332" /></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot893"
+       style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:29.33333333px;line-height:1.25;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion895"><rect
+           id="rect897"
+           width="690.38593"
+           height="59.714104"
+           x="-1068.6881"
+           y="-10470.106" /></flowRegion><flowPara
+         id="flowPara899"></flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-67.351921"
+       y="-2677.7097"
+       id="text903"><tspan
+         sodipodi:role="line"
+         id="tspan901"
+         x="-67.351921"
+         y="-2677.7097"
+         style="stroke-width:0.26458332">v</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot905"
+       style="font-style:normal;font-weight:normal;font-size:29.33333397px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#04f382;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,371.37101,488.30143)"><flowRegion
+         id="flowRegion907"
+         style="fill:#04f382;fill-opacity:1"><rect
+           id="rect909"
+           width="2071.823"
+           height="388.90872"
+           x="-837.92157"
+           y="-10046.232"
+           style="fill:#04f382;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara911"
+         style="font-size:192px;line-height:1.25;fill:#04f382;fill-opacity:1">Good Deal</flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#f99595;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-145.92915"
+       y="-1820.8436"
+       id="text942"><tspan
+         sodipodi:role="line"
+         id="tspan940"
+         x="-145.92915"
+         y="-1820.8436"
+         style="font-size:50.79999924px;fill:#f99595;fill-opacity:1;stroke-width:0.26458332">Bad Deal</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#f99595;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-297.47101"
+       y="-1769.3942"
+       id="text946"><tspan
+         sodipodi:role="line"
+         id="tspan944"
+         x="-297.47101"
+         y="-1769.3942"
+         style="font-size:25.39999962px;fill:#f99595;fill-opacity:1;stroke-width:0.26458332">Worse than 5-yr stock market by $54,321</tspan></text>
+    <rect
+       style="fill:#082f32;fill-opacity:0.00947867;stroke-width:0.26458332"
+       id="rect948"
+       width="580.91034"
+       height="66.416473"
+       x="-319.92163"
+       y="-1724.493" />
+    <rect
+       style="fill:#ebcece;fill-opacity:1;stroke-width:0.26458332"
+       id="rect950"
+       width="578.104"
+       height="4.6772165"
+       x="-321.79251"
+       y="-1748.8146" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-304.24603"
+       y="-1706.6727"
+       id="text954"><tspan
+         sodipodi:role="line"
+         id="tspan952"
+         x="-304.24603"
+         y="-1706.6727"
+         style="font-size:16.93333244px;fill:#f7f7f7;fill-opacity:1;stroke-width:0.26458332">Cash Required</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-145.0132"
+       y="-1708.3828"
+       id="text958"><tspan
+         sodipodi:role="line"
+         id="tspan956"
+         x="-145.0132"
+         y="-1708.3828"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.93333244px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#f5f5f5;fill-opacity:1;stroke-width:0.26458332">$60,000</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-10.657858"
+       y="-1708.8175"
+       id="text962"><tspan
+         sodipodi:role="line"
+         id="tspan960"
+         x="-10.657858"
+         y="-1708.8175"
+         style="font-size:16.93333244px;fill:#f8f8f8;fill-opacity:1;stroke-width:0.26458332">Cash Flow / Unit</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.76111126px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#f99595;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       x="165.507"
+       y="-1710.528"
+       id="text966"><tspan
+         sodipodi:role="line"
+         id="tspan964"
+         x="165.507"
+         y="-1710.528"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.93333244px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#f99595;fill-opacity:1;stroke-width:0.26458332;">-$291</tspan></text>
   </g>
 </svg>

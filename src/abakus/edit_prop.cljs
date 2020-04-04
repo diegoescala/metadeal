@@ -74,8 +74,10 @@
 
 (defn deal-justification
   [prop]
-  (let [m (:mkt-beat prop)]
-    [rn/text {:style styles/deal-justification-text}
+  (let [m (:mkt-beat prop)
+        good? (pos? m)
+        style (if good? styles/good styles/bad)]
+    [rn/text {:style (merge styles/deal-justification-text style)}
      (if (pos? m)
        (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m))
        (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m))))]))
@@ -119,6 +121,7 @@
      [rn/view {:style styles/container}
       [good-deal-summary good?]
       [deal-justification prop]
+      [rn/spacer 1 10 10]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section "Cash Required" :total-cost prop]
        [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]]

@@ -5,10 +5,10 @@
   {:light-pink "#e780b8"
    :light-purple "#e7daef"
    :medium-purple "#bd6996"
-   :dark-purple "#8c568d"
+   :dark-purple "#2f043e"
    :light-green "#d4ecd3"
-   :medium-green "#63bc61"
-   :medium-red "#f23016"
+   :medium-green "#04f382"
+   :medium-red "#f99595"
    :batman "#2f2f2f"
    :dark-gray "#4f4f4f"
    :medium-gray "#a8a8a8"
@@ -16,23 +16,26 @@
    :white "#fff"
    :black "#111"})
 
+(def good {:color (:medium-green app-colors)})
+(def bad {:color (:medium-red app-colors)})
+
 (def container {:margin-left 15 :margin-right 15})
 (def summary-header {:flex-direction "column" :background-color "#2f043e"})
 (def summary-section-view {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8 :border-bottom-width 1 :border-bottom-color (:medium-gray app-colors)})
-(def summary-title {:color (:dark-gray app-colors) :font-size 12 :font-weight "400" :text-align :left})
-(def summary-details {:font-size 12 :font-weight "600" :color (:batman app-colors) :text-align :right})
+(def summary-title {:color (:white app-colors) :font-size 12 :font-weight "400" :text-align :left})
+(def summary-details {:font-size 12 :font-weight "600" :color (:white app-colors) :text-align :right})
 
 (def edit-screen {:background-color (:light-gray app-colors)})
 
-(def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:light-gray app-colors)})
+(def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:dark-purple app-colors)})
 
-(def good-deal-container {:margin-top 40 :margin-bottom 10 :background-color (:light-gray app-colors)})
+(def good-deal-container {:margin-top 40 :margin-bottom 10})
 (def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "400" :text-align "center"})
 (def good-deal-result {:font-size 25 :font-weight "400" :text-align "center"})
 (def good-deal-yes-text (merge good-deal-result {:color (:medium-green app-colors)}))
 (def good-deal-no-text (merge good-deal-result {:color (:medium-red app-colors)}))
-(def deal-justification-text {:text-align "center" :color (:dark-gray app-colors)})
-(def good-deal-explanation {:color (:dark-gray app-colors) :font-size 12 :text-align :justify
+(def deal-justification-text {:text-align "center" :font-size 15})
+(def good-deal-explanation {:color (:light-gray app-colors) :font-size 12 :text-align :justify
                             :margin-left 30 :margin-right 30
                             :padding 20
                             :border-left-width 1 :border-right-width 1
