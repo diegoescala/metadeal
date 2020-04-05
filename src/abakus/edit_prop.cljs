@@ -73,25 +73,30 @@
          "you would make " stock-market-ret " over the next " (subs time-horizon-years 1) " years, assuming " (subs stock-mkt-growth-percent 1) "% annual growth.")))
 
 (defn good-deal-summary
-  [good?]
+  [prop some-info-filled?]
   [rn/view {:style styles/good-deal-container}
-   (let [content {:style (if good? styles/good-deal-yes-text styles/good-deal-no-text)
-                  :word (if good? "Good" "Bad")}]
+   (let [good? (pos? (:mkt-beat prop))
+         content {:style (if good? styles/good-deal-yes-text styles/good-deal-no-text)
+                  :content (cond (not some-info-filled?) "Good or bad deal?"
+                                 good? "Good Deal" (not good?) "Bad Deal")}]
+
      [rn/text {:style (get content :style)}
-      (str (get content :word) " Deal")])])
+      (get content :content)])])
 
 (defn deal-justification
-  [prop]
+  [prop some-info-filled?]
   (let [m (:mkt-beat prop)
         good? (pos? m)
         style (if good? styles/good styles/bad)]
     [rn/text {:style (merge styles/deal-justification-text style)}
-     (if (pos? m)
-       (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m))
-       (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m))))]))
+     (if (not some-info-filled?)
+       "Enter a purchase price to get started"
+       (if (pos? m)
+         (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m))
+         (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m)))))]))
 
 (defn summary-section
-  [title param prop & data-type]
+  [show-blank? title param prop & data-type]
   (let [value-type (or (first data-type) :currency)]
     [rn/view {:style (merge styles/summary-section-view {:flex 2})}
      [rn/view {:style {:flex 6}}
@@ -99,9 +104,11 @@
        title]]
      [rn/view {:style {:flex 4}}
       [rn/text {:style styles/summary-details}
-       (case value-type
-         :currency (localize (get prop param))
-         :percent (percentize (get prop param)))]]]))
+       (if show-blank?
+         "---"
+         (case value-type
+           :currency (localize (get prop param))
+           :percent (percentize (get prop param))))]]]))
 
 (defn explanation
   [prop]
@@ -120,22 +127,21 @@
        [rn/text {:style styles/good-deal-explanation} (explanation-str (localize-currency-vals prop))])])))
 
 (defn summary-header
-  [prop]
+  [prop some-info-filled?]
   (let [vs-mkt (:mkt-beat prop)
         cash-in (:total-cost prop)
-        cash-flow (:cash-flow-per-unit prop)
-        good? (pos? vs-mkt)]
+        cash-flow (:cash-flow-per-unit prop)]
     [rn/view {:style styles/summary-header}
      [rn/view {:style styles/container}
-      [good-deal-summary good?]
-      [deal-justification prop]
+      [good-deal-summary prop some-info-filled?]
+      [deal-justification prop some-info-filled?]
       [rn/spacer 1 10 10]
       [rn/view {:style styles/analysis-info-bar}
-       [summary-section "Cash Required" :total-cost prop]
-       [summary-section "Cash Flow/Unit" :cash-flow-per-unit prop]]
+       [summary-section (not some-info-filled?) "Cash Required" :total-cost prop]
+       [summary-section (not some-info-filled?) "Cash Flow/Unit" :cash-flow-per-unit prop]]
       [rn/view {:style styles/analysis-info-bar}
-       [summary-section "CoCROI" :cocroi prop :percent]
-       [summary-section "Monthly Exp." :monthly-exp prop]]]
+       [summary-section (not some-info-filled?) "CoCROI" :cocroi prop :percent]
+       [summary-section (not some-info-filled?) "Monthly Exp." :monthly-exp prop]]]
      [rn/view
       [explanation prop]]]))
 
@@ -190,5 +196,5 @@
   [rn/view {:style (merge styles/edit-screen {:flex-direction "column" :flex 1})}
    ; (if false;(no-value-provided? (:purchase-price @prop-info))
      ; [no-info-summary]
-   [summary-header @computed]
+   [summary-header @computed (not (no-value-provided? (:purchase-price @prop-info)))]
    [basic-questions]])

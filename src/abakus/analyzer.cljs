@@ -37,9 +37,9 @@
    :stock-mkt-growth-percent    (fn [p] 7.0)
    :five-yr-value               (fn [p] (+ (* (:annual-profit p) (:time-horizon-years p)) (:down p)))
    :five-yr-return              (fn [p] (- (/ (:five-yr-value p) (:total-cost p)) 1.0))
-   :stock-market-ret            (fn [p] (* (:total-cost p) (Math/pow (+ 1.0 (* 0.01 (:stock-mkt-growth-percent p)))
-                                                                     (:time-horizon-years p))))})
-
+   :stock-market-ret            (fn [p] (- (* (:total-cost p) (Math/pow (+ 1.0 (* 0.01 (:stock-mkt-growth-percent p)))
+                                                                        (:time-horizon-years p)))
+                                           (:total-cost p)))})
 
 (defn compute
   [param property]
