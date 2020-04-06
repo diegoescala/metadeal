@@ -40,6 +40,6 @@
                                                          :infer-externs      true
                                                          :parallel-build     true
                                                          :optimize-constants true
-                                                         :optimizations      :advanced
+                                                         :optimizations      :simple
                                                          :closure-defines    {"goog.DEBUG" false}
                                                          :target             :nodejs}}]}}})

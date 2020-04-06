@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "abakus",
-    "description": "No description",
-    "slug": "abakus",
+    "name": "metadeal",
+    "description": "Rental property deal analyzer",
+    "slug": "metadeal",
     "sdkVersion": "34.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,8 +14,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#2f043e"
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.diegoescala.abakus"
     }
   }
 }
