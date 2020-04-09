@@ -72,17 +72,6 @@
          (if (s/starts-with? five-yr-profit "-") "lose" "make") " about " (s/replace five-yr-profit #"\-" "") " over the next " (subs time-horizon-years 1) " years. If you put your " total-cost " into the stock market instead, "
          "you would make " stock-market-ret " over the next " (subs time-horizon-years 1) " years, assuming " (subs stock-mkt-growth-percent 1) "% annual growth.")))
 
-(defn good-deal-summary
-  [prop some-info-filled?]
-  [rn/view {:style styles/good-deal-container}
-   (let [good? (pos? (:mkt-beat prop))
-         content {:style (if good? styles/good-deal-yes-text styles/good-deal-no-text)
-                  :content (cond (not some-info-filled?) "Good or bad deal?"
-                                 good? "Good Deal" (not good?) "Bad Deal")}]
-
-     [rn/text {:style (get content :style)}
-      (get content :content)])])
-
 (defn deal-justification
   [prop some-info-filled?]
   (let [m (:mkt-beat prop)
@@ -94,6 +83,18 @@
        (if (pos? m)
          (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m))
          (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m)))))]))
+
+(defn good-deal-summary
+  [prop some-info-filled?]
+  [rn/view {:style styles/good-deal-container}
+   (let [good? (pos? (:mkt-beat prop))
+         content {:style (if good? styles/good-deal-yes-text styles/good-deal-no-text)
+                  :content (cond (not some-info-filled?) "Good or bad deal?"
+                                 good? "Good Deal" (not good?) "Bad Deal")}]
+
+     [rn/text {:style (get content :style)}
+      (get content :content)])
+   [deal-justification prop some-info-filled?]])
 
 (defn summary-section
   [show-blank? title param prop & data-type]
@@ -117,7 +118,7 @@
     [rn/view {:style {:align-items "center" :margin-bottom 10}}
 
      [rn/touchable-highlight
-        {:style {:background-color "#bd6996"  :padding 5 :border-radius 5}
+        {:style styles/explanation-button
          :on-press #(swap! show? not)}
                      ;rn/alert (explanation-str (localize-currency-vals prop)))}
        [rn/text {:style {:color "white" :font-size 13 :text-align "center"}}
@@ -135,7 +136,6 @@
     [rn/view {:style styles/summary-header}
      [rn/view {:style styles/container}
       [good-deal-summary prop some-info-filled?]
-      [deal-justification prop some-info-filled?]
       [rn/spacer 1 10 10]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section (not some-info-filled?) "Cash Required" :total-cost prop]

@@ -2,17 +2,19 @@
   (:require [abakus.rn :as rn]))
 
 (def app-colors
-  {:light-pink "#e780b8"
+  {:super-light-pink "#f2dfeb"
+   :light-pink "#e0cfda"
    :light-purple "#e7daef"
    :medium-purple "#bd6996"
    :dark-purple "#2f043e"
    :light-green "#d4ecd3"
-   :medium-green "#04f382"
-   :medium-red "#f99595"
+   :medium-green "#147832"
+   :medium-red "#d60c5f"
    :batman "#2f2f2f"
    :dark-gray "#4f4f4f"
    :medium-gray "#a8a8a8"
    :light-gray "#eee"
+   :teal "#053c5b"
    :white "#fff"
    :black "#111"})
 
@@ -29,21 +31,23 @@
 
 (def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:dark-purple app-colors)})
 
-(def good-deal-container {:margin-top 40 :margin-bottom 10})
-(def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "400" :text-align "center"})
+(def good-deal-container {:margin-top 40 :margin-bottom 10 :border-radius 20 :padding 20 :background-color (:super-light-pink app-colors)})
+(def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "500" :text-align "center"})
 (def good-deal-result {:font-size 25 :font-weight "400" :text-align "center"})
 (def good-deal-yes-text (merge good-deal-result {:color (:medium-green app-colors)}))
 (def good-deal-no-text (merge good-deal-result {:color (:medium-red app-colors)}))
 (def deal-justification-text {:text-align "center" :font-size 15})
-(def good-deal-explanation {:color (:light-gray app-colors) :font-size 12 :text-align :justify
+
+(def explanation-button {:background-color (:teal app-colors) :padding 5 :border-radius 5})
+(def good-deal-explanation {:color (:light-gray app-colors)
                             :margin-left 30 :margin-right 30 :margin-top 10
                             :padding 20
-                            :background-color (:medium-purple app-colors)
+                            :background-color (:teal app-colors)
                             :border-radius 15
-                            :border-left-width 1 :border-right-width 1
+                            ; :border-left-width 1 :border-right-width 1
                             :border-left-color (:medium-gray app-colors)})
 
-(def good-deal-explanation-text {:color (:white app-colors)})
+(def good-deal-explanation-text {:color (:white app-colors) :font-size 12 :text-align :justify})
 
 (def questionnaire-container {:flex-direction "row"})
 
