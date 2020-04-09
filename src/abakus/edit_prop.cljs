@@ -124,7 +124,8 @@
         (str (if @show? "Hide" "Show") " Explanation")]]
 
      (if @show?
-       [rn/text {:style styles/good-deal-explanation} (explanation-str (localize-currency-vals prop))])])))
+       [rn/view {:style styles/good-deal-explanation}
+         [rn/text {:style styles/good-deal-explanation-text} (explanation-str (localize-currency-vals prop))]])])))
 
 (defn summary-header
   [prop some-info-filled?]

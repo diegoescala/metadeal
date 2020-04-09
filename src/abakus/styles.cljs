@@ -36,20 +36,24 @@
 (def good-deal-no-text (merge good-deal-result {:color (:medium-red app-colors)}))
 (def deal-justification-text {:text-align "center" :font-size 15})
 (def good-deal-explanation {:color (:light-gray app-colors) :font-size 12 :text-align :justify
-                            :margin-left 30 :margin-right 30
+                            :margin-left 30 :margin-right 30 :margin-top 10
                             :padding 20
+                            :background-color (:medium-purple app-colors)
+                            :border-radius 15
                             :border-left-width 1 :border-right-width 1
                             :border-left-color (:medium-gray app-colors)})
+
+(def good-deal-explanation-text {:color (:white app-colors)})
 
 (def questionnaire-container {:flex-direction "row"})
 
 (def label-container {:align-text "center"})
-(def label {:font-weight "400" :font-size 12})
-(def input-field {:background-color (:white app-colors) :font-size 13 :border-width 1 :border-color (:medium-gray app-colors) :margin-bottom 0 :border-radius 5 :padding 3})
+(def label {:font-weight "500" :font-size 12})
+(def input-field {:background-color (:white app-colors) :font-size 13 :border-bottom-width 1 :border-color (:medium-gray app-colors) :margin-bottom 0 :border-radius 5 :padding 3})
 (def input-field-container {:bottom-border-width 1 :padding-top 5 :padding-bottom 0})
-(def input-view-container {:padding-left 15 :padding-right 15 :margin-top 15})
+(def input-view-container {:padding-left 15 :padding-right 15 :margin-top 15 :margin-bottom 10})
 
-(def input-section {:border-radius 10 :background-color (:light-gray app-colors)})
+(def input-section {:border-radius 20 :background-color (:white app-colors) :padding-top 20})
 
 (def info-section-header {:margin-bottom 5 :padding-left 20 :padding-right 20 :margin-top 10})
 
