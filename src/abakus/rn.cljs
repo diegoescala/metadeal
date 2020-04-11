@@ -2,6 +2,10 @@
   (:require [reagent.core :as r :refer [atom]]))
 
 (def ReactNative (js/require "react-native"))
+(def svg (js/require "react-native-svg"))
+(def Charts (js/require "react-native-chart-kit"))
+
+(def line-chart (r/adapt-react-class (.-LineChart Charts)))
 
 (def status-bar (.-StatusBar ReactNative))
 (.setBarStyle status-bar "light-content" true)
