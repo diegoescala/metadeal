@@ -21,5 +21,7 @@
 
 (defn init []
   (dispatch-sync [:initialize-db])
+  (nav/init [{:name "Calculate" :page [edit-prop/edit-prop {}]}
+             {:name "Report" :page [reports/report]}])
   (dispatch [:set-current-page [edit-prop/edit-prop {:purchase-price 6969}]])
   (ocall rn/expo "registerRootComponent" (r/reactify-component app-root)))
