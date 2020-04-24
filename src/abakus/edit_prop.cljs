@@ -163,8 +163,8 @@
 
 (defn basic-questions
   []
-  [rn/safe-area-view {:style {:flex 3}}
-   [rn/scroll-view {:style (merge {:flex 3} styles/container)}
+  [rn/safe-area-view {:style {:flex-direction "column"}}
+   [rn/scroll-view {:style  styles/container}
     ; [input-intro]
     [rn/view {:style styles/input-section}
      [rn/view {:style styles/questionnaire-container}
@@ -194,7 +194,7 @@
 (defn edit-prop
   [prop]
   ; (swap! prop-info merge prop @prop-info)
-  [rn/view {:style (merge styles/edit-screen {:flex-direction "column" :flex 1})}
+  [rn/view {:style (merge styles/edit-screen {:flex-direction "column"})}
    ; (if false;(no-value-provided? (:purchase-price @prop-info))
      ; [no-info-summary]
    [summary-header @computed (not (no-value-provided? (:purchase-price @prop-info)))]

@@ -38,3 +38,8 @@
   [validate-spec]
   (fn [db [_ value]]
     (assoc db :greeting value)))
+
+(reg-event-db
+ :set-current-page
+ (fn [db [_ page]]
+   (assoc db :current-page page)))

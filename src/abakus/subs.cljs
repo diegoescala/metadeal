@@ -5,3 +5,6 @@
  :get-greeting
  (fn [db _]
    (:greeting db)))
+
+(reg-sub
+ :current-page (fn [db _] (:current-page db)))
