@@ -18,6 +18,12 @@
    :white "#fff"
    :black "#111"})
 
+(def navbar-container {:min-height 30 :padding-top 40 :background-color (:dark-purple app-colors) :flex-direction :row :align-items :center})
+(def navbar-option {:flex 1 :border-right-width 1 :border-right-color (:white app-colors)})
+(def navbar-text {:color (:white app-colors) :text-align :center :font-weight :600})
+
+(def app-main {:flex-direction "column"})
+
 (def good {:color (:medium-green app-colors)})
 (def bad {:color (:medium-red app-colors)})
 

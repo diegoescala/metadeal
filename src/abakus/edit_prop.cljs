@@ -11,12 +11,12 @@
   (let [empties (filter #(empty? (str (get m %))) (keys m))]
     (reduce #(dissoc %1 %2) m empties)))
 
-(def prop-info (r/atom {}))
-(def computed (r/atom (analyzer/recompute (scrub @prop-info))))
+; (def prop-info (r/atom {}))
+(def computed (r/atom (analyzer/recompute (scrub @(rf/subscribe [:prop-info])))))
 
 (defn recompute
-  []
-  (reset! computed (analyzer/recompute (scrub @prop-info))))
+  [prop]
+  (reset! computed (analyzer/recompute (scrub prop))))
 
 (defn input
   [max-length label param]
@@ -30,15 +30,16 @@
       [rn/input {:style styles/input-field
                  :keyboard-type "numeric"
                  :max-length max-length
-                 ; :value (str (if (number? (get @prop-info param)) (Math/floor (get @prop-info param)) ""))
+                 ; :value (str (if (number? (get @(rf/subscribe [:prop-info]) param)) (Math/floor (get @(rf/subscribe [:prop-info]) param)) ""))
                  ; :value @value
                  :placeholder (str (Math/floor (get @computed param)))
                  :placeholder-text-color "#faa"
-                 ; :value (str (get @prop-info param))
+                 ; :value (str (get @(rf/subscribe [:prop-info]) param))
                  :on-change-text #(do
                                     (reset! value %)
-                                    (swap! prop-info assoc param (if (not (empty? (str %))) (js/parseFloat %) ""))
-                                    (recompute))}]]])))
+                                    (let [prop (assoc @(rf/subscribe [:prop-info]) param (if (not (empty? (str %))) (js/parseFloat %) ""))]
+                                      (rf/dispatch [:set-prop-info prop])
+                                      (recompute prop)))}]]])))
 
 (defn localize
   [cur]
@@ -163,8 +164,8 @@
 
 (defn basic-questions
   []
-  [rn/safe-area-view {:style {:flex 3}}
-   [rn/scroll-view {:style (merge {:flex 3} styles/container)}
+  [rn/safe-area-view {:style {:flex-direction "column"}}
+   [rn/scroll-view {:style  styles/container}
     ; [input-intro]
     [rn/view {:style styles/input-section}
      [rn/view {:style styles/questionnaire-container}
@@ -192,10 +193,10 @@
     (< (count sval) 4)))
 
 (defn edit-prop
-  [prop]
-  ; (swap! prop-info merge prop @prop-info)
-  [rn/view {:style (merge styles/edit-screen {:flex-direction "column" :flex 1})}
-   ; (if false;(no-value-provided? (:purchase-price @prop-info))
+  []
+  ; (swap! prop-info merge prop @(rf/subscribe [:prop-info]))
+  [rn/view {:style (merge styles/edit-screen {:flex-direction "column"})}
+   ; (if false;(no-value-provided? (:purchase-price @(rf/subscribe [:prop-info])))
      ; [no-info-summary]
-   [summary-header @computed (not (no-value-provided? (:purchase-price @prop-info)))]
+   [summary-header @computed (not (no-value-provided? (:purchase-price @(rf/subscribe [:prop-info]))))]
    [basic-questions]])
