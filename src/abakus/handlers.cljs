@@ -43,3 +43,8 @@
  :set-current-page
  (fn [db [_ page]]
    (assoc db :current-page page)))
+
+(reg-event-db
+  :set-prop-info
+  (fn [db [_ prop]]
+    (assoc db :prop-info prop)))
