@@ -142,7 +142,7 @@
        [summary-section (not some-info-filled?) "Cash Flow/Unit" :cash-flow-per-unit prop]]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section (not some-info-filled?) "CoCROI" :cocroi prop :percent]
-       [summary-section (not some-info-filled?) "Monthly Exp." :monthly-exp prop]]]
+       [summary-section (not some-info-filled?) "Cap. Rate" :cap-rate prop :percent]]]
      [rn/view
       [explanation prop]]]))
 
