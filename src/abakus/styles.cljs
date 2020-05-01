@@ -63,7 +63,7 @@
 (def input-field-container {:bottom-border-width 1 :padding-top 5 :padding-bottom 0})
 (def input-view-container {:padding-left 15 :padding-right 15 :margin-top 15 :margin-bottom 10})
 
-(def input-section {:border-radius 20 :background-color (:white app-colors) :padding-top 20})
+(def input-section {:border-radius 20 :background-color (:white app-colors) :padding-top 20 :min-height 2000})
 
 (def info-section-header {:margin-bottom 5 :padding-left 20 :padding-right 20 :margin-top 10})
 

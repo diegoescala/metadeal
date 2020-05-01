@@ -148,7 +148,10 @@
        [summary-section (not some-info-filled?) "Cash Flow/Unit" :cash-flow-per-unit prop]]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section (not some-info-filled?) "CoCROI" :cocroi prop :percent]
-       [summary-section (not some-info-filled?) "Cap. Rate" :cap-rate prop :percent]]]
+       [summary-section (not some-info-filled?) "Cap. Rate" :cap-rate prop :percent]]
+      [rn/view {:style styles/analysis-info-bar}
+       [summary-section (not some-info-filled?) "Mortgage" :mortgage prop]
+       [summary-section (not some-info-filled?) "Profit/yr" :annual-profit prop]]]
      [rn/view
       [explanation prop]]]))
 
@@ -170,7 +173,7 @@
 (defn basic-questions
   []
   [rn/safe-area-view {:style {:flex-direction "column"}}
-   [rn/scroll-view {:style  styles/container}
+   [rn/scroll-view {:style styles/container}
     ; [input-intro]
     [rn/view {:style styles/input-section}
      [rn/view {:style styles/questionnaire-container}
@@ -181,7 +184,8 @@
        [input 4 "# units" :num-units]
        [input 5 "Rent/unit" :rent-per-unit]
        [input 3 "Vacancy (%)" :vacancy-percentage]
-       [input 5 "Monthly maintenance" :monthly-maint]]
+       [input 5 "Monthly maintenance" :monthly-maint]
+       [input 6 "Annual insurance" :prop-insur]]
       [rn/view
        [input 7 "Annual management fee" :management-fee]
        [input 7 "Rehab cost" :rehab]
@@ -189,7 +193,7 @@
        [input 2 "Time horizon (years)" :time-horizon-years]
        [input 2 "Stock market YoY return (%)" :stock-mkt-growth-percent]
        [input 7 "Loan P&I" :loan-principal-interest]
-       [input 7 "Taxes & Insurance" :property-tax-and-insurance]]
+       [input 7 "Property Tax (%)" :prop-tax-percent]]
       [rn/view {:style {:min-height 630}}]]]]])
 
 (defn no-value-provided?
