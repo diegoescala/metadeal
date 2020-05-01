@@ -20,6 +20,11 @@
 
 (defn input
   [max-length label param]
+  ; (react/create-class
+  ;  {:component-did-mount
+  ;   (fn [max-length label param])
+  ;   :reagent-render
+  ;   (fn [max-length label param]
   (let [value (r/atom "")]
    (fn [max-length label param]
     [rn/view {:style styles/input-view-container}
@@ -32,7 +37,7 @@
                  :max-length max-length
                  ; :value (str (if (number? (get @(rf/subscribe [:prop-info]) param)) (Math/floor (get @(rf/subscribe [:prop-info]) param)) ""))
                  ; :value @value
-                 :placeholder (str (Math/floor (get @computed param)))
+                 :placeholder (if (empty? @value) (str (Math/floor (get @computed param))) "")
                  :placeholder-text-color "#faa"
                  ; :value (str (get @(rf/subscribe [:prop-info]) param))
                  :on-change-text #(do
