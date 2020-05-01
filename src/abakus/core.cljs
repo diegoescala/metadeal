@@ -14,9 +14,8 @@
    ; [edit-prop/edit-prop {}])
 
 (defn app-root []
-  (js/console.log line)
   [rn/view {:style styles/app-main}
-   [nav/navbar]
+   ; [nav/navbar]
    @(subscribe [:current-page])])
 
 (defn init []
