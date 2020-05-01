@@ -150,10 +150,9 @@
        [summary-section (not some-info-filled?) "CoCROI" :cocroi prop :percent]
        [summary-section (not some-info-filled?) "Cap. Rate" :cap-rate prop :percent]]
       [rn/view {:style styles/analysis-info-bar}
-       [summary-section (not some-info-filled?) "Mortgage" :mortgage prop]
+       [summary-section (not some-info-filled?) "Monthly Exp." :monthly-exp prop]
        [summary-section (not some-info-filled?) "Profit/yr" :annual-profit prop]]]
-     [rn/view
-      [explanation prop]]]))
+     [rn/view]]))
 
 (defn no-info-summary
   []
@@ -174,6 +173,8 @@
   []
   [rn/safe-area-view {:style {:flex-direction "column"}}
    [rn/scroll-view {:style styles/container}
+    [explanation @computed]
+
     ; [input-intro]
     [rn/view {:style styles/input-section}
      [rn/view {:style styles/questionnaire-container}
