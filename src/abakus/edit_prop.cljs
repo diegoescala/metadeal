@@ -85,10 +85,10 @@
         style (if good? styles/good styles/bad)]
     [rn/text {:style (merge styles/deal-justification-text style)}
      (if (not some-info-filled?)
-       "Enter a purchase price to get started"
+       "Enter a purchase price to get started."
        (if (pos? m)
-         (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m))
-         (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m)))))]))
+         (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m) ".")
+         (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m)) ".")))]))
 
 (defn good-deal-summary
   [prop some-info-filled?]
@@ -96,7 +96,7 @@
    (let [good? (pos? (:mkt-beat prop))
          content {:style (if good? styles/good-deal-yes-text styles/good-deal-no-text)
                   :content (cond (not some-info-filled?) "Good or bad deal?"
-                                 good? "Good Deal" (not good?) "Bad Deal")}]
+                                 good? "Good Deal." (not good?) "Bad Deal.")}]
 
      [rn/text {:style (get content :style)}
       (get content :content)])
@@ -106,10 +106,10 @@
   [show-blank? title param prop & data-type]
   (let [value-type (or (first data-type) :currency)]
     [rn/view {:style (merge styles/summary-section-view {:flex 2})}
-     [rn/view {:style {:flex 6}}
+     [rn/view {:style {:flex 5}}
       [rn/text {:style styles/summary-title}
        title]]
-     [rn/view {:style {:flex 4}}
+     [rn/view {:style {:flex 5}}
       [rn/text {:style styles/summary-details}
        (if show-blank?
          "---"
@@ -174,8 +174,10 @@
   [rn/safe-area-view {:style {:flex-direction "column"}}
    [rn/scroll-view {:style styles/container}
     [explanation @computed]
-
-    ; [input-intro]
+    ; [rn/touchable-highlight
+    ;  {:style styles/explanation-button
+    ;   :on-press #(.openURL rn/linking (str "http://metadealapp.com:8082/pdf-report?prop=" (js/encodeURI @computed)))}
+    ;  [rn/text "View Report"]]
     [rn/view {:style styles/input-section}
      [rn/view {:style styles/questionnaire-container}
       [rn/view
