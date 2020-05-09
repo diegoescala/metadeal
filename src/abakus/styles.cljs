@@ -5,7 +5,7 @@
   {:super-light-pink "#f2dfeb"
    :light-pink "#e0cfda"
    :light-purple "#e7daef"
-   :medium-purple "#bd6996"
+   :medium-purple "#460e45"
    :dark-purple "#2f043e"
    :light-green "#d4ecd3"
    :medium-green "#147832"
@@ -29,7 +29,7 @@
 
 (def container {:margin-left 15 :margin-right 15})
 (def summary-header {:flex-direction "column" :background-color "#2f043e"})
-(def summary-section-view {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8 :border-bottom-width 1 :border-bottom-color (:medium-gray app-colors)})
+(def summary-section-view {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8 :margin-right 10 :border-radius 5 :background-color (:medium-purple app-colors)})
 (def summary-title {:color (:white app-colors) :font-size 12 :font-weight "400" :text-align :left})
 (def summary-details {:font-size 12 :font-weight "600" :color (:white app-colors) :text-align :right})
 
@@ -37,12 +37,12 @@
 
 (def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:dark-purple app-colors)})
 
-(def good-deal-container {:margin-top 40 :margin-bottom 10 :border-radius 20 :padding 20 :background-color (:super-light-pink app-colors)})
-(def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "500" :text-align "center"})
-(def good-deal-result {:font-size 25 :font-weight "400" :text-align "center"})
+(def good-deal-container {:margin-top 40 :margin-bottom 10 :border-radius 20 :padding 20 :background-color (:white app-colors)})
+(def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "500" :text-align "left" :margin-bottom 10})
+(def good-deal-result {:font-size 25 :font-weight "400" :text-align "left" :margin-bottom 7})
 (def good-deal-yes-text (merge good-deal-result {:color (:medium-green app-colors)}))
 (def good-deal-no-text (merge good-deal-result {:color (:medium-red app-colors)}))
-(def deal-justification-text {:text-align "center" :font-size 15})
+(def deal-justification-text {:text-align "left" :font-size 15})
 
 (def explanation-button {:background-color (:teal app-colors) :padding 5 :border-radius 5})
 (def good-deal-explanation {:color (:light-gray app-colors)
