@@ -7,9 +7,9 @@
    :light-purple "#e7daef"
    :medium-purple "#460e45"
    :dark-purple "#2f043e"
-   :light-green "#2ff324"
+   :light-green "#a2de6d"
    :medium-green "#147832"
-   :light-red "#d8597a"
+   :light-red "#ca7b91"
    :medium-red "#d60c5f"
    :batman "#2f2f2f"
    :dark-gray "#4f4f4f"
@@ -44,13 +44,13 @@
 (def good-deal-result {:font-size 25 :font-weight "400" :text-align "left" :margin-bottom 7})
 (def good-deal-yes-text (merge good-deal-result {:color (:light-green app-colors) :font-weight :600}))
 (def good-deal-no-text (merge good-deal-result {:color (:light-red app-colors) :font-weight :600}))
-(def deal-justification-text {:text-align "left" :font-size 15})
+(def deal-justification-text {:text-align "left" :font-size 15 :font-weight :600})
 
-(def explanation-button {:background-color (:teal app-colors) :padding 5 :border-radius 5})
+(def explanation-button {:background-color (:medium-purple app-colors) :padding 5 :border-radius 5})
 (def good-deal-explanation {:color (:light-gray app-colors)
-                            :margin-left 30 :margin-right 30 :margin-top 10
+                            :margin-left 0 :margin-right 0 :margin-top 10
                             :padding 20
-                            :background-color (:teal app-colors)
+                            :background-color (:medium-purple app-colors)
                             :border-radius 15
                             ; :border-left-width 1 :border-right-width 1
                             :border-left-color (:medium-gray app-colors)})
