@@ -9,12 +9,14 @@
    :dark-purple "#2f043e"
    :light-green "#a2de6d"
    :medium-green "#147832"
+   :lellow "#c7d052"
    :light-red "#ca7b91"
    :medium-red "#d60c5f"
    :batman "#2f2f2f"
    :dark-gray "#4f4f4f"
    :medium-gray "#a8a8a8"
    :light-gray "#eee"
+   :neutral-gray "#bdbcb8"
    :gray-gray "#390240"
    :teal "#053c5b"
    :white "#fff"
@@ -28,6 +30,7 @@
 
 (def good {:color (:light-green app-colors)})
 (def bad {:color (:light-red app-colors)})
+(def neutral {:color (:neutral-gray app-colors)})
 
 (def container {:margin-left 15 :margin-right 15})
 (def summary-header {:flex-direction "column" :background-color "#2f043e"})
@@ -42,8 +45,9 @@
 (def good-deal-container {:margin-top 40 :margin-bottom 10 :border-radius 20 :padding 20 :background-color (:gray-gray app-colors)})
 (def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "800" :text-align "left" :margin-bottom 10})
 (def good-deal-result {:font-size 25 :font-weight "400" :text-align "left" :margin-bottom 7})
-(def good-deal-yes-text (merge good-deal-result {:color (:light-green app-colors) :font-weight :600}))
-(def good-deal-no-text (merge good-deal-result {:color (:light-red app-colors) :font-weight :600}))
+(def good-deal-yes-text (merge good-deal-result good {:font-weight :600}))
+(def good-deal-no-text (merge good-deal-result bad {:font-weight :600}))
+(def good-deal-maybe-text (merge good-deal-result neutral {:font-weight :600}))
 (def deal-justification-text {:text-align "left" :font-size 15 :font-weight :600})
 
 (def explanation-button {:background-color (:medium-purple app-colors) :padding 5 :border-radius 5})
@@ -55,7 +59,7 @@
                             ; :border-left-width 1 :border-right-width 1
                             :border-left-color (:medium-gray app-colors)})
 
-(def good-deal-explanation-text {:color (:white app-colors) :font-size 12 :text-align :justify})
+(def good-deal-explanation-text {:color (:white app-colors) :font-size 13 :text-align :justify :line-height 18.0})
 
 (def questionnaire-container {:flex-direction "row"})
 

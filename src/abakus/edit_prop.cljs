@@ -82,7 +82,8 @@
   [prop some-info-filled?]
   (let [m (:mkt-beat prop)
         good? (pos? m)
-        style (if good? styles/good styles/bad)]
+        style (cond (not some-info-filled?) styles/neutral
+                    good? styles/good (not good?) styles/bad)]
     [rn/text {:style (merge styles/deal-justification-text style)}
      (if (not some-info-filled?)
        "Enter a purchase price to get started."
@@ -94,12 +95,18 @@
   [prop some-info-filled?]
   [rn/view {:style styles/good-deal-container}
    (let [good? (pos? (:mkt-beat prop))
-         content {:style (if good? styles/good-deal-yes-text styles/good-deal-no-text)
+         content {:style (cond (not some-info-filled?) styles/good-deal-maybe-text
+                               good? styles/good-deal-yes-text (not good?) styles/good-deal-no-text)
+                  :icon (cond (not some-info-filled?) "md-information-circle-outline"
+                              good? "md-checkmark" (not good?) "md-close")
                   :content (cond (not some-info-filled?) "Good or bad deal?"
                                  good? "Good Deal." (not good?) "Bad Deal.")}]
-
-     [rn/text {:style (get content :style)}
-      (get content :content)])
+     [rn/view {:style {:flex-direction "row"}}
+      [rn/view {:style {:flex 3}}
+       [rn/text {:style (get content :style)}
+        (get content :content)]]
+      [rn/view {:style {:flex 1}}
+        [rn/ic {:name (:icon content) :style (merge (get content :style) {:font-size 37})}]]])
    [deal-justification prop some-info-filled?]])
 
 (defn summary-section
