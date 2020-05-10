@@ -28,12 +28,12 @@
 
 (def app-main {:flex-direction "column"})
 
-(def good {:color (:light-green app-colors)})
-(def bad {:color (:light-red app-colors)})
-(def neutral {:color (:neutral-gray app-colors)})
+(def good {:color (:medium-green app-colors)})
+(def bad {:color (:medium-red app-colors)})
+(def neutral {:color (:dark-gray app-colors)})
 
 (def container {:margin-left 15 :margin-right 15})
-(def summary-header {:flex-direction "column" :background-color "#2f043e"})
+(def summary-header {:flex-direction "column" :background-color (:dark-purple app-colors) :margin-top 40})
 (def summary-section-view {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8 :margin-right 9 :border-radius 5 :background-color (:medium-purple app-colors)})
 (def summary-title {:color (:white app-colors) :font-size 11 :font-weight "400" :text-align :left})
 (def summary-details {:font-size 12 :font-weight "600" :color (:white app-colors) :text-align :right})
@@ -42,7 +42,7 @@
 
 (def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:dark-purple app-colors)})
 
-(def good-deal-container {:margin-top 40 :margin-bottom 10 :border-radius 20 :padding 20 :background-color (:gray-gray app-colors)})
+(def good-deal-container {:margin-bottom 10 :border-radius 20 :padding 20 :background-color (:white app-colors)})
 (def good-deal-title {:color (:black app-colors) :font-size 25 :font-weight "800" :text-align "left" :margin-bottom 10})
 (def good-deal-result {:font-size 25 :font-weight "400" :text-align "left" :margin-bottom 7})
 (def good-deal-yes-text (merge good-deal-result good {:font-weight :600}))
