@@ -91,6 +91,11 @@
          (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m) ".")
          (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m)) ".")))]))
 
+(defn good-bad-icon
+  [style icon-name]
+  [rn/view {:style {:flex 1}}
+    [rn/ic {:name icon-name :style (merge style {:font-size 37})}]])
+
 (defn good-deal-summary
   [prop some-info-filled?]
   [rn/view {:style styles/good-deal-container}
@@ -104,9 +109,8 @@
      [rn/view {:style {:flex-direction "row"}}
       [rn/view {:style {:flex 3}}
        [rn/text {:style (get content :style)}
-        (get content :content)]]
-      [rn/view {:style {:flex 1}}
-        [rn/ic {:name (:icon content) :style (merge (get content :style) {:font-size 37})}]]])
+        (get content :content)]]])
+      ; [good-bad-icon (:style content) (:icon content)]])
    [deal-justification prop some-info-filled?]])
 
 (defn summary-section
