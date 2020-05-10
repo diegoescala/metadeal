@@ -153,7 +153,7 @@
     [rn/view {:style styles/summary-header}
      [rn/view {:style styles/container}
       [good-deal-summary prop some-info-filled?]
-      [rn/spacer 1 10 10]
+      ; [rn/spacer 1 10 10]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section (not some-info-filled?) "Cash Required" :total-cost prop]
        [summary-section (not some-info-filled?) "Cash Flow/Unit" :cash-flow-per-unit prop]]
