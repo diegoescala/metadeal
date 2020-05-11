@@ -6,7 +6,7 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [org.clojure/clojurescript "1.10.520"]
                  [binaryage/oops "0.7.0"]
-                 [reagent "0.8.1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server cljsjs/create-react-class]]
+                 [reagent "1.0.0-alpha1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server cljsjs/create-react-class]]
                  [re-frame "0.10.8"]]
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-figwheel "0.5.19"]]
