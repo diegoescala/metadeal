@@ -86,7 +86,7 @@
                     good? styles/good (not good?) styles/bad)]
     [rn/text {:style (merge styles/deal-justification-text style)}
      (if (not some-info-filled?)
-       "Enter a purchase price to get started."
+       "Enter a purchase price below to get started."
        (if (pos? m)
          (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m) ".")
          (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m)) ".")))]))
