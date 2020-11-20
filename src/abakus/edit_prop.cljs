@@ -162,7 +162,10 @@
        [summary-section (not some-info-filled?) "Cap. Rate" :cap-rate prop :percent]]
       [rn/view {:style styles/analysis-info-bar}
        [summary-section (not some-info-filled?) "Monthly Exp." :monthly-exp prop]
-       [summary-section (not some-info-filled?) "Profit/yr" :annual-profit prop]]]
+       [summary-section (not some-info-filled?) "Profit/yr" :annual-profit prop]]
+      [rn/view {:style styles/analysis-info-bar}
+       [summary-section (not some-info-filled?) "Appreciation" :five-yr-apprec prop]
+       [summary-section (not some-info-filled?) "Net Future Gain" :five-yr-profit prop]]]
      [rn/view]]))
 
 (defn no-info-summary
