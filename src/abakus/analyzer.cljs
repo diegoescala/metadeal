@@ -13,7 +13,7 @@
    :num-units                   (fn [p] 1)
    :rent-per-unit               (fn [p] 800)
    :vacancy-percentage          (fn [p] 5.0)
-   :cap-rate                    (fn [p] (/ (* (:rent-per-unit p) (:num-units p))
+   :cap-rate                    (fn [p] (/ (* 12 (:rent-per-unit p) (:num-units p))
                                            (:purchase-price p)))
    :five-yr-profit              (fn [p] (+ (- (:five-yr-value p) (:total-cost p)) (:five-yr-apprec p)))
    :five-yr-apprec              (fn [p] (- (:five-year-price p) (:purchase-price p)))
