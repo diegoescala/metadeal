@@ -20,7 +20,7 @@
     "ios": {
       "supportsTablet": true,
       "buildNumber": "5",
-      "bundleIdentifier": "com.diegoescala.abakus"
+      "bundleIdentifier": "com.diegoescala.abakus",
       "usesNonExemptEncryption": "NO"
     }
   }
