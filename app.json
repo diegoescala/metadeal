@@ -21,7 +21,7 @@
       "supportsTablet": true,
       "buildNumber": "5",
       "bundleIdentifier": "com.diegoescala.abakus",
-      "usesNonExemptEncryption": "NO"
+      "usesNonExemptEncryption": false
     }
   }
 }
