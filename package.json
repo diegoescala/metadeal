@@ -8,6 +8,8 @@
   "dependencies": {
     "create-react-class": "15.6.3",
     "expo": "^37.0.12",
+    "expo-ads-admob": "~8.1.0",
+    "expo-cli": "^4.0.17",
     "n": "^6.7.1",
     "react": "16.8.3",
     "react-native": "^0.61.4",
