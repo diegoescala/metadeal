@@ -23,8 +23,7 @@
       },
       "supportsTablet": true,
       "buildNumber": "1",
-      "bundleIdentifier": "com.diegoescala.abakus",
-      "usesNonExemptEncryption": false
+      "bundleIdentifier": "com.diegoescala.abakus"
     }
   }
 }
