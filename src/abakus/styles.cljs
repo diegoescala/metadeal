@@ -28,6 +28,8 @@
 
 (def app-main {:flex-direction "column"})
 
+(def centered {:align-items :center :margin :auto :margin-bottom 10})
+
 (def good {:color (:medium-green app-colors)})
 (def bad {:color (:medium-red app-colors)})
 (def neutral {:color (:dark-gray app-colors)})

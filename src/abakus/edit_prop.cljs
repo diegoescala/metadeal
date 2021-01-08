@@ -4,7 +4,8 @@
             [reagent.core :as r]
             [re-frame.core :as rf]
             [clojure.string :as s]
-            [abakus.analyzer :as analyzer]))
+            [abakus.analyzer :as analyzer]
+            [abakus.ads :as ads]))
 
 (defn scrub
   [m]
@@ -188,6 +189,7 @@
   [rn/safe-area-view {:style {:flex-direction "column"}}
    [rn/scroll-view {:style styles/container}
     [explanation @computed]
+    [ads/banner]
     ; [rn/touchable-highlight
     ;  {:style styles/explanation-button
     ;   :on-press #(.openURL rn/linking (str "http://metadealapp.com:8082/pdf-report?prop=" (js/encodeURI @computed)))}

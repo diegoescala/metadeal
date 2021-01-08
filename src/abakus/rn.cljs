@@ -15,9 +15,10 @@
 (def ionicons (.-Ionicons AtExpo))
 (def ic (r/adapt-react-class ionicons))
 
+;; ADS
 (def AdMob (js/require "expo-ads-admob"))
-
-(println AdMob)
+(def Constants  (js/require "expo-constants"))
+(def admob-banner (r/adapt-react-class (.-AdMobBanner AdMob)))
 
 (def text (r/adapt-react-class (.-Text ReactNative)))
 (def view (r/adapt-react-class (.-View ReactNative)))
