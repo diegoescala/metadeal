@@ -22,7 +22,7 @@
         "googleMobileAdsAppId": "ca-app-pub-7070415808259435~8428069021"
       },
       "supportsTablet": true,
-      "buildNumber": "1",
+      "buildNumber": "2",
       "bundleIdentifier": "com.diegoescala.abakus"
     }
   }

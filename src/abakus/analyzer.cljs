@@ -66,9 +66,9 @@
   [prop]
   (->> prop
     (compute :purchase-price)
-    (compute :property-value-amt)
     (compute :time-horizon-years)
     (compute :five-year-price)
+    (compute :property-value-amt)
     (compute :hoa)
     (compute :stock-mkt-growth-percent)
     (compute :vacancy-percentage)
