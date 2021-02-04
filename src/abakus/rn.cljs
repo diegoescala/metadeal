@@ -10,6 +10,8 @@
 (def status-bar (.-StatusBar ReactNative))
 (.setBarStyle status-bar "light-content" true)
 
+(def storage (.-AsyncStorage ReactNative))
+
 (def expo (js/require "expo"))
 (def AtExpo (js/require "@expo/vector-icons"))
 (def ionicons (.-Ionicons AtExpo))

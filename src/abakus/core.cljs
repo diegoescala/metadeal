@@ -14,9 +14,13 @@
    ; [edit-prop/edit-prop {}])
 
 (defn app-root []
-  [rn/view {:style styles/app-main}
-   ; [nav/navbar]
-   @(subscribe [:current-page])])
+  (do
+    (.setItem rn/storage "testkey" "keytest")
+    (-> (.getItem rn/storage "testkey") (.then #(println (str "Val: " %))))
+
+    [rn/view {:style styles/app-main}
+     ; [nav/navbar]
+     @(subscribe [:current-page])]))
 
 (defn init []
   (dispatch-sync [:initialize-db])
