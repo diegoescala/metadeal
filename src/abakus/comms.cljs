@@ -6,7 +6,8 @@
             [alandipert.storage-atom :refer [local-storage]]
             [re-frame.core :as rf]
             [cljs.reader :as reader]
-            [clojure.string :as s]))
+            [clojure.string :as s]
+            [abakus.types :as types]))
 
 (def url "http://localhost:8080/")
 ; (def url "https://api.imprezzy.co/")
@@ -57,8 +58,8 @@
 
     (if (= login-result false)
      (do
-      (rf/dispatch [:set-login-errors ["Invalid username or password"]])
-      (rf/dispatch [:set-user types/invalid-user])))))
+      (rf/dispatch [:set-login-errors ["Invalid username or password"]])))))
+      ; (rf/dispatch [:set-user types/invalid-user])))))
 
 (defn attempt-login!
   [email password & custom-handler]

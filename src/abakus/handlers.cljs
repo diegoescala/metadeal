@@ -48,3 +48,8 @@
   :set-prop-info
   (fn [db [_ prop]]
     (assoc db :prop-info prop)))
+
+(reg-event-db
+ :set-properties
+ (fn [db [_ props]]
+   (assoc db :properties props)))

@@ -8,3 +8,4 @@
 
 (reg-sub :current-page (fn [db _] (:current-page db)))
 (reg-sub :prop-info (fn [db _] (:prop-info db)))
+(reg-sub :properties (fn [db _] (:properties db)))

@@ -26,7 +26,7 @@
 (def navbar-option {:flex 1 :border-right-width 1 :border-right-color (:white app-colors)})
 (def navbar-text {:color (:white app-colors) :text-align :center :font-weight :600})
 
-(def app-main {:flex-direction "column"})
+(def app-main {:flex-direction "column" :flex 1})
 
 (def centered {:align-items :center :margin :auto :margin-bottom 10})
 
