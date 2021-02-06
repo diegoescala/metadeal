@@ -17,15 +17,13 @@
 
 (defn recompute
   [prop]
-  (reset! computed (analyzer/recompute (scrub prop))))
+  (do
+    (println (prn-str prop))
+    (reset! computed (analyzer/recompute (scrub prop)))
+    (println (prn-str (vals @computed)))))
 
 (defn input
   [max-length label param]
-  ; (react/create-class
-  ;  {:component-did-mount
-  ;   (fn [max-length label param])
-  ;   :reagent-render
-  ;   (fn [max-length label param]
   (let [value (r/atom "")]
    (fn [max-length label param]
     [rn/view {:style styles/input-view-container}
@@ -36,11 +34,8 @@
       [rn/input {:style styles/input-field
                  :keyboard-type "numeric"
                  :max-length max-length
-                 ; :value (str (if (number? (get @(rf/subscribe [:prop-info]) param)) (Math/floor (get @(rf/subscribe [:prop-info]) param)) ""))
-                 ; :value @value
                  :placeholder (if (empty? @value) (str (Math/floor (get @computed param))) "")
                  :placeholder-text-color "#faa"
-                 ; :value (str (get @(rf/subscribe [:prop-info]) param))
                  :on-change-text #(do
                                     (reset! value %)
                                     (let [prop (assoc @(rf/subscribe [:prop-info]) param (if (not (empty? (str %))) (js/parseFloat %) ""))]
@@ -236,11 +231,24 @@
   (let [sval (str value)]
     (< (count sval) 4)))
 
+(defn test-result
+  []
+  [rn/view
+   [rn/text
+    (let [test-prop {:rehab 3500, :monthly-maint 128, :five-year-price 191000, :loan-principal-interest "", :purchase-price 159868, :num-units 1, :rent-per-unit 1200, :management-fee 345, :hoa 145}
+          correct-result '(-0.8926125980396069 175434 31973.600000000002 3500 -463.6804345714286 -0.14388484834245496 15567.061875830484 -3386.1860742857243 5 128 38670.96000000001 191000 5 -5564.165214857143 2.3 1301.9304345714286 7 3197.36 1603.6804345714286 746.3894345714285 159868 1 0.021220682062701727 555.541 1200 31132 345 -18953.24795011621 127894.4 2631.5099999999998 145 301.75 4152.773925714286)
+          test-status
+            (str "Test result: " (= (vals (analyzer/recompute (scrub test-prop)))
+                                    correct-result))]
+      (println test-status)
+      test-status)]])
+
 (defn edit-prop
   []
   ; (swap! prop-info merge prop @(rf/subscribe [:prop-info]))
   [rn/view {:style (merge styles/edit-screen {:flex-direction "column"})}
    ; (if false;(no-value-provided? (:purchase-price @(rf/subscribe [:prop-info])))
      ; [no-info-summary]
+   [test-result]
    [summary-header @computed (not (no-value-provided? (:purchase-price @(rf/subscribe [:prop-info]))))]
    [basic-questions]])
