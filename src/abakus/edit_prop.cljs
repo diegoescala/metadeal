@@ -190,7 +190,10 @@
    [rn/touchable-highlight
      {:style styles/explanation-button
       :on-press #(do
-                   (rf/dispatch [:set-properties (conj @(rf/subscribe [:properties]) @(rf/subscribe [:prop-info]))]))}
+                  (let [props (conj @(rf/subscribe [:properties]) @(rf/subscribe [:prop-info]))]
+                   (rf/dispatch [:set-properties props])
+                   (.setItem rn/storage "props" (prn-str props))))}
+
      [rn/text {:style {:color "white" :font-size 13 :text-align "center"}}
       "Save Property"]]])
 
