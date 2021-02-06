@@ -241,7 +241,7 @@
             (str "Test result: " (= (vals (analyzer/recompute (scrub test-prop)))
                                     correct-result))]
       (println test-status)
-      test-status)]])
+      "")]])
 
 (defn edit-prop
   []
