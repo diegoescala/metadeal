@@ -20,17 +20,17 @@
     (-> (.getItem rn/storage "testkey") (.then #(println (str "Val: " %))))
 
     [rn/view {:style styles/app-main}
-     [rn/view {:style {:flex 6}}
+     [rn/view {:style {:flex 5}}
       ; [nav/navbar]
       @(subscribe [:current-page])]
-     [rn/view {:style {:flex 1}}
+     [rn/view ;{:style {:flex 1}}
        [nav/navbar]]]))
 
 (defn init []
  (do
   (dispatch-sync [:initialize-db])
   (nav/init [{:name "Calculate" :page [edit-prop/edit-prop {}]}
-             {:name "Report" :page [reports/report]}
+             ; {:name "Report" :page [reports/report]}
              {:name "Properties" :page [props/props-list]}])
   (dispatch [:set-current-page [edit-prop/edit-prop {:purchase-price 6969}]])
   (ocall rn/expo "registerRootComponent" (r/reactify-component app-root))))

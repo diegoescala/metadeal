@@ -133,7 +133,7 @@
   [prop]
   (let [show? (r/atom false)]
    (fn [prop]
-    [rn/view {:style {:align-items "center" :margin-bottom 10}}
+    [rn/view
 
      [rn/touchable-highlight
         {:style styles/explanation-button
@@ -184,12 +184,24 @@
    [rn/text {:style styles/section-subtitle}
     "All fields are optional. Defaults are in red."]])
 
+(defn save-property-button
+  []
+  [rn/view {:style {:margin-left 10}}
+   [rn/touchable-highlight
+     {:style styles/explanation-button
+      :on-press #(rn/alert "Hai")}
+     [rn/text {:style {:color "white" :font-size 13 :text-align "center"}}
+      "Save Property"]]])
+
 (defn basic-questions
   []
   [rn/safe-area-view {:style {:flex-direction "column"}}
    [rn/scroll-view {:style styles/container}
-    [explanation @computed]
+    [rn/view {:style {:align-items :center :margin-bottom 10 :justify-content :center :flex-direction "row" :flex 1}}
+     [explanation @computed]]
     [ads/banner]
+    [rn/view {:style {:align-items :center :margin-bottom 10 :justify-content :center :flex-direction "row" :flex 1}}
+     [save-property-button]]
     ; [rn/touchable-highlight
     ;  {:style styles/explanation-button
     ;   :on-press #(.openURL rn/linking (str "http://metadealapp.com:8082/pdf-report?prop=" (js/encodeURI @computed)))}

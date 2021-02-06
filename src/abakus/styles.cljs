@@ -22,9 +22,9 @@
    :white "#fff"
    :black "#111"})
 
-(def navbar-container {:min-height 30 :padding-top 40 :background-color (:dark-purple app-colors) :flex-direction :row :align-items :center})
+(def navbar-container {:min-height 60 :padding-top 20 :background-color (:dark-purple app-colors) :flex-direction :row :align-items :center})
 (def navbar-option {:flex 1 :border-right-width 1 :border-right-color (:white app-colors)})
-(def navbar-text {:color (:white app-colors) :text-align :center :font-weight :600})
+(def navbar-text {:color (:white app-colors) :text-align :center :font-weight :400})
 
 (def app-main {:flex-direction "column" :flex 1})
 
@@ -52,7 +52,7 @@
 (def good-deal-maybe-text (merge good-deal-result neutral {:font-weight :600}))
 (def deal-justification-text {:text-align "left" :font-size 15 :font-weight :600})
 
-(def explanation-button {:background-color (:medium-purple app-colors) :padding 5 :border-radius 5})
+(def explanation-button {:background-color (:teal app-colors) :padding 5 :border-radius 5})
 (def good-deal-explanation {:color (:light-gray app-colors)
                             :margin-left 0 :margin-right 0 :margin-top 10
                             :padding 20
@@ -63,7 +63,7 @@
 
 (def good-deal-explanation-text {:color (:white app-colors) :font-size 13 :text-align :justify :line-height 18.0})
 
-(def questionnaire-container {:flex-direction "row"})
+(def questionnaire-container {:flex-direction "row" :flex 1})
 
 (def label-container {:align-text "center"})
 (def label {:font-weight "500" :font-size 12})
