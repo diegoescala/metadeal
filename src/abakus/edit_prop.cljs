@@ -189,7 +189,8 @@
   [rn/view {:style {:margin-left 10}}
    [rn/touchable-highlight
      {:style styles/explanation-button
-      :on-press #(rn/alert "Hai")}
+      :on-press #(do
+                   (rf/dispatch [:set-properties (conj @(rf/subscribe [:properties]) @(rf/subscribe [:prop-info]))]))}
      [rn/text {:style {:color "white" :font-size 13 :text-align "center"}}
       "Save Property"]]])
 
