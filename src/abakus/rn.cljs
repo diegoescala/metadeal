@@ -31,7 +31,9 @@
 (def input (r/adapt-react-class (.-TextInput ReactNative)))
 (def image (r/adapt-react-class (.-Image ReactNative)))
 (def touchable-highlight (r/adapt-react-class (.-TouchableHighlight ReactNative)))
+
 (def Alert (.-Alert ReactNative))
+(def modal (r/adapt-react-class (.-Modal ReactNative)))
 
 (defn alert [title]
   (.alert Alert title))

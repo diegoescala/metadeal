@@ -19,7 +19,6 @@
   (do
     (.setItem rn/storage "testkey" "keytest")
     ; (-> (.getItem rn/storage "props") (.then #(println (str "Val: " %))))
-
     [rn/view {:style styles/app-main}
      [rn/view {:style {:flex 5}}
       ; [nav/navbar]

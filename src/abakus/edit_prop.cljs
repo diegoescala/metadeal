@@ -43,6 +43,18 @@
                                       (rf/dispatch [:set-prop-info prop])
                                       (recompute prop)))}]]])))
 
+(defn save-modal
+  [vis-atom]
+  [rn/view {:style styles/mcentered}
+   [rn/modal {:visible @vis-atom :transparent :true}
+
+    [rn/view {:style styles/mcentered}
+     [rn/view {:style styles/modal}
+      [rn/text {:style {:color :black}} "Hello"]
+      [rn/touchable-highlight {:style styles/explanation-button
+                               :on-press #(reset! vis-atom false)}
+       [rn/text "Close"]]]]]])
+
 (defn explanation-str
   [prop]
   (let [{:keys [total-cost down five-yr-profit time-horizon-years stock-mkt-growth-percent closing-costs rehab five-yr-apprec mortgage cash-flow-per-unit stock-market-ret]} prop]
@@ -161,16 +173,19 @@
 
 (defn save-property-button
   []
-  [rn/view {:style {:margin-left 10}}
-   [rn/touchable-highlight
-     {:style styles/explanation-button
-      :on-press #(do
-                  (let [props (conj @(rf/subscribe [:properties]) @(rf/subscribe [:prop-info]))]
-                   (rf/dispatch [:set-properties props])
-                   (.setItem rn/storage "props" (prn-str props))))}
+  (let [save-modal-visible (r/atom false)]
+    [rn/view {:style {:margin-left 10}}
+     [rn/touchable-highlight
+       {:style styles/explanation-button
+        :on-press #(do
+                    (reset! save-modal-visible true))}
+                    ; (let [props (conj @(rf/subscribe [:properties]) @(rf/subscribe [:prop-info]))]
+                     ; (rf/dispatch [:set-properties props])
+                     ; (.setItem rn/storage "props" (prn-str props)))}
 
-     [rn/text {:style {:color "white" :font-size 13 :text-align "center"}}
-      "Save Property"]]])
+       [rn/text {:style {:color "white" :font-size 13 :text-align "center"}}
+        "Save Property"]]
+     [save-modal save-modal-visible]]))
 
 (defn basic-questions
   []

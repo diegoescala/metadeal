@@ -62,6 +62,26 @@
                             ; :border-left-width 1 :border-right-width 1
                             :border-left-color (:medium-gray app-colors)})
 
+(def modal {:margin 20
+            :background-color :white
+            :border-radius 20,
+            :padding 35,
+            :align-items "center"
+            :shadow-color "#000"
+            :shadow-offset {
+                            :width 0,
+                            :height 2,}
+            :shadow-opacity 0.25,
+            :shadow-radius 3.84,
+            :elevation 5,})
+
+(def mcentered {
+                :flex 1,
+                :justify-content :center
+                :align-items :center
+                :margin-top 22})
+
+
 (def good-deal-explanation-text {:color (:white app-colors) :font-size 13 :text-align :justify :line-height 18.0})
 
 (def questionnaire-container {:flex-direction "row" :flex 1})
