@@ -24,15 +24,16 @@
 (defn props-list
   []
   [rn/view {:style (merge {:flex 1} styles/app-screen)}
-   [rn/view {:style styles/screen-header}
-    [rn/view {:style styles/good-deal-container}
-     [rn/text {:style styles/screen-title-text}
-      "My Properties"]]
-    [rn/view
-     [ads/banner]]]
-   [rn/scroll-view {:style {:flex 1}}
-    (let [props @(rf/subscribe [:properties])]
-      (if (empty? props)
-        [rn/text "No properties"]
-        (for [p (map-indexed vector props)]
-          ^{:key (first p)} [prop (second p)])))]])
+   [rn/view {:style (merge styles/container {:flex-direction :column :flex 1})}
+    [rn/view {:style styles/screen-header}
+     [rn/view {:style styles/good-deal-container}
+      [rn/text {:style styles/screen-title-text}
+       "My Properties"]]
+     [rn/view
+      [ads/banner]]]
+    [rn/scroll-view {:style {:flex 1}}
+     (let [props @(rf/subscribe [:properties])]
+       (if (empty? props)
+         [rn/text "No properties"]
+         (for [p (map-indexed vector props)]
+           ^{:key (first p)} [prop (second p)])))]]])
