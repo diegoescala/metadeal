@@ -103,10 +103,10 @@
                   :content (cond (not some-info-filled?) "Good or bad deal?"
                                  good? "Good Deal." (not good?) "Bad Deal.")}]
      [rn/view {:style {:flex-direction "row"}}
-      [rn/view {:style {:flex 3}}
-       [rn/text {:style (get content :style)}
-        (get content :content)]]])
-      ; [good-bad-icon (:style content) (:icon content)]])
+      [rn/view {:style {:flex-direction :row :flex 3}}
+       ; [good-bad-icon (merge {:flex 1} (:style content)) (:icon content)]
+       [rn/text {:style (merge {:flex 8} (get content :style))}
+         (get content :content)]]])
    [deal-justification prop some-info-filled?]])
 
 (defn summary-section
@@ -146,7 +146,7 @@
   (let [vs-mkt (:mkt-beat prop)
         cash-in (:total-cost prop)
         cash-flow (:cash-flow-per-unit prop)]
-    [rn/view {:style styles/summary-header}
+    [rn/view {:style styles/screen-header}
      [rn/view {:style styles/container}
       [good-deal-summary prop some-info-filled?]
       ; [rn/spacer 1 10 10]
@@ -166,7 +166,7 @@
 
 (defn no-info-summary
   []
-  [rn/view {:style styles/summary-header}
+  [rn/view {:style styles/screen-header}
    [rn/view {:style styles/good-deal-container}
     [rn/text {:style styles/good-deal-title}
      "Provide a purchase price to get started"]]])
@@ -246,7 +246,7 @@
 (defn edit-prop
   []
   ; (swap! prop-info merge prop @(rf/subscribe [:prop-info]))
-  [rn/view {:style (merge styles/edit-screen {:flex-direction "column"})}
+  [rn/view {:style styles/app-screen}
    ; (if false;(no-value-provided? (:purchase-price @(rf/subscribe [:prop-info])))
      ; [no-info-summary]
    [test-result]

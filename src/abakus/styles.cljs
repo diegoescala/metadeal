@@ -35,12 +35,12 @@
 (def neutral {:color (:dark-gray app-colors)})
 
 (def container {:margin-left 15 :margin-right 15})
-(def summary-header {:flex-direction "column" :background-color (:dark-purple app-colors) :margin-top 40})
+(def screen-header {:flex-direction "column" :background-color (:dark-purple app-colors) :margin-top 40})
 (def summary-section-view {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8 :margin-right 9 :border-radius 5 :background-color (:medium-purple app-colors)})
 (def summary-title {:color (:white app-colors) :font-size 11 :font-weight "400" :text-align :left})
 (def summary-details {:font-size 12 :font-weight "600" :color (:white app-colors) :text-align :right})
 
-(def edit-screen {:background-color (:dark-purple app-colors)})
+(def app-screen {:background-color (:dark-purple app-colors)})
 
 (def analysis-info-bar {:margin-top 0 :margin-bottom 6 :flex-direction "row" :align-text "center" :background-color (:dark-purple app-colors)})
 
@@ -77,3 +77,5 @@
 
 (def section-title {:font-weight "200" :font-size 25 :margin-bottom 10})
 (def section-subtitle {:font-weight "300" :font-size 15 :font-style "italic" :margin-bottom 30})
+
+(def property {:margin-top 0 :flex-direction "row" :text-align "center" :padding 8 :margin-right 9 :margin-bottom 20 :border-radius 5 :background-color (:medium-purple app-colors)})
