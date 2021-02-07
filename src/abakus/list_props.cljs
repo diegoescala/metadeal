@@ -19,10 +19,12 @@
   []
   [rn/view {:style styles/app-screen}
    [rn/view {:style styles/screen-header}
-    [rn/view {:style styles/container}
-     [rn/text "hi"]]]
-   (let [props @(rf/subscribe [:properties])]
-     (if (empty? props)
-       [rn/text "No properties"]
-       (for [p (map-indexed vector props)]
-         ^{:key (first p)} [prop (second p)])))])
+    [rn/view {:style styles/good-deal-container}
+     [rn/text {:style styles/screen-title-text}
+      "My Properties"]]]
+   [rn/scroll-view
+    (let [props @(rf/subscribe [:properties])]
+      (if (empty? props)
+        [rn/text "No properties"]
+        (for [p (map-indexed vector props)]
+          ^{:key (first p)} [prop (second p)])))]])
