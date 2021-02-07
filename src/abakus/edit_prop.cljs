@@ -5,7 +5,8 @@
             [re-frame.core :as rf]
             [clojure.string :as s]
             [abakus.analyzer :as analyzer]
-            [abakus.ads :as ads]))
+            [abakus.ads :as ads]
+            [abakus.number-utils :as num]))
 
 (defn scrub
   [m]
@@ -42,27 +43,6 @@
                                       (rf/dispatch [:set-prop-info prop])
                                       (recompute prop)))}]]])))
 
-(defn localize
-  [cur]
-  ; (let [f (js/Intl.NumberFormat. "en-US" (clj->js {:style "currency" :currency "USD" :maximum-fraction-digits 0}))]
-  ;   (-> f (.format cur)
-  ;       (s/split #"\.")
-  ;       first)))
-  (let [numstr (map #(apply str %) (partition 3 3 nil (s/reverse (str (Math/floor (Math/abs cur))))))]
-    (str (when (neg? cur) "-") "$" (s/reverse (s/join "," numstr)))))
-
-(defn localize-currency-vals
-  [m]
-  (let [localized (reduce (fn [a [k v]]
-                            (assoc a k (localize v)))
-                          {}
-                          m)]
-    localized))
-
-(defn percentize
-  [v]
-  (str (Math/floor (* 100 (+ 0.005 v))) "%"))
-
 (defn explanation-str
   [prop]
   (let [{:keys [total-cost down five-yr-profit time-horizon-years stock-mkt-growth-percent closing-costs rehab five-yr-apprec mortgage cash-flow-per-unit stock-market-ret]} prop]
@@ -84,8 +64,8 @@
      (if (not some-info-filled?)
        "Enter a purchase price below to get started."
        (if (pos? m)
-         (str "Better than " (:time-horizon-years prop) "-yr stock market by " (localize m) ".")
-         (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (localize (Math/abs m)) ".")))]))
+         (str "Better than " (:time-horizon-years prop) "-yr stock market by " (num/localize m) ".")
+         (str "Worse than " (:time-horizon-years prop) "-yr stock market by " (num/localize (Math/abs m)) ".")))]))
 
 (defn good-bad-icon
   [style icon-name]
@@ -121,8 +101,8 @@
        (if show-blank?
          "---"
          (case value-type
-           :currency (localize (get prop param))
-           :percent (percentize (get prop param))))]]]))
+           :currency (num/localize (get prop param))
+           :percent (num/percentize (get prop param))))]]]))
 
 (defn explanation
   [prop]
@@ -139,7 +119,7 @@
 
      (if @show?
        [rn/view {:style styles/good-deal-explanation}
-         [rn/text {:style styles/good-deal-explanation-text} (explanation-str (localize-currency-vals prop))]])])))
+         [rn/text {:style styles/good-deal-explanation-text} (explanation-str (num/localize-currency-vals prop))]])])))
 
 (defn summary-header
   [prop some-info-filled?]

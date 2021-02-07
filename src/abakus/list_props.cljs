@@ -2,7 +2,8 @@
   (:require [re-frame.core :as rf]
             [abakus.rn :as rn]
             [abakus.edit-prop :as edit-prop]
-            [abakus.styles :as styles]))
+            [abakus.styles :as styles]
+            [abakus.number-utils :as num]))
 
 (defn prop
   [p]
@@ -12,8 +13,12 @@
                                          (rf/dispatch [:set-prop-info p])
                                          (edit-prop/recompute p)
                                          (rf/dispatch [:set-current-page [edit-prop/edit-prop]]))}
-    [rn/text {:style {:color :white}}
-     (prn-str p)]]])
+    [rn/view
+     [rn/text {:style styles/property-name} "A Property"]
+     [rn/text {:style {:color :white}}
+      (if (some? (:purchase-price p))
+          (num/localize (:purchase-price p))
+          "")]]]])
 
 (defn props-list
   []

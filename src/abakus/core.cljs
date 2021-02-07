@@ -29,7 +29,8 @@
 
 (defn load-props
   []
-  (-> (.getItem rn/storage "props") (.then #(dispatch [:set-properties (cljs.reader/read-string %)]))))
+  (-> (.getItem rn/storage "props") (.then #(dispatch [:set-properties (filter (fn [p] (some? (:purchase-price p)))
+                                                                               (cljs.reader/read-string %))]))))
 
 (defn init []
  (do
