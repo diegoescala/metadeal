@@ -17,7 +17,7 @@
 
 (defn props-list
   []
-  [rn/view {:style styles/app-screen}
+  [rn/view {:style (merge {:flex 1} styles/app-screen)}
    [rn/view {:style styles/screen-header}
     [rn/view {:style styles/good-deal-container}
      [rn/text {:style styles/screen-title-text}
