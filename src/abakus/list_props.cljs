@@ -8,8 +8,8 @@
 
 (defn prop
   [p]
-  [rn/view
-   [rn/touchable-highlight {:style styles/property
+  [rn/view {:style styles/property}
+   [rn/touchable-highlight {:style {:flex 5}
                             :on-press #(do
                                          (rf/dispatch [:set-prop-info p])
                                          (edit-prop/recompute p)
@@ -19,7 +19,9 @@
      [rn/text {:style {:color :white}}
       (if (some? (:purchase-price p))
           (num/localize (:purchase-price p))
-          "")]]]])
+          "")]]]
+   [rn/view {:style {:flex 1}}
+    [rn/ic {:name "md-trash" :style {:color :white :font-size 32}}]]])
 
 (defn props-list
   []
