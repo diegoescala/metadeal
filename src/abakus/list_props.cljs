@@ -8,8 +8,8 @@
 
 (defn prop
   [p]
-  [rn/view {:style styles/property}
-   [rn/touchable-highlight {
+  [rn/view
+   [rn/touchable-highlight {:style styles/property
                             :on-press #(do
                                          (rf/dispatch [:set-prop-info p])
                                          (edit-prop/recompute p)

@@ -79,5 +79,5 @@
 (def section-title {:font-weight "200" :font-size 25 :margin-bottom 10})
 (def section-subtitle {:font-weight "300" :font-size 15 :font-style "italic" :margin-bottom 30})
 
-(def property {:flex-direction "row" :text-align "center" :padding 8 :margin-right 9 :margin-top 20 :border-radius 5 :background-color (:medium-purple app-colors)})
+(def property {:flex-direction "row" :padding 8 :margin-right 9 :margin-top 20 :border-radius 5 :background-color (:medium-purple app-colors)})
 (def property-name {:font-size 22 :color :white :font-weight "600"})
