@@ -3,7 +3,8 @@
             [abakus.rn :as rn]
             [abakus.edit-prop :as edit-prop]
             [abakus.styles :as styles]
-            [abakus.number-utils :as num]))
+            [abakus.number-utils :as num]
+            [abakus.ads :as ads]))
 
 (defn prop
   [p]
@@ -26,8 +27,10 @@
    [rn/view {:style styles/screen-header}
     [rn/view {:style styles/good-deal-container}
      [rn/text {:style styles/screen-title-text}
-      "My Properties"]]]
-   [rn/scroll-view
+      "My Properties"]]
+    [rn/view
+     [ads/banner]]]
+   [rn/scroll-view {:style {:flex 1}}
     (let [props @(rf/subscribe [:properties])]
       (if (empty? props)
         [rn/text "No properties"]
