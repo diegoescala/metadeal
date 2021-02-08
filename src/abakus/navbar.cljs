@@ -12,9 +12,14 @@
 
 (defn- page-option
   [page]
-  [rn/view {:style styles/navbar-option}
-   [rn/touchable-highlight {:on-press #(rf/dispatch [:set-current-page (:page page)])}
-    [rn/text {:style styles/navbar-text} (:name page)]]])
+  (let [current-page @(rf/subscribe [:current-page])
+        selected (= (:page page) current-page)]
+    [rn/view {:style (merge styles/navbar-option (if selected
+                                                     styles/navbar-option-selected {}))}
+     [rn/touchable-highlight {:on-press #(rf/dispatch [:set-current-page (:page page)])}
+        [rn/text {:style (merge styles/navbar-text (if selected
+                                                         styles/navbar-option-selected {}))}          
+         (:name page)]]]))
 
 (defn navbar
   []
