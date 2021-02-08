@@ -10,7 +10,8 @@
               [abakus.styles :as styles]
               [abakus.reports :as reports]
               [abakus.navbar :as nav]
-              [abakus.list-props :as props]))
+              [abakus.list-props :as props]
+              [cljs.reader :refer [read-string]]))
 
    ; [reports/report]
    ; [edit-prop/edit-prop {}])
@@ -29,7 +30,7 @@
 (defn load-props
   []
   (-> (.getItem rn/storage "props") (.then #(dispatch [:set-properties (filter (fn [p] (some? (:purchase-price p)))
-                                                                               (cljs.reader/read-string %))]))))
+                                                                               (read-string %))]))))
 
 (defn init []
  (do
