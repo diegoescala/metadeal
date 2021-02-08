@@ -15,7 +15,7 @@
                                          (edit-prop/recompute p)
                                          (rf/dispatch [:set-current-page [edit-prop/edit-prop]]))}
     [rn/view
-     [rn/text {:style styles/property-name} "A Property"]
+     [rn/text {:style styles/property-name} (or (:name p) "A Property")]
      [rn/text {:style {:color :white}}
       (if (some? (:purchase-price p))
           (num/localize (:purchase-price p))

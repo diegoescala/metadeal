@@ -45,15 +45,32 @@
 
 (defn save-modal
   [vis-atom]
-  [rn/view {:style styles/mcentered}
-   [rn/modal {:visible @vis-atom :transparent true}
-
+  (let [prop-name (r/atom "")]
+   (fn [vis-atom]
     [rn/view {:style styles/mcentered}
-     [rn/view {:style styles/modal}
-      [rn/text {:style {:color :black}} "Hello"]
-      [rn/touchable-highlight {:style styles/explanation-button
-                               :on-press #(reset! vis-atom false)}
-       [rn/text "Close"]]]]]])
+     [rn/modal {:visible @vis-atom :transparent true}
+
+      [rn/view {:style styles/mcentered}
+       [rn/view {:style styles/modal}
+        [rn/text {:style {:color :black}} (str "Save This Property")]
+        [rn/view {:style {:width 150 :flex-direction :column :margin 30}}
+          [rn/input {:style styles/input-field :placeholder "Property Name"
+                     :on-change-text #(reset! prop-name %)}]]
+        [rn/view {:style {:flex-direction :row}}
+         [rn/touchable-highlight {:style (assoc styles/explanation-button :background-color "#f82")
+                                  :on-press #(reset! vis-atom false)}
+           [rn/text {:style {:color "white" :font-size 15 :text-align "center" :margin-left 10 :margin-right 10}}
+            "Cancel"]]
+         [rn/touchable-highlight {:style (assoc styles/explanation-button :margin-left 20)
+                                  :on-press #(do
+                                               (reset! vis-atom false)
+                                               (let [props (conj @(rf/subscribe [:properties]) (assoc @(rf/subscribe [:prop-info]) :name @prop-name))]
+                                                (rf/dispatch [:set-properties props])
+                                                (.setItem rn/storage "props" (prn-str props))
+                                                (rn/alert (str @prop-name " saved!"))))}
+
+           [rn/text {:style {:color "white" :font-size 15 :text-align "center" :margin-left 10 :margin-right 10}}
+            "Save"]]]]]]])))
 
 (defn explanation-str
   [prop]
@@ -126,7 +143,7 @@
         {:style styles/explanation-button
          :on-press #(swap! show? not)}
                      ;rn/alert (explanation-str (localize-currency-vals prop)))}
-       [rn/text {:style {:color "white" :font-size 13 :text-align "center"}}
+       [rn/text {:style {:color "white" :font-size 15 :text-align "center"}}
         (str (if @show? "Hide" "Show") " Explanation")]]
 
      (if @show?
@@ -179,11 +196,8 @@
        {:style styles/explanation-button
         :on-press #(do
                     (reset! save-modal-visible true))}
-                    ; (let [props (conj @(rf/subscribe [:properties]) @(rf/subscribe [:prop-info]))]
-                     ; (rf/dispatch [:set-properties props])
-                     ; (.setItem rn/storage "props" (prn-str props)))}
 
-       [rn/text {:style {:color "white" :font-size 13 :text-align "center"}}
+       [rn/text {:style {:color "white" :font-size 15 :text-align "center"}}
         "Save Property"]]
      [save-modal save-modal-visible]]))
 
