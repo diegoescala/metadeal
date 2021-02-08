@@ -23,7 +23,7 @@
    :black "#111"})
 
 (def navbar-container {:min-height 60 :padding-top 20 :background-color (:dark-purple app-colors) :flex-direction :row :align-items :center})
-(def navbar-option {:flex 1}) ;:border-right-width 1 :border-right-color (:white app-colors)})
+(def navbar-option {:flex 1 :padding 15}) ;:border-right-width 1 :border-right-color (:white app-colors)})
 (def navbar-option-selected {:font-weight "600" :background-color (:medium-purple app-colors)})
 (def navbar-text {:color (:white app-colors) :text-align :center :font-weight :400})
 
