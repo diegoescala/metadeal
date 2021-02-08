@@ -66,7 +66,7 @@
                                                (reset! vis-atom false)
                                                (let [props (conj @(rf/subscribe [:properties]) (assoc @(rf/subscribe [:prop-info]) :name @prop-name))]
                                                 (rf/dispatch [:set-properties props])
-                                                (.setItem rn/storage "props" (prn-str props))
+                                                (persistence/save-properties props)
                                                 (rn/alert (str @prop-name " saved!"))))}
 
            [rn/text {:style {:color "white" :font-size 15 :text-align "center" :margin-left 10 :margin-right 10}}

@@ -4,10 +4,11 @@
             [abakus.edit-prop :as edit-prop]
             [abakus.styles :as styles]
             [abakus.number-utils :as num]
-            [abakus.ads :as ads]))
+            [abakus.ads :as ads]
+            [abakus.persistence :as persistence]))
 
 (defn prop
-  [p]
+  [p idx all-props]
   [rn/view {:style styles/property}
    [rn/touchable-highlight {:style {:flex 5}
                             :on-press #(do
@@ -15,13 +16,22 @@
                                          (edit-prop/recompute p)
                                          (rf/dispatch [:set-current-page [edit-prop/edit-prop]]))}
     [rn/view
-     [rn/text {:style styles/property-name} (or (:name p) "A Property")]
+     (let [name (or (:name p) "A Property")]
+       [rn/text {:style styles/property-name} name])
      [rn/text {:style {:color :white}}
       (if (some? (:purchase-price p))
           (num/localize (:purchase-price p))
           "")]]]
    [rn/view {:style {:flex 1}}
-    [rn/ic {:name "md-trash" :style {:color :white :font-size 32}}]]])
+    [rn/touchable-highlight
+      {:on-press #(do
+                   (let [new-props (-> (reduce merge (map-indexed hash-map all-props))
+                                       (dissoc idx)
+                                       vals)]
+                    (rf/dispatch [:set-properties new-props])
+                    (persistence/save-properties new-props)))}
+      [rn/ic {:name "md-trash" :style {:color :white :font-size 32}}]]]])
+
 
 (defn props-list
   []
@@ -36,6 +46,8 @@
     [rn/scroll-view {:style {:flex 1}}
      (let [props @(rf/subscribe [:properties])]
        (if (empty? props)
-         [rn/text "No properties"]
+         [rn/view {:style styles/good-deal-container}
+          [rn/text {:style styles/screen-title-text}
+           "No properties saved yet"]]
          (for [p (map-indexed vector props)]
-           ^{:key (first p)} [prop (second p)])))]]])
+           ^{:key (first p)} [prop (second p) (first p) props])))]]])
