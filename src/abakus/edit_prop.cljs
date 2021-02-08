@@ -6,7 +6,8 @@
             [clojure.string :as s]
             [abakus.analyzer :as analyzer]
             [abakus.ads :as ads]
-            [abakus.number-utils :as num]))
+            [abakus.number-utils :as num]
+            [abakus.persistence :as persistence]))
 
 (defn scrub
   [m]
