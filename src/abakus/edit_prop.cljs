@@ -49,7 +49,7 @@
   (let [prop-name (r/atom "")]
    (fn [vis-atom]
     [rn/view {:style styles/mcentered}
-     [rn/modal {:visible @vis-atom :transparent true}
+     [rn/modal {:visible @vis-atom :transparent true :animation-type :slide}
 
       [rn/view {:style styles/mcentered}
        [rn/view {:style styles/modal}

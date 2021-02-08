@@ -23,7 +23,7 @@
   (let [index (:index @state)
         props (:props @state)]
     [rn/view {:style styles/mcentered}
-     [rn/modal {:visible (:vis @state) :transparent true}
+     [rn/modal {:visible (:vis @state) :transparent true :animation-type :slide}
       [rn/view {:style styles/mcentered}
        [rn/view {:style styles/modal}
         [rn/text {:style {:color :black :font-size 25 :margin-bottom 30}} (str "Delete this Property?")]
