@@ -26,7 +26,8 @@
 
 (defn input
   [max-length label param]
-  (let [value (r/atom "")]
+  (let [prop @(rf/subscribe [:prop-info])
+        value (r/atom (str (or (param prop) "")))]
    (fn [max-length label param]
     [rn/view {:style styles/input-view-container}
      [rn/view {:style styles/label-container}
@@ -40,9 +41,10 @@
                  :placeholder-text-color "#faa"
                  :on-change-text #(do
                                     (reset! value %)
-                                    (let [prop (assoc @(rf/subscribe [:prop-info]) param (if (not (empty? (str %))) (js/parseFloat %) ""))]
-                                      (rf/dispatch [:set-prop-info prop])
-                                      (recompute prop)))}]]])))
+                                    (let [prop-mod (assoc @(rf/subscribe [:prop-info]) param (if (not (empty? (str %))) (js/parseFloat %) ""))]
+                                      (rf/dispatch [:set-prop-info prop-mod])
+                                      (recompute prop-mod)))}
+       @value]]])))
 
 (defn save-modal
   [vis-atom]
