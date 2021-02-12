@@ -4,7 +4,7 @@
     "description": "Rental property deal analyzer",
     "slug": "metadeal",
     "sdkVersion": "37.0.0",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "privacy": "public",
