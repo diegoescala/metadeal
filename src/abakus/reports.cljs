@@ -52,7 +52,7 @@
   (let [prop (assoc @(rf/subscribe [:prop-info])
                     independent-var
                     (independent-var (recompute @(rf/subscribe [:prop-info]))))
-        steps 3
+        steps 5
         span 1.0
         current-val (if show-break-even?
                         (compute-break-even prop independent-var dependent-var)
@@ -76,7 +76,7 @@
                                    :backgroundColor (:dark-purple styles/app-colors)
                                    :backgroundGradientFrom (:dark-purple styles/app-colors)
                                    :backgroundGradientTo (:dark-purple styles/app-colors)
-                                   :propsForLabels {:fontSize 10}
+                                   :propsForLabels {:fontSize 9}
                                    :decimalPlaces 2}}]]))
 
 (defn report
