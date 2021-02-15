@@ -6,16 +6,6 @@
             [abakus.styles :as styles]
             [abakus.number-utils :as utils]))
 
-(def base-prop {:purchase-price 140000 :hoa 271 :rehab 2000})
-
-(def cfs [1200 1400 1600 1800 2000 2200])
-
-(def evals (reduce #(conj %1 (anal/recompute (assoc base-prop :rent-per-unit %2))) [] cfs))
-
-(def line (clj->js {:labels (map str cfs)
-                    :datasets [{:data (map :cash-flow-per-unit evals)
-                                :strokeWidth 2}]}))
-
 (defn chart
   [independent-var dependent-var title]
   (let [prop (assoc @(rf/subscribe [:prop-info])
@@ -23,10 +13,6 @@
                     (independent-var (anal/recompute @(rf/subscribe [:prop-info]))))
         steps 4
         span 1.0
-        ; points (map #(* (+ 1. (- (/ (float %) (float (dec steps)))
-        ;                          (* 0.5 span)))
-        ;                 (independent-var prop))
-        ;             (range steps))
         points (map #(* (+ 1.0 (- (/ (float %) (float (dec steps)))
                                   (* 0.5 span)))
                         (independent-var prop))
@@ -61,10 +47,10 @@
      [rn/scroll-view
       [ads/banner]
       [chart :rent-per-unit :cash-flow-per-unit "Cash flow by rent"]
-      [ads/banner]
+      ; [ads/banner]
       [chart :purchase-price :cash-flow-per-unit "Cash flow by purchase price"]
-      [ads/banner]
+      ; [ads/banner]
       [chart :purchase-price :cocroi "Cash-on-cash ROI by purchase price"]
-      [ads/banner]
+      ; [ads/banner]
       [chart :purchase-price :five-yr-profit "Net future gain by purchase price"]
       [rn/view {:style {:min-height 630}}]]]]])
