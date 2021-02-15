@@ -1,5 +1,6 @@
 (ns abakus.reports
-  (:require [abakus.analyzer :as anal]
+  (:require [re-frame.core :as rf]
+            [abakus.analyzer :as anal]
             [abakus.rn :as rn]
             [abakus.ads :as ads]
             [abakus.styles :as styles]))
@@ -14,6 +15,33 @@
                     :datasets [{:data (map :cash-flow-per-unit evals)
                                 :strokeWidth 2}]}))
 
+(defn chart
+  [independent-var dependent-var]
+  (let [prop @(rf/subscribe [:prop-info])
+        steps 5
+        span 1.0
+        ; points (map #(* (+ 1. (- (/ (float %) (float (dec steps)))
+        ;                          (* 0.5 span)))
+        ;                 (independent-var prop))
+        ;             (range steps))
+        points (map #(* (+ 1.0 (- (/ (float %) (float (dec steps)))
+                                  (* 0.5 span)))
+                        (independent-var prop))
+                    (range steps))
+        values (reduce #(conj %1 (anal/recompute (assoc prop independent-var %2))) [] points)
+        labels (map #(str (int %)) points)
+        data (clj->js {:labels labels
+                       :datasets [{:data (map dependent-var values)
+                                   :strokeWidth 2}]})]
+    (println points)
+    (println labels)
+    [rn/line-chart {:data data :width 300 :height 300
+                    :chartConfig {:color (fn [o] "rgba(255,255,255,1)")
+                                  :backgroundColor (:dark-purple styles/app-colors)
+                                  :backgroundGradientFrom (:dark-purple styles/app-colors)
+                                  :backgroundGradientTo (:dark-purple styles/app-colors)
+                                  :decimalPlaces 0}}]))
+
 (defn report
   []
   [rn/view {:style (merge {:flex 1} styles/app-screen)}
@@ -25,12 +53,7 @@
      [rn/scroll-view
       [ads/banner]
       [rn/text "Cash flow per unit"]
-      [rn/line-chart {:data line :width 300 :height 300
-                      :chartConfig {:color (fn [o] "rgba(255,255,255,1)")
-                                    :backgroundColor (:dark-purple styles/app-colors)
-                                    :backgroundGradientFrom (:dark-purple styles/app-colors)
-                                    :backgroundGradientTo (:dark-purple styles/app-colors)
-                                    :decimalPlaces 0}}]
+      [chart :rent-per-unit :cash-flow-per-unit]
       [ads/banner]
       [rn/text "Cash flow per unit"]
       [rn/line-chart {:data line :width 300 :height 300
