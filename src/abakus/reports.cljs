@@ -11,7 +11,7 @@
     (let [result
           (boolean
             (and (string? s) (re-matches #"^[+-]?\d.*" s)))]
-      (println (str "Is " s " a number? " result))
+      ; (println (str "Is " s " a number? " result))
       result)))
 
 (defn scrub
@@ -39,7 +39,7 @@
          right  500000000.0
          steps 0]
     (let [results (map #(dependent-var (recompute (assoc prop independent-var %))) [left mid right])]
-      (println (prn-str [left mid right results]))
+      ; (println (prn-str [left mid right results]))
       (if (or (< 30 steps) (> 0.01 (Math/abs (second results))))
         mid
         (if (or (<= (nth results 0) 0 (nth results 1))
