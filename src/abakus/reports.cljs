@@ -6,18 +6,62 @@
             [abakus.styles :as styles]
             [abakus.number-utils :as utils]))
 
+(defn number-string? [s]
+  (do
+    (let [result
+          (boolean
+            (and (string? s) (re-matches #"^[+-]?\d.*" s)))]
+      (println (str "Is " s " a number? " result))
+      result)))
+
+(defn scrub
+  [m]
+  (let [empties (filter #(or (not (number-string? (str (get m %))))
+                             (empty? (str (get m %))))
+                        (keys m))]
+    (reduce #(dissoc %1 %2) m empties)))
+
+(defn recompute
+  [prop]
+  (anal/recompute (scrub prop)))
+
+(defn average
+  [& nums]
+  (let [c (count nums)
+        sum (reduce + nums)]
+    (/ sum (float c))))
+
+(defn compute-break-even
+  [prop independent-var dependent-var]
+  (loop [
+         left  -500000000.0
+         mid 0
+         right  500000000.0
+         steps 0]
+    (let [results (map #(dependent-var (recompute (assoc prop independent-var %))) [left mid right])]
+      (println (prn-str [left mid right results]))
+      (if (or (< 30 steps) (> 0.01 (Math/abs (second results))))
+        mid
+        (if (or (<= (nth results 0) 0 (nth results 1))
+                (<= (nth results 1) 0 (nth results 0)))
+          (recur left (average left mid) mid (inc steps))
+          (recur mid (average mid right) right (inc steps)))))))
+
 (defn chart
-  [independent-var dependent-var title]
+  [independent-var dependent-var title show-break-even?]
   (let [prop (assoc @(rf/subscribe [:prop-info])
                     independent-var
-                    (independent-var (anal/recompute @(rf/subscribe [:prop-info]))))
-        steps 4
+                    (independent-var (recompute @(rf/subscribe [:prop-info]))))
+        steps 3
         span 1.0
+        current-val (if show-break-even?
+                        (compute-break-even prop independent-var dependent-var)
+                        (independent-var prop))
         points (map #(* (+ 1.0 (- (/ (float %) (float (dec steps)))
                                   (* 0.5 span)))
-                        (independent-var prop))
+                        current-val)
                     (range steps))
-        values (reduce #(conj %1 (anal/recompute (assoc prop independent-var %2))) [] points)
+        values (reduce #(conj %1 (recompute (assoc prop independent-var %2))) [] points)
         labels (map #(utils/localize (int %)) points)
         data (clj->js {:labels labels
                        :datasets [{:data (map dependent-var values)
@@ -46,11 +90,11 @@
     [rn/safe-area-view {:style {:flex-direction "column"}}
      [rn/scroll-view
       [ads/banner]
-      [chart :rent-per-unit :cash-flow-per-unit "Cash flow by rent"]
+      [chart :rent-per-unit :cash-flow-per-unit "Cash flow by rent" true]
       ; [ads/banner]
-      [chart :purchase-price :cash-flow-per-unit "Cash flow by purchase price"]
+      [chart :purchase-price :cash-flow-per-unit "Cash flow by purchase price" true]
       ; [ads/banner]
-      [chart :purchase-price :cocroi "Cash-on-cash ROI by purchase price"]
+      [chart :purchase-price :cocroi "Cash-on-cash ROI by purchase price" false]
       ; [ads/banner]
-      [chart :purchase-price :five-yr-profit "Net future gain by purchase price"]
+      [chart :purchase-price :five-yr-profit "Net future gain by purchase price" false]
       [rn/view {:style {:min-height 630}}]]]]])

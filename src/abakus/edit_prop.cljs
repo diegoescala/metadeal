@@ -9,10 +9,21 @@
             [abakus.number-utils :as num]
             [abakus.persistence :as persistence]))
 
+(defn number-string? [s]
+  (do
+    (let [result
+          (boolean
+            (and (string? s) (re-matches #"^[+-]?\d.*" s)))]
+      (println (str "Is " s " a number? " result))
+      result)))
+
 (defn scrub
   [m]
-  (let [empties (filter #(empty? (str (get m %))) (keys m))]
+  (let [empties (filter #(or (not (number-string? (str (get m %))))
+                             (empty? (str (get m %))))
+                        (keys m))]
     (reduce #(dissoc %1 %2) m empties)))
+
 
 ; (def prop-info (r/atom {}))
 (def computed (r/atom (analyzer/recompute (scrub @(rf/subscribe [:prop-info])))))
