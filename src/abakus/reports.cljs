@@ -16,9 +16,11 @@
                                 :strokeWidth 2}]}))
 
 (defn chart
-  [independent-var dependent-var]
-  (let [prop @(rf/subscribe [:prop-info])
-        steps 5
+  [independent-var dependent-var title]
+  (let [prop (assoc @(rf/subscribe [:prop-info])
+                    independent-var
+                    (independent-var (anal/recompute @(rf/subscribe [:prop-info]))))
+        steps 4
         span 1.0
         ; points (map #(* (+ 1. (- (/ (float %) (float (dec steps)))
         ;                          (* 0.5 span)))
@@ -35,12 +37,14 @@
                                    :strokeWidth 2}]})]
     (println points)
     (println labels)
-    [rn/line-chart {:data data :width 300 :height 300
-                    :chartConfig {:color (fn [o] "rgba(255,255,255,1)")
-                                  :backgroundColor (:dark-purple styles/app-colors)
-                                  :backgroundGradientFrom (:dark-purple styles/app-colors)
-                                  :backgroundGradientTo (:dark-purple styles/app-colors)
-                                  :decimalPlaces 0}}]))
+    [rn/view
+     [rn/text {:style styles/chart-title} title]
+     [rn/line-chart {:data data :width 300 :height 300
+                     :chartConfig {:color (fn [o] "rgba(255,255,255,1)")
+                                   :backgroundColor (:dark-purple styles/app-colors)
+                                   :backgroundGradientFrom (:dark-purple styles/app-colors)
+                                   :backgroundGradientTo (:dark-purple styles/app-colors)
+                                   :decimalPlaces 0}}]]))
 
 (defn report
   []
@@ -50,15 +54,10 @@
      [rn/view {:style styles/good-deal-container}
       [rn/text {:style styles/screen-title-text}
        "My Properties"]]
-     [rn/scroll-view
-      [ads/banner]
-      [rn/text "Cash flow per unit"]
-      [chart :rent-per-unit :cash-flow-per-unit]
-      [ads/banner]
-      [rn/text "Cash flow per unit"]
-      [rn/line-chart {:data line :width 300 :height 300
-                      :chartConfig {:color (fn [o] "rgba(255,255,255,1)")
-                                    :backgroundColor (:dark-purple styles/app-colors)
-                                    :backgroundGradientFrom (:dark-purple styles/app-colors)
-                                    :backgroundGradientTo (:dark-purple styles/app-colors)
-                                    :decimalPlaces 0}}]]]]])
+     [rn/safe-area-view {:style {:flex-direction "column"}}
+      [rn/scroll-view {:style styles/container}
+       [ads/banner]
+       [chart :rent-per-unit :cash-flow-per-unit "Cash flow by rent"]
+       [ads/banner]
+       [chart :purchase-price :cash-flow-per-unit "Cash flow by purchase price"]
+       [rn/view {:style {:min-height 630}}]]]]]])
