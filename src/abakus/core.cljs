@@ -38,6 +38,7 @@
   (dispatch-sync [:initialize-db])
   (nav/init [{:name "Calculate" :icon "md-calculator" :page [edit-prop/edit-prop {}]}
              ; {:name "Report" :page [reports/report]}
-             {:name "Properties" :icon "md-home" :page [props/props-list]}])
+             {:name "Properties" :icon "md-home" :page [props/props-list]}
+             {:name "Reports" :icon "md-analytics" :page [reports/report]}])
   (dispatch [:set-current-page [edit-prop/edit-prop {}]])
   (ocall rn/expo "registerRootComponent" (r/reactify-component app-root))))
