@@ -40,12 +40,14 @@
     (println labels)
     [rn/view
      [rn/text {:style styles/chart-title} title]
-     [rn/line-chart {:data data :width 350 :height 300
+     [rn/line-chart {:style {}
+                     :data data :width 350 :height 300
                      :chartConfig {:color (fn [o] "rgba(255,255,255,1)")
                                    :backgroundColor (:dark-purple styles/app-colors)
                                    :backgroundGradientFrom (:dark-purple styles/app-colors)
                                    :backgroundGradientTo (:dark-purple styles/app-colors)
-                                   :decimalPlaces 0}}]]))
+                                   :propsForLabels {:fontSize 10}
+                                   :decimalPlaces 2}}]]))
 
 (defn report
   []
@@ -61,4 +63,8 @@
       [chart :rent-per-unit :cash-flow-per-unit "Cash flow by rent"]
       [ads/banner]
       [chart :purchase-price :cash-flow-per-unit "Cash flow by purchase price"]
+      [ads/banner]
+      [chart :purchase-price :cocroi "Cash-on-cash ROI by purchase price"]
+      [ads/banner]
+      [chart :purchase-price :five-yr-profit "Net future gain by purchase price"]
       [rn/view {:style {:min-height 630}}]]]]])
