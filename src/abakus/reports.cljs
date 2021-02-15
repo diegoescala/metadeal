@@ -79,6 +79,32 @@
                                    :propsForLabels {:fontSize 9}
                                    :decimalPlaces 2}}]]))
 
+(defn summary-section
+  [show-blank? title value & data-type]
+  (let [value-type (or (first data-type) :currency)]
+    [rn/view {:style (merge styles/summary-section-view {:flex 2})}
+     [rn/view {:style {:flex 5}}
+      [rn/text {:style styles/summary-title}
+       title]]
+     [rn/view {:style {:flex 5}}
+      [rn/text {:style styles/summary-details}
+       (if show-blank?
+         "---"
+         (case value-type
+           :currency (utils/localize value)
+           :percent (utils/percentize value)))]]]))
+
+
+(defn break-even-summary
+  [prop]
+  [rn/view
+   [rn/text {:style styles/chart-title} "Break-even Analysis"]
+   [rn/view {:style styles/analysis-info-bar}
+    [summary-section false "Min. rent to cash flow" (compute-break-even prop :rent-per-unit :cash-flow-per-unit)]]
+   [rn/view {:style styles/analysis-info-bar}
+    [summary-section false (str "Max purchase price to cash flow") ; (" (utils/localize (:rent-per-unit prop)) " rent)")
+                           (compute-break-even prop :purchase-price :cash-flow-per-unit)]]])
+
 (defn report
   []
   [rn/view {:style (merge {:flex 1} styles/app-screen)}
@@ -90,11 +116,13 @@
     [rn/safe-area-view {:style {:flex-direction "column"}}
      [rn/scroll-view
       [ads/banner]
+      [break-even-summary @(rf/subscribe [:prop-info])]
+      [ads/banner]
       [chart :rent-per-unit :cash-flow-per-unit "Cash flow by rent" true]
-      ; [ads/banner]
+      [ads/banner]
       [chart :purchase-price :cash-flow-per-unit "Cash flow by purchase price" true]
-      ; [ads/banner]
+      [ads/banner]
       [chart :purchase-price :cocroi "Cash-on-cash ROI by purchase price" false]
-      ; [ads/banner]
+      [ads/banner]
       [chart :purchase-price :five-yr-profit "Net future gain by purchase price" false]
       [rn/view {:style {:min-height 630}}]]]]])

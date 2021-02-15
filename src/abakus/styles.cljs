@@ -103,4 +103,4 @@
 (def property {:flex-direction "row" :padding 8 :margin-right 9 :margin-top 20 :border-radius 5 :background-color (:medium-purple app-colors)})
 (def property-name {:font-size 22 :color :white :font-weight "600"})
 
-(def chart-title {:color :white :font-size 18 :font-weight "600" :text-align :center :background-color (:medium-purple app-colors) :padding 10 :border-radius 10})
+(def chart-title {:color :white :font-size 18 :font-weight "600" :text-align :center :background-color (:medium-purple app-colors) :padding 10 :border-radius 10 :margin-bottom 15})
