@@ -9,8 +9,9 @@
             [clojure.string :as s]
             [abakus.types :as types]))
 
-(def url "http://localhost:8080/")
+; (def url "http://localhost:8080/")
 ; (def url "https://api.imprezzy.co/")
+(def url "http://api.metadealapp.com:8082/")
 
 (defn read-json [data]
   (let [r (transit/reader :json)]
@@ -28,7 +29,8 @@
 (defn query-api-endpoint
   [method endpoint params handler]
   (go
-    (let [full-params (merge {:oauth-token (or (:token @(rf/subscribe [:user])) "")} params)]
+    ; (let [full-params (merge {:oauth-token (or (:token @(rf/subscribe [:user])) "")} params)]
+    (let [full-params (merge {} params)]
       ; (println (str "Making call: " (prn-str [method (str url endpoint) full-params])))
       (let [response (<! (method (str url endpoint) full-params))]
         (println (str "Network response: " (prn-str response)))
@@ -86,6 +88,13 @@
   [client file-data handler]
   (query-api-endpoint http/post "file" {:multipart-params {"file" (blob [file-data]) "client" client}}
                       handler))
+
+(defn get-new-uid
+  [callback]
+  (query-api-endpoint http/get "uid" {}
+    #(let [uid (get (->> % :body js/JSON.parse js->clj)
+                    "uid")]
+       (callback uid))))
 
 (defn init
   []

@@ -11,7 +11,8 @@
               [abakus.reports :as reports]
               [abakus.navbar :as nav]
               [abakus.list-props :as props]
-              [cljs.reader :refer [read-string]]))
+              [cljs.reader :refer [read-string]]
+              [abakus.comms :as comms]))
 
    ; [reports/report]
    ; [edit-prop/edit-prop {}])
@@ -32,6 +33,22 @@
   (-> (.getItem rn/storage "props") (.then #(dispatch [:set-properties (filter (fn [p] (some? (:purchase-price p)))
                                                                                (read-string %))]))))
 
+(defn set-app-uid
+  [uid]
+  (do
+    (println (str "Setting app UID to " uid))
+    (dispatch [:set-uid uid])))
+
+(defn load-or-acquire-uid
+  []
+  (-> (.getItem rn/storage "uid") (.then #(if (some? %)
+                                              (set-app-uid %)
+                                              (comms/get-new-uid (fn [uid]
+                                                                  (do
+                                                                   (println "No UID found. Acquiring...")
+                                                                   (.setItem rn/storage "uid" uid)
+                                                                   (set-app-uid uid))))))))
+
 (defn init []
  (do
   (load-props)
@@ -41,4 +58,6 @@
              {:name "Properties" :icon "md-home" :page [props/props-list]}
              {:name "Reports" :icon "md-analytics" :page [reports/report]}])
   (dispatch [:set-current-page [edit-prop/edit-prop {}]])
+  (load-or-acquire-uid)
+  (println "Hai")
   (ocall rn/expo "registerRootComponent" (r/reactify-component app-root))))

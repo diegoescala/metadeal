@@ -53,3 +53,8 @@
  :set-properties
  (fn [db [_ props]]
    (assoc db :properties props)))
+
+(reg-event-db
+ :set-uid
+ (fn [db [_ uid]]
+   (assoc db :uid uid)))
