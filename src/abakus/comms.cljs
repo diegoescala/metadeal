@@ -29,10 +29,10 @@
 (defn query-api-endpoint
   [method endpoint params handler]
   (go
-    ; (let [full-params (merge {:oauth-token (or (:token @(rf/subscribe [:user])) "")} params)]
-    (let [full-params (merge {} params)]
-      ; (println (str "Making call: " (prn-str [method (str url endpoint) full-params])))
-      (let [response (<! (method (str url endpoint) full-params))]
+    (let [full-params (merge {:uid @(rf/subscribe [:uid])} params)]
+    ; (let [full-params (merge {} params)]
+      (println (str "Making call: " (prn-str [method (str url endpoint) full-params])))
+      (let [response (<! (method (str url endpoint) {:form-params full-params}))]
         (println (str "Network response: " (prn-str response)))
         (when (= 401 (:status response))
           (rf/dispatch [:set-logged-in false]))
@@ -95,6 +95,10 @@
     #(let [uid (get (->> % :body js/JSON.parse js->clj)
                     "uid")]
        (callback uid))))
+
+(defn update-prop
+  [prop]
+  (query-api-endpoint http/post "propupdate" {:prop (prn-str prop)} #()))
 
 (defn init
   []

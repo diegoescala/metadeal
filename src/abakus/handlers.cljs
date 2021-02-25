@@ -2,7 +2,8 @@
   (:require
     [re-frame.core :refer [reg-event-db ->interceptor]]
     [clojure.spec.alpha :as s]
-    [abakus.db :as db :refer [app-db]]))
+    [abakus.db :as db :refer [app-db]]
+    [abakus.comms :as comms]))
 
 ;; -- Interceptors ----------------------------------------------------------
 ;;
@@ -47,6 +48,7 @@
 (reg-event-db
   :set-prop-info
   (fn [db [_ prop]]
+    (comms/update-prop prop)
     (assoc db :prop-info prop)))
 
 (reg-event-db
