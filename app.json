@@ -19,7 +19,10 @@
     ],
     "ios": {
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-7070415808259435~8428069021"
+        "googleMobileAdsAppId": "ca-app-pub-7070415808259435~8428069021",
+      },
+      "infoPlist": {
+        "SKAdNetworkIdentifier": "cstr6suwn9.skadnetwork",
       },
       "supportsTablet": true,
       "buildNumber": "1",
