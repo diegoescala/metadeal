@@ -155,8 +155,12 @@
 
      [rn/touchable-highlight
         {:style styles/explanation-button
-         :on-press #(swap! show? not)}
+         :on-press #(do
+                      (swap! show? not)
+                      (when (not @show?)
+                        (rn/request-review)))}
                      ;rn/alert (explanation-str (localize-currency-vals prop)))}
+
        [rn/text {:style {:color "white" :font-size 15 :text-align "center"}}
         (str (if @show? "Hide" "Show") " Explanation")]]
 

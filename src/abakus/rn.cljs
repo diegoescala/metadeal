@@ -12,6 +12,8 @@
 
 (def storage (.-AsyncStorage ReactNative))
 
+(def StoreReview (js/require "expo-store-review"))
+
 (def expo (js/require "expo"))
 (def AtExpo (js/require "@expo/vector-icons"))
 (def ionicons (.-Ionicons AtExpo))
@@ -37,6 +39,10 @@
 
 (defn alert [title]
   (.alert Alert title))
+
+(defn request-review
+  []
+  (.requestReview StoreReview))
 
 (defn spacer
   [thickness margin-top margin-bottom]
