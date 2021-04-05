@@ -42,7 +42,10 @@
 
 (defn request-review
   []
-  (.requestReview StoreReview))
+  (-> (.getItem storage "review-requested") (.then #(if (not (some? %))
+                                                        (do
+                                                          (.requestReview StoreReview)
+                                                          (.setItem storage "review-requested" "true"))))))
 
 (defn spacer
   [thickness margin-top margin-bottom]
