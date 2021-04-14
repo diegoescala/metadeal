@@ -36,7 +36,7 @@
 (defn set-app-uid
   [uid]
   (do
-    (println (str "Setting app UID to " uid))
+    ; (println (str "Setting app UID to " uid))
     (dispatch [:set-uid uid])))
 
 (defn load-or-acquire-uid
@@ -45,7 +45,7 @@
                                               (set-app-uid %)
                                               (comms/get-new-uid (fn [uid]
                                                                   (do
-                                                                   (println "No UID found. Acquiring...")
+                                                                   ; (println "No UID found. Acquiring...")
                                                                    (.setItem rn/storage "uid" uid)
                                                                    (set-app-uid uid))))))))
 
@@ -58,6 +58,6 @@
              {:name "Properties" :icon "md-home" :page [props/props-list]}
              {:name "Reports" :icon "md-analytics" :page [reports/report]}])
   (dispatch [:set-current-page [edit-prop/edit-prop {}]])
-  (load-or-acquire-uid)
+  ; (load-or-acquire-uid)
   (println "Hai")
   (ocall rn/expo "registerRootComponent" (r/reactify-component app-root))))

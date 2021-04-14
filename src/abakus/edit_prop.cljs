@@ -31,9 +31,9 @@
 (defn recompute
   [prop]
   (do
-    (println (prn-str prop))
-    (reset! computed (analyzer/recompute (scrub prop)))
-    (println (prn-str (vals @computed)))))
+    ; (println (prn-str prop))
+    (reset! computed (analyzer/recompute (scrub prop)))))
+    ; (println (prn-str (vals @computed)))))
 
 (defn input
   [max-length label param]

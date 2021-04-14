@@ -31,9 +31,9 @@
   (go
     (let [full-params (merge {:uid @(rf/subscribe [:uid])} params)]
     ; (let [full-params (merge {} params)]
-      (println (str "Making call: " (prn-str [method (str url endpoint) full-params])))
+      ; (println (str "Making call: " (prn-str [method (str url endpoint) full-params])))
       (let [response (<! (method (str url endpoint) {:form-params full-params}))]
-        (println (str "Network response: " (prn-str response)))
+        ; (println (str "Network response: " (prn-str response)))
         (when (= 401 (:status response))
           (rf/dispatch [:set-logged-in false]))
 
