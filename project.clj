@@ -13,7 +13,7 @@
                  [reagent "1.0.0-alpha1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server cljsjs/create-react-class]]
                  [re-frame "0.10.8"]]
   :plugins [[lein-cljsbuild "1.1.4"]
-            [lein-figwheel "0.5.19"]]
+            [lein-figwheel "0.5.20"]]
   :clean-targets ["target/" "main.js"]
   :aliases {"figwheel"        ["run" "-m" "user" "--figwheel"]
             ; TODO: Remove custom extern inference as it's unreliable
