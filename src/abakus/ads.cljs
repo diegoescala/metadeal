@@ -19,7 +19,6 @@
                     production-id test-id))
 
 (println (str "Platform: " platform ", Ad ID: " ad-unit-id))
-(js/console.log "Storage: " storage)
 
 (defn banner
   []

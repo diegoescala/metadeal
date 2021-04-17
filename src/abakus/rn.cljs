@@ -10,7 +10,7 @@
 (def status-bar (.-StatusBar ReactNative))
 (.setBarStyle status-bar "light-content" true)
 
-(def storage (js/require "@react-native-async-storage/async-storage"))
+(def storage (.-default (js/require "@react-native-async-storage/async-storage")))
 
 (def StoreReview (js/require "expo-store-review"))
 
