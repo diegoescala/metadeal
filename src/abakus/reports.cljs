@@ -48,13 +48,14 @@
           (recur mid (average mid right) right (inc steps)))))))
 
 (defn chart
-  [independent-var dependent-var title show-break-even?]
-  (let [prop (assoc @(rf/subscribe [:prop-info])
+  [independent-var dependent-var title & opts]
+  (let [options (into #{} opts)
+        prop (assoc @(rf/subscribe [:prop-info])
                     independent-var
                     (independent-var (recompute @(rf/subscribe [:prop-info]))))
         steps 5
         span 1.0
-        current-val (if show-break-even?
+        current-val (if (contains? options :show-break-even)
                         (compute-break-even prop independent-var dependent-var)
                         (independent-var prop))
         points (map #(* (+ 1.0 (- (/ (float %) (float (dec steps)))
@@ -64,10 +65,14 @@
         values (reduce #(conj %1 (recompute (assoc prop independent-var %2))) [] points)
         labels (map #(utils/localize (int %)) points)
         data (clj->js {:labels labels
-                       :datasets [{:data (map dependent-var values)
+                       :datasets [{:data (cond->> (map dependent-var values)
+                                            (contains? options :percent) (map #(* 100.0 %)))
                                    :strokeWidth 2}]})]
     (println points)
     (println labels)
+    (println "Options: " (prn-str options))
+    (println "Opts: " (prn-str opts))
+    (println "Data: " (prn-str data))
     [rn/view
      [rn/text {:style styles/chart-title} title]
      [rn/line-chart {:style {}
@@ -118,11 +123,11 @@
       [ads/banner]
       [break-even-summary @(rf/subscribe [:prop-info])]
       [ads/banner]
-      [chart :rent-per-unit :cash-flow-per-unit "Cash flow by rent" true]
+      [chart :rent-per-unit :cash-flow-per-unit "Cash flow by rent" :show-break-even]
       [ads/banner]
-      [chart :purchase-price :cash-flow-per-unit "Cash flow by purchase price" true]
+      [chart :purchase-price :cash-flow-per-unit "Cash flow by purchase price" :show-break-even]
       [ads/banner]
-      [chart :purchase-price :cocroi "Cash-on-cash ROI by purchase price" false]
+      [chart :purchase-price :cocroi "Cash-on-cash ROI by purchase price" :percent]
       [ads/banner]
       [chart :purchase-price :five-yr-profit "Net future gain by purchase price" false]
       [rn/view {:style {:min-height 630}}]]]]])
