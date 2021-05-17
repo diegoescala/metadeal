@@ -16,7 +16,9 @@
         selected (= (:page page) current-page)]
     [rn/view {:style (merge styles/navbar-option (if selected
                                                      styles/navbar-option-selected {}))}
-     [rn/touchable-highlight {:on-press #(rf/dispatch [:set-current-page (:page page)])}
+     [rn/touchable-highlight {:on-press #(when (not selected)
+                                               (do (rf/dispatch [:set-current-page (:page page)])
+                                                   (rn/request-review)))}
       [rn/view {:style {:flex-direction :column :justify-content :center :align-items :center}}
         [rn/ic {:name (:icon page) :style {:color :white :font-size 30}}]
         [rn/text {:style (merge styles/navbar-text (if selected
