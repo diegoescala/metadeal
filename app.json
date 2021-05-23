@@ -3,7 +3,7 @@
     "name": "metadeal",
     "description": "Rental property deal analyzer",
     "slug": "metadeal",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "privacy": "public",
