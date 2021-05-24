@@ -20,3 +20,4 @@ main.js
 .shadow-cljs/
 build/
 .cpcache/
+.DS_Store
