@@ -1,76 +1,54 @@
-## abakus
+This project was bootstrapped with [Create Expo CLJS App](https://github.com/jgoodhcg/create-expo-cljs-app).
 
-### Usage
+## Developing
+- Find and replace all occurrences of `new-project-name` and `new_project_name` with their kebab and snake case equivalents for your new project
 
-#### Install Expo [XDE and mobile client](https://docs.expo.io/versions/v15.0.0/introduction/installation.html)
-    If you don't want to use XDE (not IDE, it stands for Expo Development Tools), you can use [exp CLI](https://docs.expo.io/versions/v15.0.0/guides/exp-cli.html).
-
-``` shell
-    yarn global add exp
+- Install all deps
+```
+$ yarn
 ```
 
-#### Install [Lein](http://leiningen.org/#install) or [Boot](https://github.com/boot-clj/boot)
-
-#### Install npm modules
-
-``` shell
-    yarn install
+- Start shadow-cljs
+```
+$ shadow-cljs watch app
+;; Wait for first compile to finish or expo gets confused
 ```
 
-#### Signup using exp CLI
-
-``` shell
-    exp signup
+- (In another terminal) Start expo
+```
+$ yarn start
 ```
 
-#### Start the figwheel server and cljs repl
-
-##### leiningen users
-``` shell
-    lein figwheel
+## Production Builds
+```
+$ shadow-cljs release app
+$ expo build
+;; optionally expo publish if a build already exists to OTA update to
 ```
 
-##### boot users
-``` shell
-    boot dev
+## Tests
 
-    ;; then input (cljs-repl) in the connected clojure repl to connect to boot cljs repl
+To run handler and subscriptions tests using `cljs.test`
+```
+$ shadow-cljs watch test
 ```
 
-#### Start Exponent server (Using `exp`)
+You can find an example of using `jest` to test `react-native` apps here.
 
-##### Also connect to Android device
+- https://github.com/mynomoto/reagent-expo/tree/jest-test
 
-``` shell
-    exp start -a --lan
-```
+## Useful resources
+    
+Clojurians Slack http://clojurians.net/.
 
-##### Also connect to iOS Simulator
+CLJS FAQ (for JavaScript developers) https://clojurescript.org/guides/faq-js.
 
-``` shell
-    exp start -i --lan
-```
+Official CLJS API https://cljs.github.io/api/.
 
-### Add new assets or external modules
-1. `require` module:
+Quick reference https://cljs.info/cheatsheet/.
 
-``` clj
-    (def cljs-logo (js/require "./assets/images/cljs.png"))
-    (def FontAwesome (js/require "@expo/vector-icons/FontAwesome"))
-```
-2. Reload simulator or device
+Offline searchable docs https://devdocs.io/.
 
-### Make sure you disable live reload from the Developer Menu, also turn off Hot Module Reload.
-Since Figwheel already does those.
+VSCode plugin https://github.com/BetterThanTomorrow/calva.
 
-### Production build (generates js/externs.js and main.js)
 
-#### leiningen users
-``` shell
-lein prod-build
-```
-
-#### boot users
-``` shell
-boot prod
-```

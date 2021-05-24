@@ -4,14 +4,21 @@
     "description": "Rental property deal analyzer",
     "slug": "metadeal",
     "version": "1.3.4",
+    "entryPoint": "./build/index.js",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "orientation": "portrait",
-    "primaryColor": "#cccccc",
-    "privacy": "public",
-    "icon": "./assets/icons/app.png",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/icons/loading.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#2f043e"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"

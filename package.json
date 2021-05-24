@@ -1,27 +1,43 @@
 {
-  "name": "abakus",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "private": true,
-  "main": "main.js",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "web": "expo start --web",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject"
+  },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.13.0",
+    "@expo/vector-icons": "^12.0.5",
+    "@js-joda/core": "1.12.0",
+    "@js-joda/locale_en-us": "3.1.1",
+    "@js-joda/timezone": "2.2.0",
+    "@react-native-async-storage/async-storage": "^1.15.4",
+    "@react-native-community/masked-view": "0.1.10",
+    "clojure": "^0.0.0",
     "create-react-class": "^15.7.0",
-    "expo": "41.0.0",
-    "expo-ads-admob": "~10.0.4",
-    "expo-cli": "^4.4.7",
-    "expo-constants": "~10.1.3",
-    "expo-linking": "~2.2.3",
-    "expo-store-review": "~4.0.2",
-    "joi": "^17.4.0",
+    "expo": "^41.0.1",
+    "expo-ads-admob": "^10.0.4",
+    "expo-constants": "^10.1.3",
+    "expo-linking": "^2.2.3",
+    "expo-store-review": "^4.0.2",
     "react": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+    "react-dom": "16.13.1",
+    "react-native": "^0.64.1",
     "react-native-chart-kit": "^6.11.0",
+    "react-native-gesture-handler": "~1.8.0",
+    "react-native-paper": "^4.2.0",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-safe-area-context": "3.1.9",
+    "react-native-screens": "~2.15.2",
     "react-native-svg": "^12.1.1",
-    "react-native-svg-charts": "^5.4.0",
-    "react-refresh": "^0.10.0",
-    "rn-fetch-blob": "^0.12.0",
-    "shebang-loader": "^0.0.1"
-  }
+    "react-native-web": "~0.13.12",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
+    "tailwind-rn": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "8.3.0",
+    "shadow-cljs": "^2.11.5"
+  },
+  "private": true
 }
