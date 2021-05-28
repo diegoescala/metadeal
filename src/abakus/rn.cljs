@@ -1,7 +1,7 @@
 (ns abakus.rn
   (:require [reagent.core :as r :refer [atom]]
-            ["@react-navigation/native" :as navi]
-            ["@react-navigation/stack" :as rn-stack]
+            ; ["@react-navigation/native" :as navi]
+            ; ["@react-navigation/stack" :as rn-stack]
             ["expo" :as ex]
             ["expo-constants" :as expo-constants]
             ["react" :as react]
@@ -12,8 +12,7 @@
             ["expo-store-review" :as expostore]
             ["@expo/vector-icons" :as expoicons]
             ["expo-ads-admob" :as expoadmob]
-            ["expo-constants" :as expoconstants]
-            ["tailwind-rn" :default tailwind-rn]))
+            ["expo-constants" :as expoconstants]))
 
 (def ReactNative rna)
 (def svg rnsvg)

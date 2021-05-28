@@ -1,12 +1,12 @@
 (ns app.index
   (:require
-   ["@react-navigation/native" :as navi]
-   ["@react-navigation/stack" :as rn-stack]
-   ["expo" :as ex]
-   ["expo-constants" :as expo-constants]
-   ["react" :as react]
-   ["react-native" :as rna]
-   ["react-native-paper" :as paper]
+   ; ["@react-navigation/native" :as navi]
+   ; ["@react-navigation/stack" :as rn-stack]
+   ; ["expo" :as ex]
+   ; ["expo-constants" :as expo-constants]
+   ; ["react" :as react]
+   ; ["react-native" :as rna]
+   ; ["react-native-paper" :as paper]
    ["tailwind-rn" :default tailwind-rn]
 
    [applied-science.js-interop :as j]
@@ -135,4 +135,10 @@
 (defn init []
   ; (dispatch-sync [:initialize-db])
   ; (dispatch-sync [:set-version version])
+  (dispatch-sync [:initialize-db])
+  (nav/init [{:name "Calculate" :icon "md-calculator" :page [edit-prop/edit-prop {}]}
+             ; {:name "Report" :page [reports/report]}
+             {:name "Properties" :icon "md-home" :page [props/props-list]}
+             {:name "Reports" :icon "md-analytics" :page [reports/report]}])
+  (dispatch [:set-current-page [edit-prop/edit-prop {}]])
   (start))

@@ -59,5 +59,5 @@
              {:name "Reports" :icon "md-analytics" :page [reports/report]}])
   (dispatch [:set-current-page [edit-prop/edit-prop {}]])
   ; (load-or-acquire-uid)
-  (println "Hai")
-  (ocall rn/expo "registerRootComponent" (r/reactify-component app-root))))
+  (println "Hai")))
+  ; (ocall rn/expo "registerRootComponent" (r/reactify-component app-root))))
