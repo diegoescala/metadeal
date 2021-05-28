@@ -1,13 +1,13 @@
 (ns app.index
   (:require
-   ; ["@react-navigation/native" :as navi]
-   ; ["@react-navigation/stack" :as rn-stack]
-   ; ["expo" :as ex]
-   ; ["expo-constants" :as expo-constants]
-   ; ["react" :as react]
-   ; ["react-native" :as rna]
-   ; ["react-native-paper" :as paper]
-   ; ["tailwind-rn" :default tailwind-rn]
+   ["@react-navigation/native" :as navi]
+   ["@react-navigation/stack" :as rn-stack]
+   ["expo" :as ex]
+   ["expo-constants" :as expo-constants]
+   ["react" :as react]
+   ["react-native" :as rna]
+   ["react-native-paper" :as paper]
+   ["tailwind-rn" :default tailwind-rn]
 
    [applied-science.js-interop :as j]
    [reagent.core :as r]

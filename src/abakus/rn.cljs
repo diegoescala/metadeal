@@ -1,9 +1,23 @@
 (ns abakus.rn
-  (:require [reagent.core :as r :refer [atom]]))
+  (:require [reagent.core :as r :refer [atom]]
+            ["@react-navigation/native" :as navi]
+            ["@react-navigation/stack" :as rn-stack]
+            ["expo" :as ex]
+            ["expo-constants" :as expo-constants]
+            ["react" :as react]
+            ["react-native" :as rna]
+            ["react-native-paper" :as paper]
+            ["react-native-svg" :as rnsvg]
+            ["react-native-chart-kit" :as rncharts]
+            ["expo-store-review" :as expostore]
+            ["@expo/vector-icons" :as expoicons]
+            ["expo-ads-admob" :as expoadmob]
+            ["expo-constants" :as expoconstants]
+            ["tailwind-rn" :default tailwind-rn]))
 
-(def ReactNative (js/require "react-native"))
-(def svg (js/require "react-native-svg"))
-(def Charts (js/require "react-native-chart-kit"))
+(def ReactNative rna)
+(def svg rnsvg)
+(def Charts rncharts)
 
 (def line-chart (r/adapt-react-class (.-LineChart Charts)))
 
@@ -12,16 +26,16 @@
 
 (def storage (.-default (js/require "@react-native-async-storage/async-storage")))
 
-(def StoreReview (js/require "expo-store-review"))
+(def StoreReview expostore)
 
-(def expo (js/require "expo"))
-(def AtExpo (js/require "@expo/vector-icons"))
+(def expo ex)
+(def AtExpo expoicons)
 (def ionicons (.-Ionicons AtExpo))
 (def ic (r/adapt-react-class ionicons))
 
 ;; ADS
-(def AdMob (js/require "expo-ads-admob"))
-(def Constants  (js/require "expo-constants"))
+(def AdMob expoadmob)
+(def Constants expoconstants)
 (def admob-banner (r/adapt-react-class (.-AdMobBanner AdMob)))
 
 (def text (r/adapt-react-class (.-Text ReactNative)))
