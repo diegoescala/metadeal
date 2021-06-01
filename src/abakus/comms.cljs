@@ -98,7 +98,9 @@
 
 (defn update-prop
   [prop]
-  (query-api-endpoint http/post "propupdate" {:prop (prn-str prop)} #()))
+  (let [can-track @(rf/subscribe [:can-track])]
+    (when can-track
+      (query-api-endpoint http/post "propupdate" {:prop (prn-str prop)} #()))))
 
 (defn init
   []

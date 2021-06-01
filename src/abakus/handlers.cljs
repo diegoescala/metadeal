@@ -60,3 +60,8 @@
  :set-uid
  (fn [db [_ uid]]
    (assoc db :uid uid)))
+
+(reg-event-db
+ :set-can-track
+ (fn [db [_ can?]]
+   (assoc db :can-track can?)))

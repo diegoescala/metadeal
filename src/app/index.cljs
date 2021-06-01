@@ -82,6 +82,7 @@
 (defn root []
   (do
     (.setItem rn/storage "testkey" "keytest")
+    (rn/init-tracking-transparency)
     ; (-> (.getItem rn/storage "props") (.then #(println (str "Val: " %))))
     [rn/view {:style styles/app-main}
      [rn/view {:style {:flex 5}}

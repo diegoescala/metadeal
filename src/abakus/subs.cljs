@@ -10,3 +10,4 @@
 (reg-sub :prop-info (fn [db _] (:prop-info db)))
 (reg-sub :properties (fn [db _] (:properties db)))
 (reg-sub :uid       (fn [db _] (:uid db)))
+(reg-sub :can-track (fn [db _] (:can-track db)))

@@ -12,7 +12,9 @@
             ["expo-store-review" :as expostore]
             ["@expo/vector-icons" :as expoicons]
             ["expo-ads-admob" :as expoadmob]
-            ["expo-constants" :as expoconstants]))
+            ["expo-constants" :as expoconstants]
+            ["expo-tracking-transparency" :as tracking]
+            [re-frame.core :as rf]))
 
 (def ReactNative rna)
 (def svg rnsvg)
@@ -64,3 +66,15 @@
   [thickness margin-top margin-bottom]
   [view {:style {:background-color "#fff" :min-height thickness :margin-top margin-top :margin-bottom margin-bottom}}
    [text {:style {:font-size 1}} " "]])
+
+(defn init-tracking-transparency
+  []
+  (-> (tracking/getTrackingPermissionsAsync)
+      (.then #(let [permissions (js->clj %)
+                    granted? (get permissions "granted")
+                    can-ask? (get permissions "canAskAgain")]
+                ; (js/console.log "Status: " %)
+                ; (println (prn-str permissions))
+                (rf/dispatch [:set-can-track granted?])
+                (when (and (not granted?) can-ask?)
+                  (tracking/requestTrackingPermissionsAsync))))))
