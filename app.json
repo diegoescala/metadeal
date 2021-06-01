@@ -1,30 +1,42 @@
 {
   "expo": {
-    "name": "expoapp",
-    "slug": "expoapp",
+    "name": "metadeal",
+    "description": "Rental property deal analyzer",
+    "slug": "metadeal",
+    "sdkVersion": "41.0.0",
+    "version": "1.4.0",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
     "privacy": "public",
     "entryPoint": "./build/index.js",
+    "icon": "./assets/icon.png",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "0.0.1",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
+      "backgroundColor": "#2f043e"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "appStoreUrl": "https://apps.apple.com/us/app/metadeal-real-estate-analyzer/id1506517876",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-7070415808259435~8428069021"
+      },
+      "infoPlist": {
+        "SKAdNetworkIdentifier": "cstr6suwn9.skadnetwork"
+      },
+      "supportsTablet": true,
+      "buildNumber": "1",
+      "bundleIdentifier": "com.diegoescala.abakus"
     }
   }
 }
