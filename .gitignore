@@ -21,3 +21,4 @@ main.js
 build/
 .cpcache/
 .DS_Store
+*.log

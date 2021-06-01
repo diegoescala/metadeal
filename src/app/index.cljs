@@ -8,6 +8,7 @@
    ; ["react-native" :as rna]
    ; ["react-native-paper" :as paper]
    ["tailwind-rn" :default tailwind-rn]
+   ["react-native" :as rna]
 
    [applied-science.js-interop :as j]
    [reagent.core :as r]
@@ -136,6 +137,10 @@
 (defn init []
   ; (dispatch-sync [:initialize-db])
   ; (dispatch-sync [:set-version version])
+  (let [logbox (.-LogBox rna)]
+    (.ignoreLogs logbox (clj->js ["Warning: ..."]))
+    (.ignoreAllLogs logbox))
+  
   (dispatch-sync [:initialize-db])
   (nav/init [{:name "Calculate" :icon "md-calculator" :page [edit-prop/edit-prop {}]}
              ; {:name "Report" :page [reports/report]}
