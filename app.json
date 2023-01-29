@@ -32,7 +32,7 @@
         "googleMobileAdsAppId": "ca-app-pub-7070415808259435~8428069021"
       },
       "infoPlist": {
-        "SKAdNetworkIdentifier": "cstr6suwn9.skadnetwork"
+        "SKAdNetworkIdentifier": "cstr6suwn9.skadnetwork",
         "NSUserTrackingUsageDescription": "This app tracks how users navigate around the various functions of the app, so that we can focus on improving our users' experience."
       },
       "supportsTablet": true,
