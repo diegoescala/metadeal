@@ -10,7 +10,7 @@
          reagent/reagent                     {:mvn/version "1.0.0-alpha2"}
          re-frame/re-frame                   {:mvn/version "1.1.1"}
          tick/tick                           {:mvn/version "0.4.27-alpha"}
-         thheller/shadow-cljs                {:mvn/version "2.11.1"}
+         thheller/shadow-cljs                {:mvn/version "2.23.3"}
          cljs-http/cljs-http                 {:mvn/version "0.1.46"}
          com.cognitect/transit-cljs          {:mvn/version "0.8.256"}
          alandipert/storage-atom             {:mvn/version "2.0.1"}}}

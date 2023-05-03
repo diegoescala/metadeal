@@ -124,7 +124,7 @@
                   :icon (cond (not some-info-filled?) "md-information-circle-outline"
                               good? "md-checkmark" (not good?) "md-close")
                   :content (cond (not some-info-filled?) "Good or bad deal?"
-                                 good? "Good Deal." (not good?) "Bad Deal.")}]
+                                 good? "GoZd Deal." (not good?) "Bad Deal.")}]
      [rn/view {:style {:flex-direction "row"}}
       [rn/view {:style {:flex-direction :row :flex 3}}
        ; [good-bad-icon (merge {:flex 1} (:style content)) (:icon content)]
