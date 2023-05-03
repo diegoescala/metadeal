@@ -11,7 +11,8 @@
             ["react-native-chart-kit" :as rncharts]
             ["expo-store-review" :as expostore]
             ["@expo/vector-icons" :as expoicons]
-            ["expo-ads-admob" :as expoadmob]
+            ;["expo-ads-admob" :as expoadmob]
+            ["react-native-google-mobile-ads" :as googads]
             ["expo-constants" :as expoconstants]
             ["expo-tracking-transparency" :as tracking]
             [re-frame.core :as rf]))
@@ -35,9 +36,14 @@
 (def ic (r/adapt-react-class ionicons))
 
 ;; ADS
-(def AdMob expoadmob)
+;(def AdMob expoadmob)
 (def Constants expoconstants)
-(def admob-banner (r/adapt-react-class (.-AdMobBanner AdMob)))
+;(def admob-banner (r/adapt-react-class (.-AdMobBanner AdMob)))
+(def banner-ad (r/adapt-react-class (.-BannerAd googads)))
+(def banner-ad-size (.-BannerAdSize googads))
+(def ad-test-ids (.-TestIds googads))
+
+
 
 (def text (r/adapt-react-class (.-Text ReactNative)))
 (def view (r/adapt-react-class (.-View ReactNative)))

@@ -37,6 +37,13 @@
       "supportsTablet": true,
       "buildNumber": "1",
       "bundleIdentifier": "com.diegoescala.abakus"
+    },
+    "android": {
+      "package": "com.diegoescala.abakus"
     }
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": "",
+    "ios_app_id": "ca-app-pub-7070415808259435/9426769000"
   }
 }

@@ -20,11 +20,18 @@
 
 (println (str "Platform: " platform ", Ad ID: " ad-unit-id))
 
+;(defn banner-admob
+;  []
+;  [rn/view {:style styles/centered}
+;;   (when (not= platform :android)
+;     ; [rn/text {:style styles/summary-title} (str "Ad space for ") ad-unit-id]
+;     [rn/admob-banner {:bannerSize :banner :adUnitID ad-unit-id
+;                       :servePersonalizedAds true
+;                       :onDidFailToReceiveAdWithError #(println "Ad recv error")))
+
+
 (defn banner
   []
-  [rn/view {:style styles/centered}
-;   (when (not= platform :android)
-     ; [rn/text {:style styles/summary-title} (str "Ad space for ") ad-unit-id]
-     [rn/admob-banner {:bannerSize :banner :adUnitID ad-unit-id
-                       :servePersonalizedAds true
-                       :onDidFailToReceiveAdWithError #(println "Ad recv error")}]])
+  [rn/view {:style styles/centered}])
+    ;[rn/banner-ad {:unitId ad-unit-id :size (.-FULL_BANNER rn/banner-ad-size)
+     ;              :requestOptions {:requestNonPersonalizedAdsOnly true}}])

@@ -1,10 +1,9 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --dev-client",
     "web": "expo start --web",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "eject": "expo eject"
   },
   "dependencies": {
@@ -19,7 +18,6 @@
     "clojure": "^0.0.0",
     "create-react-class": "^15.7.0",
     "expo": "^48.0.0",
-    "expo-ads-admob": "~13.0.0",
     "expo-constants": "~14.2.1",
     "expo-linking": "~4.0.1",
     "expo-store-review": "~6.2.1",
@@ -37,11 +35,16 @@
     "react-native-svg": "13.4.0",
     "react-native-web": "~0.18.11",
     "reanimated-bottom-sheet": "^1.0.0-alpha.22",
-    "tailwind-rn": "^3.0.1"
+    "tailwind-rn": "^3.0.1",
+    "expo-splash-screen": "~0.18.2",
+    "expo-status-bar": "~1.4.4"
   },
   "devDependencies": {
     "babel-preset-expo": "^9.3.0",
-    "shadow-cljs": "^2.14.1"
+    "shadow-cljs": "^2.14.1",
+    "@babel/core": "^7.20.0"
   },
-  "private": true
+  "private": true,
+  "name": "abakus",
+  "version": "1.0.0"
 }
