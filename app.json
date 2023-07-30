@@ -7,7 +7,7 @@
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "privacy": "public",
-    "entryPoint": "./build/index.js",
+    "main": "./build/index.js",
     "icon": "./assets/icon.png",
     "platforms": [
       "ios",

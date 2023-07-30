@@ -20,11 +20,13 @@
     "expo": "^48.0.0",
     "expo-constants": "~14.2.1",
     "expo-linking": "~4.0.1",
+    "expo-splash-screen": "~0.18.2",
+    "expo-status-bar": "~1.4.4",
     "expo-store-review": "~6.2.1",
     "expo-tracking-transparency": "~3.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.71.7",
+    "react-native": "0.71.8",
     "react-native-chart-kit": "^6.11.0",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-google-mobile-ads": "^10.3.1",
@@ -35,14 +37,12 @@
     "react-native-svg": "13.4.0",
     "react-native-web": "~0.18.11",
     "reanimated-bottom-sheet": "^1.0.0-alpha.22",
-    "tailwind-rn": "^3.0.1",
-    "expo-splash-screen": "~0.18.2",
-    "expo-status-bar": "~1.4.4"
+    "tailwind-rn": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.0",
     "babel-preset-expo": "^9.3.0",
-    "shadow-cljs": "^2.14.1",
-    "@babel/core": "^7.20.0"
+    "shadow-cljs": "^2.14.1"
   },
   "private": true,
   "name": "abakus",
