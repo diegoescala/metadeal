@@ -7,7 +7,6 @@
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "privacy": "public",
-    "main": "./build/index.js",
     "icon": "./assets/icon.png",
     "platforms": [
       "ios",
@@ -40,7 +39,10 @@
     },
     "android": {
       "package": "com.diegoescala.abakus"
-    }
+    },
+    "plugins": [
+      "expo-tracking-transparency"
+    ]
   },
   "react-native-google-mobile-ads": {
     "android_app_id": "",

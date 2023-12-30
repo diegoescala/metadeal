@@ -19,7 +19,7 @@
 
 (defn app-root []
   (do
-    (.setItem rn/storage "testkey" "keytest")
+    (.setItem rn/storage "tesenoienoetkey" "keytest")
     ; (-> (.getItem rn/storage "props") (.then #(println (str "Val: " %))))
     [rn/view {:style styles/app-main}
      [rn/view {:style {:flex 5}}
