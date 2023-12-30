@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$react_native_paper.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAA,CAAKC,OAAL,CAAa,0CAAb,CAAA;AACAD,IAAA,CAAKC,OAAL,CAAa,iDAAb,CAAA;AACAC,MAAA,CAAOC,EAAP,CAAUC,IAAV,CAAeC,yBAAf,GAA2CC,OAAA,CAAQ,oBAAR,CAA3C;AACAC,+CAAA,CAAgDC,OAAhD,GAA0DN,MAA1D,CAAiEC,EAAjE,CAAoEC,IAApE,CAAyEC,yBAAzE;;",
+"sources":["shadow.js.shim.module$react_native_paper.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$react_native_paper\");\ngoog.provide(\"module$shadow_js_shim_module$react_native_paper\");\nshadow.js.shim.module$react_native_paper = require(\"react-native-paper\");\nmodule$shadow_js_shim_module$react_native_paper.default = shadow.js.shim.module$react_native_paper;\n"],
+"names":["goog","provide","shadow","js","shim","module$react_native_paper","require","module$shadow_js_shim_module$react_native_paper","default"]
+}

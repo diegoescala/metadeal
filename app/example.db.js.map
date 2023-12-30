@@ -1,0 +1,1 @@
+{"version":3,"sources":["example/db.cljs"],"mappings":";AAGA,GAAA,QAAAA,oCAAAC,uCAAAC;AAAA;AAAA,AAAA,oBAAA,2CAAA,0DAAA,IAAA,8EAAA,3MAASC","names":["js/example","js/example.db","js/example.db.app-db","example.db/app-db"],"sourcesContent":["(ns example.db)\r\n\r\n;; initial state of app-db\r\n(defonce app-db {:counter 0\r\n                 :counter-tappable? true})\r\n"]}

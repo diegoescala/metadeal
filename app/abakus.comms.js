@@ -1,0 +1,322 @@
+goog.provide('abakus.comms');
+abakus.comms.url = "http://api.metadealapp.com:8082/";
+abakus.comms.read_json = (function abakus$comms$read_json(data){
+var r = cognitect.transit.reader.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"json","json",1279968570));
+return cognitect.transit.read(r,data);
+});
+abakus.comms.write_json = (function abakus$comms$write_json(data){
+var w = cognitect.transit.writer.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"json","json",1279968570));
+return cognitect.transit.write(w,data);
+});
+abakus.comms.jsonify_map = (function abakus$comms$jsonify_map(data_map){
+return JSON.stringify(cljs.core.clj__GT_js(data_map));
+});
+abakus.comms.query_api_endpoint = (function abakus$comms$query_api_endpoint(method,endpoint,params,handler){
+var c__13740__auto__ = cljs.core.async.chan.cljs$core$IFn$_invoke$arity$1((1));
+cljs.core.async.impl.dispatch.run((function (){
+var f__13741__auto__ = (function (){var switch__13628__auto__ = (function (state_16314){
+var state_val_16315 = (state_16314[(1)]);
+if((state_val_16315 === (1))){
+var inst_16284 = [new cljs.core.Keyword(null,"uid","uid",-1447769400)];
+var inst_16286 = cljs.core.PersistentVector.EMPTY_NODE;
+var inst_16287 = [new cljs.core.Keyword(null,"uid","uid",-1447769400)];
+var inst_16288 = (new cljs.core.PersistentVector(null,1,(5),inst_16286,inst_16287,null));
+var inst_16289 = re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(inst_16288);
+var inst_16290 = cljs.core.deref(inst_16289);
+var inst_16291 = [inst_16290];
+var inst_16292 = cljs.core.PersistentHashMap.fromArrays(inst_16284,inst_16291);
+var inst_16293 = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([inst_16292,params], 0));
+var inst_16295 = [abakus.comms.url,cljs.core.str.cljs$core$IFn$_invoke$arity$1(endpoint)].join('');
+var inst_16296 = [new cljs.core.Keyword(null,"form-params","form-params",1884296467)];
+var inst_16297 = [inst_16293];
+var inst_16298 = cljs.core.PersistentHashMap.fromArrays(inst_16296,inst_16297);
+var inst_16299 = (method.cljs$core$IFn$_invoke$arity$2 ? method.cljs$core$IFn$_invoke$arity$2(inst_16295,inst_16298) : method.call(null,inst_16295,inst_16298));
+var state_16314__$1 = state_16314;
+return cljs.core.async.impl.ioc_helpers.take_BANG_(state_16314__$1,(2),inst_16299);
+} else {
+if((state_val_16315 === (2))){
+var inst_16301 = (state_16314[(7)]);
+var inst_16301__$1 = (state_16314[(2)]);
+var inst_16302 = new cljs.core.Keyword(null,"status","status",-1997798413).cljs$core$IFn$_invoke$arity$1(inst_16301__$1);
+var inst_16303 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((401),inst_16302);
+var state_16314__$1 = (function (){var statearr_16319 = state_16314;
+(statearr_16319[(7)] = inst_16301__$1);
+
+return statearr_16319;
+})();
+if(inst_16303){
+var statearr_16320_16419 = state_16314__$1;
+(statearr_16320_16419[(1)] = (3));
+
+} else {
+var statearr_16321_16421 = state_16314__$1;
+(statearr_16321_16421[(1)] = (4));
+
+}
+
+return new cljs.core.Keyword(null,"recur","recur",-437573268);
+} else {
+if((state_val_16315 === (3))){
+var inst_16305 = cljs.core.PersistentVector.EMPTY_NODE;
+var inst_16306 = [new cljs.core.Keyword(null,"set-logged-in","set-logged-in",-1688489248),false];
+var inst_16307 = (new cljs.core.PersistentVector(null,2,(5),inst_16305,inst_16306,null));
+var inst_16308 = re_frame.core.dispatch(inst_16307);
+var state_16314__$1 = state_16314;
+var statearr_16322_16424 = state_16314__$1;
+(statearr_16322_16424[(2)] = inst_16308);
+
+(statearr_16322_16424[(1)] = (5));
+
+
+return new cljs.core.Keyword(null,"recur","recur",-437573268);
+} else {
+if((state_val_16315 === (4))){
+var state_16314__$1 = state_16314;
+var statearr_16323_16427 = state_16314__$1;
+(statearr_16323_16427[(2)] = null);
+
+(statearr_16323_16427[(1)] = (5));
+
+
+return new cljs.core.Keyword(null,"recur","recur",-437573268);
+} else {
+if((state_val_16315 === (5))){
+var inst_16301 = (state_16314[(7)]);
+var inst_16311 = (state_16314[(2)]);
+var inst_16312 = (handler.cljs$core$IFn$_invoke$arity$1 ? handler.cljs$core$IFn$_invoke$arity$1(inst_16301) : handler.call(null,inst_16301));
+var state_16314__$1 = (function (){var statearr_16324 = state_16314;
+(statearr_16324[(8)] = inst_16311);
+
+return statearr_16324;
+})();
+return cljs.core.async.impl.ioc_helpers.return_chan(state_16314__$1,inst_16312);
+} else {
+return null;
+}
+}
+}
+}
+}
+});
+return (function() {
+var abakus$comms$query_api_endpoint_$_state_machine__13629__auto__ = null;
+var abakus$comms$query_api_endpoint_$_state_machine__13629__auto____0 = (function (){
+var statearr_16325 = [null,null,null,null,null,null,null,null,null];
+(statearr_16325[(0)] = abakus$comms$query_api_endpoint_$_state_machine__13629__auto__);
+
+(statearr_16325[(1)] = (1));
+
+return statearr_16325;
+});
+var abakus$comms$query_api_endpoint_$_state_machine__13629__auto____1 = (function (state_16314){
+while(true){
+var ret_value__13630__auto__ = (function (){try{while(true){
+var result__13631__auto__ = switch__13628__auto__(state_16314);
+if(cljs.core.keyword_identical_QMARK_(result__13631__auto__,new cljs.core.Keyword(null,"recur","recur",-437573268))){
+continue;
+} else {
+return result__13631__auto__;
+}
+break;
+}
+}catch (e16326){var ex__13632__auto__ = e16326;
+var statearr_16327_16432 = state_16314;
+(statearr_16327_16432[(2)] = ex__13632__auto__);
+
+
+if(cljs.core.seq((state_16314[(4)]))){
+var statearr_16328_16434 = state_16314;
+(statearr_16328_16434[(1)] = cljs.core.first((state_16314[(4)])));
+
+} else {
+throw ex__13632__auto__;
+}
+
+return new cljs.core.Keyword(null,"recur","recur",-437573268);
+}})();
+if(cljs.core.keyword_identical_QMARK_(ret_value__13630__auto__,new cljs.core.Keyword(null,"recur","recur",-437573268))){
+var G__16435 = state_16314;
+state_16314 = G__16435;
+continue;
+} else {
+return ret_value__13630__auto__;
+}
+break;
+}
+});
+abakus$comms$query_api_endpoint_$_state_machine__13629__auto__ = function(state_16314){
+switch(arguments.length){
+case 0:
+return abakus$comms$query_api_endpoint_$_state_machine__13629__auto____0.call(this);
+case 1:
+return abakus$comms$query_api_endpoint_$_state_machine__13629__auto____1.call(this,state_16314);
+}
+throw(new Error('Invalid arity: ' + arguments.length));
+};
+abakus$comms$query_api_endpoint_$_state_machine__13629__auto__.cljs$core$IFn$_invoke$arity$0 = abakus$comms$query_api_endpoint_$_state_machine__13629__auto____0;
+abakus$comms$query_api_endpoint_$_state_machine__13629__auto__.cljs$core$IFn$_invoke$arity$1 = abakus$comms$query_api_endpoint_$_state_machine__13629__auto____1;
+return abakus$comms$query_api_endpoint_$_state_machine__13629__auto__;
+})()
+})();
+var state__13742__auto__ = (function (){var statearr_16329 = f__13741__auto__();
+(statearr_16329[(6)] = c__13740__auto__);
+
+return statearr_16329;
+})();
+return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped(state__13742__auto__);
+}));
+
+return c__13740__auto__;
+});
+abakus.comms.handle_authentication = (function abakus$comms$handle_authentication(response){
+var login_result = (function (){var G__16330 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(response,new cljs.core.Keyword(null,"status","status",-1997798413));
+switch (G__16330) {
+case (200):
+return true;
+
+break;
+case (401):
+return false;
+
+break;
+default:
+return false;
+
+}
+})();
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(login_result,true)){
+var response_body_16439 = abakus.comms.read_json(cljs.core.get.cljs$core$IFn$_invoke$arity$2(response,new cljs.core.Keyword(null,"body","body",-2049205669)));
+var user_16440 = abakus.types.__GT_User(cljs.core.get.cljs$core$IFn$_invoke$arity$2(response_body_16439,"firstname"),cljs.core.get.cljs$core$IFn$_invoke$arity$2(response_body_16439,"lastname"),cljs.core.get.cljs$core$IFn$_invoke$arity$2(response_body_16439,"usertype"),cljs.core.get.cljs$core$IFn$_invoke$arity$2(abakus.comms.read_json(new cljs.core.Keyword(null,"body","body",-2049205669).cljs$core$IFn$_invoke$arity$1(response)),"token"));
+re_frame.core.dispatch(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"set-user","set-user",444398487),user_16440], null));
+} else {
+}
+
+re_frame.core.dispatch(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"set-logged-in","set-logged-in",-1688489248),login_result], null));
+
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(login_result,false)){
+return re_frame.core.dispatch(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"set-login-errors","set-login-errors",568395191),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Invalid username or password"], null)], null));
+} else {
+return null;
+}
+});
+abakus.comms.attempt_login_BANG_ = (function abakus$comms$attempt_login_BANG_(var_args){
+var args__5775__auto__ = [];
+var len__5769__auto___16447 = arguments.length;
+var i__5770__auto___16448 = (0);
+while(true){
+if((i__5770__auto___16448 < len__5769__auto___16447)){
+args__5775__auto__.push((arguments[i__5770__auto___16448]));
+
+var G__16449 = (i__5770__auto___16448 + (1));
+i__5770__auto___16448 = G__16449;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5776__auto__ = ((((2) < args__5775__auto__.length))?(new cljs.core.IndexedSeq(args__5775__auto__.slice((2)),(0),null)):null);
+return abakus.comms.attempt_login_BANG_.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__5776__auto__);
+});
+
+(abakus.comms.attempt_login_BANG_.cljs$core$IFn$_invoke$arity$variadic = (function (email,password,custom_handler){
+return abakus.comms.query_api_endpoint(cljs_http.client.post,"authenticate",new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"basic-auth","basic-auth",-673163332),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"username","username",1605666410),email,new cljs.core.Keyword(null,"password","password",417022471),password], null),new cljs.core.Keyword(null,"with-credentials?","with-credentials?",-1773202222),true], null),(function (p1__16359_SHARP_){
+abakus.comms.handle_authentication(p1__16359_SHARP_);
+
+if((!(cljs.core.empty_QMARK_(custom_handler)))){
+var fexpr__16373 = cljs.core.first(custom_handler);
+return (fexpr__16373.cljs$core$IFn$_invoke$arity$0 ? fexpr__16373.cljs$core$IFn$_invoke$arity$0() : fexpr__16373.call(null));
+} else {
+return null;
+}
+}));
+}));
+
+(abakus.comms.attempt_login_BANG_.cljs$lang$maxFixedArity = (2));
+
+/** @this {Function} */
+(abakus.comms.attempt_login_BANG_.cljs$lang$applyTo = (function (seq16361){
+var G__16362 = cljs.core.first(seq16361);
+var seq16361__$1 = cljs.core.next(seq16361);
+var G__16363 = cljs.core.first(seq16361__$1);
+var seq16361__$2 = cljs.core.next(seq16361__$1);
+var self__5754__auto__ = this;
+return self__5754__auto__.cljs$core$IFn$_invoke$arity$variadic(G__16362,G__16363,seq16361__$2);
+}));
+
+/**
+ * Build the file-contents into a Blob and return it
+ *   Optionally set the content-type via a string
+ */
+abakus.comms.blob = (function abakus$comms$blob(var_args){
+var G__16379 = arguments.length;
+switch (G__16379) {
+case 1:
+return abakus.comms.blob.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
+
+break;
+case 2:
+return abakus.comms.blob.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
+
+break;
+default:
+throw (new Error(["Invalid arity: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(arguments.length)].join('')));
+
+}
+});
+
+(abakus.comms.blob.cljs$core$IFn$_invoke$arity$1 = (function (file_parts){
+return (new Blob(cljs.core.clj__GT_js(file_parts),(function (){var obj16384 = ({"type":"application/octet-stream"});
+return obj16384;
+})()));
+}));
+
+(abakus.comms.blob.cljs$core$IFn$_invoke$arity$2 = (function (file_parts,content_type_str){
+return (new Blob(cljs.core.clj__GT_js(file_parts),(function (){var obj16387 = ({"type":content_type_str});
+return obj16387;
+})()));
+}));
+
+(abakus.comms.blob.cljs$lang$maxFixedArity = 2);
+
+abakus.comms.pre_authenticate_BANG_ = (function abakus$comms$pre_authenticate_BANG_(){
+return abakus.comms.query_api_endpoint(cljs_http.client.post,"cookieauthenticate",new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"with-credentials?","with-credentials?",-1773202222),true], null),abakus.comms.handle_authentication);
+});
+abakus.comms.upload_file = (function abakus$comms$upload_file(client,file_data,handler){
+return abakus.comms.query_api_endpoint(cljs_http.client.post,"file",new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"multipart-params","multipart-params",-1033508707),new cljs.core.PersistentArrayMap(null, 2, ["file",abakus.comms.blob.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [file_data], null)),"client",client], null)], null),handler);
+});
+abakus.comms.get_new_uid = (function abakus$comms$get_new_uid(callback){
+return abakus.comms.query_api_endpoint(cljs_http.client.get,"uid",cljs.core.PersistentArrayMap.EMPTY,(function (p1__16395_SHARP_){
+var uid = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$1(JSON.parse(new cljs.core.Keyword(null,"body","body",-2049205669).cljs$core$IFn$_invoke$arity$1(p1__16395_SHARP_))),"uid");
+return (callback.cljs$core$IFn$_invoke$arity$1 ? callback.cljs$core$IFn$_invoke$arity$1(uid) : callback.call(null,uid));
+}));
+});
+abakus.comms.update_prop = (function abakus$comms$update_prop(prop){
+var can_track = cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"can-track","can-track",1973498886)], null)));
+if(cljs.core.truth_(can_track)){
+return abakus.comms.query_api_endpoint(cljs_http.client.post,"propupdate",new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"prop","prop",-515168332),cljs.core.prn_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([prop], 0))], null),(function (){
+return cljs.core.List.EMPTY;
+}));
+} else {
+return null;
+}
+});
+abakus.comms.init = (function abakus$comms$init(){
+re_frame.core.reg_cofx(new cljs.core.Keyword(null,"authenticate","authenticate",743951231),(function (cofx,event){
+var creds = cljs.core.second(new cljs.core.Keyword(null,"event","event",301435442).cljs$core$IFn$_invoke$arity$1(cofx));
+return abakus.comms.attempt_login_BANG_(new cljs.core.Keyword(null,"email","email",1415816706).cljs$core$IFn$_invoke$arity$1(creds),new cljs.core.Keyword(null,"password","password",417022471).cljs$core$IFn$_invoke$arity$1(creds));
+}));
+
+re_frame.core.reg_cofx(new cljs.core.Keyword(null,"generate-svg","generate-svg",-1703084731),(function (cofx,event){
+return abakus.comms.query_api_endpoint(cljs_http.client.get,"svg",cljs.core.PersistentArrayMap.EMPTY,(function (p1__16402_SHARP_){
+return console.log(cljs.core.prn_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([p1__16402_SHARP_], 0)));
+}));
+}));
+
+return re_frame.core.reg_cofx(new cljs.core.Keyword(null,"upload-file","upload-file",1968287526),(function (cofx,event){
+var file_info = cljs.core.second(new cljs.core.Keyword(null,"event","event",301435442).cljs$core$IFn$_invoke$arity$1(cofx));
+return abakus.comms.upload_file(new cljs.core.Keyword(null,"client","client",-1323448117).cljs$core$IFn$_invoke$arity$1(file_info),new cljs.core.Keyword(null,"file","file",-1269645878).cljs$core$IFn$_invoke$arity$1(file_info),new cljs.core.Keyword(null,"handler","handler",-195596612).cljs$core$IFn$_invoke$arity$1(file_info));
+}));
+});
+
+//# sourceMappingURL=abakus.comms.js.map

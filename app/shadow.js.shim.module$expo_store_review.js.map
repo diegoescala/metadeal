@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$expo_store_review.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAA,CAAKC,OAAL,CAAa,yCAAb,CAAA;AACAD,IAAA,CAAKC,OAAL,CAAa,gDAAb,CAAA;AACAC,MAAA,CAAOC,EAAP,CAAUC,IAAV,CAAeC,wBAAf,GAA0CC,OAAA,CAAQ,mBAAR,CAA1C;AACAC,8CAAA,CAA+CC,OAA/C,GAAyDN,MAAzD,CAAgEC,EAAhE,CAAmEC,IAAnE,CAAwEC,wBAAxE;;",
+"sources":["shadow.js.shim.module$expo_store_review.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$expo_store_review\");\ngoog.provide(\"module$shadow_js_shim_module$expo_store_review\");\nshadow.js.shim.module$expo_store_review = require(\"expo-store-review\");\nmodule$shadow_js_shim_module$expo_store_review.default = shadow.js.shim.module$expo_store_review;\n"],
+"names":["goog","provide","shadow","js","shim","module$expo_store_review","require","module$shadow_js_shim_module$expo_store_review","default"]
+}

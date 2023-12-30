@@ -1,51 +1,29 @@
 {
   "expo": {
     "name": "metadeal",
-    "description": "Rental property deal analyzer",
-    "slug": "metadeal",
-    "version": "1.4.1",
-    "orientation": "portrait",
-    "primaryColor": "#cccccc",
+    "slug": "reagent-expo",
     "privacy": "public",
-    "icon": "./assets/icon.png",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#2f043e"
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "appStoreUrl": "https://apps.apple.com/us/app/metadeal-real-estate-analyzer/id1506517876",
-      "config": {
-        "googleMobileAdsAppId": "ca-app-pub-7070415808259435~8428069021"
-      },
-      "infoPlist": {
-        "SKAdNetworkIdentifier": "cstr6suwn9.skadnetwork",
-        "NSUserTrackingUsageDescription": "This app tracks how users navigate around the various functions of the app, so that we can focus on improving our users' experience."
-      },
-      "supportsTablet": true,
-      "buildNumber": "1",
-      "bundleIdentifier": "com.diegoescala.abakus"
-    },
-    "android": {
-      "package": "com.diegoescala.abakus"
-    },
-    "plugins": [
-      "expo-tracking-transparency"
-    ]
-  },
-  "react-native-google-mobile-ads": {
-    "android_app_id": "",
-    "ios_app_id": "ca-app-pub-7070415808259435/9426769000"
+      "supportsTablet": true
+    }
   }
 }

@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$expo_tracking_transparency.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAA,CAAKC,OAAL,CAAa,kDAAb,CAAA;AACAD,IAAA,CAAKC,OAAL,CAAa,yDAAb,CAAA;AACAC,MAAA,CAAOC,EAAP,CAAUC,IAAV,CAAeC,iCAAf,GAAmDC,OAAA,CAAQ,4BAAR,CAAnD;AACAC,uDAAA,CAAwDC,OAAxD,GAAkEN,MAAlE,CAAyEC,EAAzE,CAA4EC,IAA5E,CAAiFC,iCAAjF;;",
+"sources":["shadow.js.shim.module$expo_tracking_transparency.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$expo_tracking_transparency\");\ngoog.provide(\"module$shadow_js_shim_module$expo_tracking_transparency\");\nshadow.js.shim.module$expo_tracking_transparency = require(\"expo-tracking-transparency\");\nmodule$shadow_js_shim_module$expo_tracking_transparency.default = shadow.js.shim.module$expo_tracking_transparency;\n"],
+"names":["goog","provide","shadow","js","shim","module$expo_tracking_transparency","require","module$shadow_js_shim_module$expo_tracking_transparency","default"]
+}

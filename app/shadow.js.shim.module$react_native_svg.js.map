@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$react_native_svg.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAA,CAAKC,OAAL,CAAa,wCAAb,CAAA;AACAD,IAAA,CAAKC,OAAL,CAAa,+CAAb,CAAA;AACAC,MAAA,CAAOC,EAAP,CAAUC,IAAV,CAAeC,uBAAf,GAAyCC,OAAA,CAAQ,kBAAR,CAAzC;AACAC,6CAAA,CAA8CC,OAA9C,GAAwDN,MAAxD,CAA+DC,EAA/D,CAAkEC,IAAlE,CAAuEC,uBAAvE;;",
+"sources":["shadow.js.shim.module$react_native_svg.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$react_native_svg\");\ngoog.provide(\"module$shadow_js_shim_module$react_native_svg\");\nshadow.js.shim.module$react_native_svg = require(\"react-native-svg\");\nmodule$shadow_js_shim_module$react_native_svg.default = shadow.js.shim.module$react_native_svg;\n"],
+"names":["goog","provide","shadow","js","shim","module$react_native_svg","require","module$shadow_js_shim_module$react_native_svg","default"]
+}
