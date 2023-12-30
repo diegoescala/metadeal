@@ -26,8 +26,8 @@ abakus.rn.alert = (function abakus$rn$alert(title){
 return abakus.rn.Alert.alert(title);
 });
 abakus.rn.request_review = (function abakus$rn$request_review(){
-return abakus.rn.storage.getItem("review-requested").then((function (p1__13472_SHARP_){
-if((!((!((p1__13472_SHARP_ == null)))))){
+return abakus.rn.storage.getItem("review-requested").then((function (p1__13884_SHARP_){
+if((!((!((p1__13884_SHARP_ == null)))))){
 abakus.rn.StoreReview.requestReview();
 
 return abakus.rn.storage.setItem("review-requested","true");
@@ -40,8 +40,8 @@ abakus.rn.spacer = (function abakus$rn$spacer(thickness,margin_top,margin_bottom
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"background-color","background-color",570434026),"#fff",new cljs.core.Keyword(null,"min-height","min-height",398480837),thickness,new cljs.core.Keyword(null,"margin-top","margin-top",392161226),margin_top,new cljs.core.Keyword(null,"margin-bottom","margin-bottom",388334941),margin_bottom], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"font-size","font-size",-1847940346),(1)], null)], null)," "], null)], null);
 });
 abakus.rn.init_tracking_transparency = (function abakus$rn$init_tracking_transparency(){
-return shadow.js.shim.module$expo_tracking_transparency.getTrackingPermissionsAsync().then((function (p1__13473_SHARP_){
-var permissions = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$1(p1__13473_SHARP_);
+return shadow.js.shim.module$expo_tracking_transparency.getTrackingPermissionsAsync().then((function (p1__13885_SHARP_){
+var permissions = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$1(p1__13885_SHARP_);
 var granted_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(permissions,"granted");
 var can_ask_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(permissions,"canAskAgain");
 re_frame.core.dispatch(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"set-can-track","set-can-track",-1622191944),granted_QMARK_], null));

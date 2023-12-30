@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "metadeal",
-    "slug": "reagent-expo",
+    "name": "Metadeal",
+    "slug": "metadeal",
     "privacy": "public",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.5.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -23,7 +23,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.descala.metadeal"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b1d903bb-814e-4656-900e-04d6027ea029"
+      }
     }
   }
 }

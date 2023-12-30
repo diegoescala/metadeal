@@ -5,19 +5,19 @@ abakus.rn.storage.setItem("tesenoienoetkey","keytest");
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.app_main], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(5)], null)], null),cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"current-page","current-page",-101294180)], null)))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.navbar.navbar], null)], null)], null);
 });
 abakus.core.load_props = (function abakus$core$load_props(){
-return abakus.rn.storage.getItem("props").then((function (p1__13549_SHARP_){
+return abakus.rn.storage.getItem("props").then((function (p1__13952_SHARP_){
 return re_frame.core.dispatch(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"set-properties","set-properties",253591533),cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p){
 return (!((new cljs.core.Keyword(null,"purchase-price","purchase-price",1588187729).cljs$core$IFn$_invoke$arity$1(p) == null)));
-}),cljs.reader.read_string.cljs$core$IFn$_invoke$arity$1(p1__13549_SHARP_))], null));
+}),cljs.reader.read_string.cljs$core$IFn$_invoke$arity$1(p1__13952_SHARP_))], null));
 }));
 });
 abakus.core.set_app_uid = (function abakus$core$set_app_uid(uid){
 return re_frame.core.dispatch(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"set-uid","set-uid",1006200985),uid], null));
 });
 abakus.core.load_or_acquire_uid = (function abakus$core$load_or_acquire_uid(){
-return abakus.rn.storage.getItem("uid").then((function (p1__13550_SHARP_){
-if((!((p1__13550_SHARP_ == null)))){
-return abakus.core.set_app_uid(p1__13550_SHARP_);
+return abakus.rn.storage.getItem("uid").then((function (p1__13954_SHARP_){
+if((!((p1__13954_SHARP_ == null)))){
+return abakus.core.set_app_uid(p1__13954_SHARP_);
 } else {
 return abakus.comms.get_new_uid((function (uid){
 abakus.rn.storage.setItem("uid",uid);
