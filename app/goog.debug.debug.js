@@ -120,7 +120,7 @@ goog.debug.normalizeErrorObject = function(err) {
   }
   try {
     fileName = err.fileName || err.filename || err.sourceURL || goog.global["$googDebugFname"] || href;
-  } catch (e$20) {
+  } catch (e$22) {
     fileName = "Not available";
     threwError = true;
   }
@@ -134,7 +134,7 @@ goog.debug.normalizeErrorObject = function(err) {
         if (goog.debug.CHECK_FOR_THROWN_EVENT && ctorName == "Event") {
           try {
             message = message + ' with Event.type "' + (err.type || "") + '"';
-          } catch (e$21) {
+          } catch (e$23) {
           }
         }
       } else {

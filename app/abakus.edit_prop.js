@@ -12,11 +12,11 @@ cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$c
 return result;
 });
 abakus.edit_prop.scrub = (function abakus$edit_prop$scrub(m){
-var empties = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__13897_SHARP_){
-return (((!(abakus.edit_prop.number_string_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,p1__13897_SHARP_)))))) || (cljs.core.empty_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,p1__13897_SHARP_)))));
+var empties = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__21460_SHARP_){
+return (((!(abakus.edit_prop.number_string_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,p1__21460_SHARP_)))))) || (cljs.core.empty_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,p1__21460_SHARP_)))));
 }),cljs.core.keys(m));
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__13898_SHARP_,p2__13899_SHARP_){
-return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(p1__13898_SHARP_,p2__13899_SHARP_);
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__21463_SHARP_,p2__21464_SHARP_){
+return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(p1__21463_SHARP_,p2__21464_SHARP_);
 }),m,empties);
 });
 abakus.edit_prop.computed = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(abakus.analyzer.recompute(abakus.edit_prop.scrub(cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"prop-info","prop-info",-1596130956)], null))))));
@@ -33,10 +33,10 @@ return "";
 }
 })()));
 return (function (max_length__$1,label__$1,param__$1){
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.input_view_container], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.label_container], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.label], null),label__$1], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.input_field_container], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.input,new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.input_field,new cljs.core.Keyword(null,"keyboard-type","keyboard-type",102164446),"numeric",new cljs.core.Keyword(null,"max-length","max-length",-254826109),max_length__$1,new cljs.core.Keyword(null,"placeholder","placeholder",-104873083),((cljs.core.empty_QMARK_(cljs.core.deref(value)))?cljs.core.str.cljs$core$IFn$_invoke$arity$1(Math.floor(cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.deref(abakus.edit_prop.computed),param__$1))):""),new cljs.core.Keyword(null,"placeholder-text-color","placeholder-text-color",-96880686),"#faa",new cljs.core.Keyword(null,"on-change-text","on-change-text",557439860),(function (p1__13901_SHARP_){
-cljs.core.reset_BANG_(value,p1__13901_SHARP_);
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.input_view_container], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.label_container], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.label], null),label__$1], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.input_field_container], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.input,new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.input_field,new cljs.core.Keyword(null,"keyboard-type","keyboard-type",102164446),"numeric",new cljs.core.Keyword(null,"max-length","max-length",-254826109),max_length__$1,new cljs.core.Keyword(null,"placeholder","placeholder",-104873083),((cljs.core.empty_QMARK_(cljs.core.deref(value)))?cljs.core.str.cljs$core$IFn$_invoke$arity$1(Math.floor(cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.deref(abakus.edit_prop.computed),param__$1))):""),new cljs.core.Keyword(null,"placeholder-text-color","placeholder-text-color",-96880686),"#faa",new cljs.core.Keyword(null,"on-change-text","on-change-text",557439860),(function (p1__21487_SHARP_){
+cljs.core.reset_BANG_(value,p1__21487_SHARP_);
 
-var prop_mod = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"prop-info","prop-info",-1596130956)], null))),param__$1,(((!(cljs.core.empty_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__13901_SHARP_)))))?parseFloat(p1__13901_SHARP_):""));
+var prop_mod = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"prop-info","prop-info",-1596130956)], null))),param__$1,(((!(cljs.core.empty_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__21487_SHARP_)))))?parseFloat(p1__21487_SHARP_):""));
 re_frame.core.dispatch(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"set-prop-info","set-prop-info",1228639413),prop_mod], null));
 
 return abakus.edit_prop.recompute(prop_mod);
@@ -46,8 +46,8 @@ return abakus.edit_prop.recompute(prop_mod);
 abakus.edit_prop.save_modal = (function abakus$edit_prop$save_modal(vis_atom){
 var prop_name = reagent.core.atom.cljs$core$IFn$_invoke$arity$1("");
 return (function (vis_atom__$1){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.mcentered], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.modal,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"visible","visible",-1024216805),cljs.core.deref(vis_atom__$1),new cljs.core.Keyword(null,"transparent","transparent",-2073609949),true,new cljs.core.Keyword(null,"animation-type","animation-type",-1444568230),new cljs.core.Keyword(null,"slide","slide",142491892)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.mcentered], null),new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.modal], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"color","color",1011675173),new cljs.core.Keyword(null,"black","black",1294279647)], null)], null),"Save This Property"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"width","width",-384071477),(150),new cljs.core.Keyword(null,"flex-direction","flex-direction",364609438),new cljs.core.Keyword(null,"column","column",2078222095),new cljs.core.Keyword(null,"margin","margin",-995903681),(30)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.input,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.input_field,new cljs.core.Keyword(null,"placeholder","placeholder",-104873083),"Property Name",new cljs.core.Keyword(null,"on-change-text","on-change-text",557439860),(function (p1__13911_SHARP_){
-return cljs.core.reset_BANG_(prop_name,p1__13911_SHARP_);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.mcentered], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.modal,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"visible","visible",-1024216805),cljs.core.deref(vis_atom__$1),new cljs.core.Keyword(null,"transparent","transparent",-2073609949),true,new cljs.core.Keyword(null,"animation-type","animation-type",-1444568230),new cljs.core.Keyword(null,"slide","slide",142491892)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.mcentered], null),new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.modal], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"color","color",1011675173),new cljs.core.Keyword(null,"black","black",1294279647)], null)], null),"Save This Property"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"width","width",-384071477),(150),new cljs.core.Keyword(null,"flex-direction","flex-direction",364609438),new cljs.core.Keyword(null,"column","column",2078222095),new cljs.core.Keyword(null,"margin","margin",-995903681),(30)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.input,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.input_field,new cljs.core.Keyword(null,"placeholder","placeholder",-104873083),"Property Name",new cljs.core.Keyword(null,"on-change-text","on-change-text",557439860),(function (p1__21499_SHARP_){
+return cljs.core.reset_BANG_(prop_name,p1__21499_SHARP_);
 })], null)], null)], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex-direction","flex-direction",364609438),new cljs.core.Keyword(null,"row","row",-570139521)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.touchable_highlight,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"style","style",-496642736),cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(abakus.styles.explanation_button,new cljs.core.Keyword(null,"background-color","background-color",570434026),"#f82"),new cljs.core.Keyword(null,"on-press","on-press",-1763585856),(function (){
 return cljs.core.reset_BANG_(vis_atom__$1,false);
 })], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"color","color",1011675173),"white",new cljs.core.Keyword(null,"font-size","font-size",-1847940346),(15),new cljs.core.Keyword(null,"text-align","text-align",1786091845),"center",new cljs.core.Keyword(null,"margin-left","margin-left",2015598377),(10),new cljs.core.Keyword(null,"margin-right","margin-right",809689658),(10)], null)], null),"Cancel"], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.touchable_highlight,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"style","style",-496642736),cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(abakus.styles.explanation_button,new cljs.core.Keyword(null,"margin-left","margin-left",2015598377),(20)),new cljs.core.Keyword(null,"on-press","on-press",-1763585856),(function (){
@@ -63,19 +63,19 @@ return abakus.rn.alert([cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.de
 });
 });
 abakus.edit_prop.explanation_str = (function abakus$edit_prop$explanation_str(prop){
-var map__13919 = prop;
-var map__13919__$1 = cljs.core.__destructure_map(map__13919);
-var five_yr_apprec = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"five-yr-apprec","five-yr-apprec",-446536167));
-var down = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"down","down",1565245570));
-var cash_flow_per_unit = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"cash-flow-per-unit","cash-flow-per-unit",1008873379));
-var rehab = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"rehab","rehab",948503779));
-var stock_market_ret = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"stock-market-ret","stock-market-ret",-1908676923));
-var time_horizon_years = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"time-horizon-years","time-horizon-years",-396302617));
-var five_yr_profit = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"five-yr-profit","five-yr-profit",-1519044313));
-var total_cost = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"total-cost","total-cost",1556320617));
-var mortgage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"mortgage","mortgage",-1632211666));
-var stock_mkt_growth_percent = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"stock-mkt-growth-percent","stock-mkt-growth-percent",1153750127));
-var closing_costs = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__13919__$1,new cljs.core.Keyword(null,"closing-costs","closing-costs",923485520));
+var map__21518 = prop;
+var map__21518__$1 = cljs.core.__destructure_map(map__21518);
+var five_yr_apprec = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"five-yr-apprec","five-yr-apprec",-446536167));
+var down = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"down","down",1565245570));
+var cash_flow_per_unit = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"cash-flow-per-unit","cash-flow-per-unit",1008873379));
+var rehab = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"rehab","rehab",948503779));
+var stock_market_ret = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"stock-market-ret","stock-market-ret",-1908676923));
+var time_horizon_years = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"time-horizon-years","time-horizon-years",-396302617));
+var five_yr_profit = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"five-yr-profit","five-yr-profit",-1519044313));
+var total_cost = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"total-cost","total-cost",1556320617));
+var mortgage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"mortgage","mortgage",-1632211666));
+var stock_mkt_growth_percent = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"stock-mkt-growth-percent","stock-mkt-growth-percent",1153750127));
+var closing_costs = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21518__$1,new cljs.core.Keyword(null,"closing-costs","closing-costs",923485520));
 return ["With a down payment of ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(down),", closing costs of ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(closing_costs),", and rehab costs of ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(rehab),", you would be putting in ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(total_cost)," in cash. ","With a projected cash flow/month of ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cash_flow_per_unit),", ","and ",cljs.core.subs.cljs$core$IFn$_invoke$arity$2(time_horizon_years,(1)),"-year appreciation of ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(five_yr_apprec),", you could expect to ",((clojure.string.starts_with_QMARK_(five_yr_profit,"-"))?"lose":"make")," about ",clojure.string.replace(five_yr_profit,/\-/,"")," over the next ",cljs.core.subs.cljs$core$IFn$_invoke$arity$2(time_horizon_years,(1))," years. If you put your ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(total_cost)," into the stock market instead, ","you would make ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(stock_market_ret)," over the next ",cljs.core.subs.cljs$core$IFn$_invoke$arity$2(time_horizon_years,(1))," years, assuming ",cljs.core.subs.cljs$core$IFn$_invoke$arity$2(stock_mkt_growth_percent,(1)),"% annual growth."].join('');
 });
 abakus.edit_prop.deal_justification = (function abakus$edit_prop$deal_justification(prop,some_info_filled_QMARK_){
@@ -95,14 +95,14 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 });
 abakus.edit_prop.summary_section = (function abakus$edit_prop$summary_section(var_args){
 var args__5775__auto__ = [];
-var len__5769__auto___13944 = arguments.length;
-var i__5770__auto___13945 = (0);
+var len__5769__auto___21614 = arguments.length;
+var i__5770__auto___21615 = (0);
 while(true){
-if((i__5770__auto___13945 < len__5769__auto___13944)){
-args__5775__auto__.push((arguments[i__5770__auto___13945]));
+if((i__5770__auto___21615 < len__5769__auto___21614)){
+args__5775__auto__.push((arguments[i__5770__auto___21615]));
 
-var G__13946 = (i__5770__auto___13945 + (1));
-i__5770__auto___13945 = G__13946;
+var G__21616 = (i__5770__auto___21615 + (1));
+i__5770__auto___21615 = G__21616;
 continue;
 } else {
 }
@@ -121,9 +121,9 @@ return or__5045__auto__;
 return new cljs.core.Keyword(null,"currency","currency",-898327568);
 }
 })();
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([abakus.styles.summary_section_view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(2)], null)], 0))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(5)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.summary_title], null),title], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(5)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.summary_details], null),(cljs.core.truth_(show_blank_QMARK_)?"---":(function (){var G__13943 = value_type;
-var G__13943__$1 = (((G__13943 instanceof cljs.core.Keyword))?G__13943.fqn:null);
-switch (G__13943__$1) {
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([abakus.styles.summary_section_view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(2)], null)], 0))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(5)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.summary_title], null),title], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(5)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.summary_details], null),(cljs.core.truth_(show_blank_QMARK_)?"---":(function (){var G__21549 = value_type;
+var G__21549__$1 = (((G__21549 instanceof cljs.core.Keyword))?G__21549.fqn:null);
+switch (G__21549__$1) {
 case "currency":
 return abakus.number_utils.localize(cljs.core.get.cljs$core$IFn$_invoke$arity$2(prop,param));
 
@@ -133,7 +133,7 @@ return abakus.number_utils.percentize(cljs.core.get.cljs$core$IFn$_invoke$arity$
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__13943__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__21549__$1)].join('')));
 
 }
 })())], null)], null)], null);
@@ -142,17 +142,17 @@ throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$ari
 (abakus.edit_prop.summary_section.cljs$lang$maxFixedArity = (4));
 
 /** @this {Function} */
-(abakus.edit_prop.summary_section.cljs$lang$applyTo = (function (seq13938){
-var G__13939 = cljs.core.first(seq13938);
-var seq13938__$1 = cljs.core.next(seq13938);
-var G__13940 = cljs.core.first(seq13938__$1);
-var seq13938__$2 = cljs.core.next(seq13938__$1);
-var G__13941 = cljs.core.first(seq13938__$2);
-var seq13938__$3 = cljs.core.next(seq13938__$2);
-var G__13942 = cljs.core.first(seq13938__$3);
-var seq13938__$4 = cljs.core.next(seq13938__$3);
+(abakus.edit_prop.summary_section.cljs$lang$applyTo = (function (seq21539){
+var G__21540 = cljs.core.first(seq21539);
+var seq21539__$1 = cljs.core.next(seq21539);
+var G__21541 = cljs.core.first(seq21539__$1);
+var seq21539__$2 = cljs.core.next(seq21539__$1);
+var G__21542 = cljs.core.first(seq21539__$2);
+var seq21539__$3 = cljs.core.next(seq21539__$2);
+var G__21543 = cljs.core.first(seq21539__$3);
+var seq21539__$4 = cljs.core.next(seq21539__$3);
 var self__5754__auto__ = this;
-return self__5754__auto__.cljs$core$IFn$_invoke$arity$variadic(G__13939,G__13940,G__13941,G__13942,seq13938__$4);
+return self__5754__auto__.cljs$core$IFn$_invoke$arity$variadic(G__21540,G__21541,G__21542,G__21543,seq21539__$4);
 }));
 
 abakus.edit_prop.explanation = (function abakus$edit_prop$explanation(prop){

@@ -83,24 +83,24 @@ goog.loadModule(function(exports) {
       }
     } else if (isIos()) {
       re = /(?:iPhone|iPod|iPad|CPU)\s+OS\s+(\S+)/;
-      var match$15 = re.exec(userAgentString);
-      version = match$15 && match$15[1].replace(/_/g, ".");
+      var match$17 = re.exec(userAgentString);
+      version = match$17 && match$17[1].replace(/_/g, ".");
     } else if (isMacintosh()) {
       re = /Mac OS X ([0-9_.]+)/;
-      var match$16 = re.exec(userAgentString);
-      version = match$16 ? match$16[1].replace(/_/g, ".") : "10";
+      var match$18 = re.exec(userAgentString);
+      version = match$18 ? match$18[1].replace(/_/g, ".") : "10";
     } else if (isKaiOS()) {
       re = /(?:KaiOS)\/(\S+)/i;
-      var match$17 = re.exec(userAgentString);
-      version = match$17 && match$17[1];
-    } else if (isAndroid()) {
-      re = /Android\s+([^\);]+)(\)|;)/;
-      var match$18 = re.exec(userAgentString);
-      version = match$18 && match$18[1];
-    } else if (isChromeOS()) {
-      re = /(?:CrOS\s+(?:i686|x86_64)\s+([0-9.]+))/;
       var match$19 = re.exec(userAgentString);
       version = match$19 && match$19[1];
+    } else if (isAndroid()) {
+      re = /Android\s+([^\);]+)(\)|;)/;
+      var match$20 = re.exec(userAgentString);
+      version = match$20 && match$20[1];
+    } else if (isChromeOS()) {
+      re = /(?:CrOS\s+(?:i686|x86_64)\s+([0-9.]+))/;
+      var match$21 = re.exec(userAgentString);
+      version = match$21 && match$21[1];
     }
     return version || "";
   }
@@ -125,7 +125,7 @@ goog.loadModule(function(exports) {
   };
   PlatformVersion.prototype.load = function() {
     var $jscomp$async$this = this;
-    var JSCompiler_temp_const$jscomp$22;
+    var JSCompiler_temp_const$jscomp$38;
     return $jscomp.asyncExecutePromiseGeneratorProgram(function($jscomp$generator$context) {
       if ($jscomp$generator$context.nextAddress == 1) {
         if (!useUserAgentDataPlatform(true)) {
@@ -133,10 +133,10 @@ goog.loadModule(function(exports) {
           return $jscomp$generator$context.return(new Version(getVersion()));
           return $jscomp$generator$context.jumpTo(0);
         }
-        JSCompiler_temp_const$jscomp$22 = Version;
+        JSCompiler_temp_const$jscomp$38 = Version;
         return $jscomp$generator$context.yield(platformVersion.load(), 3);
       }
-      return $jscomp$generator$context.return(new JSCompiler_temp_const$jscomp$22($jscomp$generator$context.yieldResult));
+      return $jscomp$generator$context.return(new JSCompiler_temp_const$jscomp$38($jscomp$generator$context.yieldResult));
     });
   };
   PlatformVersion.prototype.resetForTesting = function() {

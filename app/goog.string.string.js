@@ -441,14 +441,14 @@ goog.string.editDistance = function(a, b) {
   for (var i = 0; i < b.length + 1; i++) {
     v0[i] = i;
   }
-  for (var i$13 = 0; i$13 < a.length; i$13++) {
-    v1[0] = i$13 + 1;
+  for (var i$15 = 0; i$15 < a.length; i$15++) {
+    v1[0] = i$15 + 1;
     for (var j = 0; j < b.length; j++) {
-      var cost = Number(a[i$13] != b[j]);
+      var cost = Number(a[i$15] != b[j]);
       v1[j + 1] = Math.min(v1[j] + 1, v0[j + 1] + 1, v0[j] + cost);
     }
-    for (var j$14 = 0; j$14 < v0.length; j$14++) {
-      v0[j$14] = v1[j$14];
+    for (var j$16 = 0; j$16 < v0.length; j$16++) {
+      v0[j$16] = v1[j$16];
     }
   }
   return v1[b.length];

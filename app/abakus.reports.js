@@ -10,11 +10,11 @@ return and__5043__auto__;
 return result;
 });
 abakus.reports.scrub = (function abakus$reports$scrub(m){
-var empties = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__13891_SHARP_){
-return (((!(abakus.reports.number_string_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,p1__13891_SHARP_)))))) || (cljs.core.empty_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,p1__13891_SHARP_)))));
+var empties = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__21456_SHARP_){
+return (((!(abakus.reports.number_string_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,p1__21456_SHARP_)))))) || (cljs.core.empty_QMARK_(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,p1__21456_SHARP_)))));
 }),cljs.core.keys(m));
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__13892_SHARP_,p2__13893_SHARP_){
-return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(p1__13892_SHARP_,p2__13893_SHARP_);
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__21457_SHARP_,p2__21458_SHARP_){
+return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(p1__21457_SHARP_,p2__21458_SHARP_);
 }),m,empties);
 });
 abakus.reports.recompute = (function abakus$reports$recompute(prop){
@@ -22,14 +22,14 @@ return abakus.analyzer.recompute(abakus.reports.scrub(prop));
 });
 abakus.reports.average = (function abakus$reports$average(var_args){
 var args__5775__auto__ = [];
-var len__5769__auto___13920 = arguments.length;
-var i__5770__auto___13921 = (0);
+var len__5769__auto___21576 = arguments.length;
+var i__5770__auto___21577 = (0);
 while(true){
-if((i__5770__auto___13921 < len__5769__auto___13920)){
-args__5775__auto__.push((arguments[i__5770__auto___13921]));
+if((i__5770__auto___21577 < len__5769__auto___21576)){
+args__5775__auto__.push((arguments[i__5770__auto___21577]));
 
-var G__13922 = (i__5770__auto___13921 + (1));
-i__5770__auto___13921 = G__13922;
+var G__21578 = (i__5770__auto___21577 + (1));
+i__5770__auto___21577 = G__21578;
 continue;
 } else {
 }
@@ -49,9 +49,9 @@ return (sum / c);
 (abakus.reports.average.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(abakus.reports.average.cljs$lang$applyTo = (function (seq13894){
+(abakus.reports.average.cljs$lang$applyTo = (function (seq21485){
 var self__5755__auto__ = this;
-return self__5755__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq13894));
+return self__5755__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq21485));
 }));
 
 abakus.reports.compute_break_even = (function abakus$reports$compute_break_even(prop,independent_var,dependent_var){
@@ -61,33 +61,33 @@ var right = 5.0E8;
 var steps = (0);
 while(true){
 var results = cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (left,mid,right,steps){
-return (function (p1__13895_SHARP_){
-var G__13900 = abakus.reports.recompute(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(prop,independent_var,p1__13895_SHARP_));
-return (dependent_var.cljs$core$IFn$_invoke$arity$1 ? dependent_var.cljs$core$IFn$_invoke$arity$1(G__13900) : dependent_var.call(null,G__13900));
+return (function (p1__21490_SHARP_){
+var G__21501 = abakus.reports.recompute(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(prop,independent_var,p1__21490_SHARP_));
+return (dependent_var.cljs$core$IFn$_invoke$arity$1 ? dependent_var.cljs$core$IFn$_invoke$arity$1(G__21501) : dependent_var.call(null,G__21501));
 });})(left,mid,right,steps))
 ,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [left,mid,right], null));
 if(((((30) < steps)) || ((0.01 > Math.abs(cljs.core.second(results)))))){
 return mid;
 } else {
 if((((((cljs.core.nth.cljs$core$IFn$_invoke$arity$2(results,(0)) <= (0))) && (((0) <= cljs.core.nth.cljs$core$IFn$_invoke$arity$2(results,(1)))))) || ((((cljs.core.nth.cljs$core$IFn$_invoke$arity$2(results,(1)) <= (0))) && (((0) <= cljs.core.nth.cljs$core$IFn$_invoke$arity$2(results,(0)))))))){
-var G__13923 = left;
-var G__13924 = abakus.reports.average.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([left,mid], 0));
-var G__13925 = mid;
-var G__13926 = (steps + (1));
-left = G__13923;
-mid = G__13924;
-right = G__13925;
-steps = G__13926;
+var G__21583 = left;
+var G__21584 = abakus.reports.average.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([left,mid], 0));
+var G__21585 = mid;
+var G__21586 = (steps + (1));
+left = G__21583;
+mid = G__21584;
+right = G__21585;
+steps = G__21586;
 continue;
 } else {
-var G__13927 = mid;
-var G__13928 = abakus.reports.average.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([mid,right], 0));
-var G__13929 = right;
-var G__13930 = (steps + (1));
-left = G__13927;
-mid = G__13928;
-right = G__13929;
-steps = G__13930;
+var G__21587 = mid;
+var G__21588 = abakus.reports.average.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([mid,right], 0));
+var G__21589 = right;
+var G__21590 = (steps + (1));
+left = G__21587;
+mid = G__21588;
+right = G__21589;
+steps = G__21590;
 continue;
 }
 }
@@ -96,14 +96,14 @@ break;
 });
 abakus.reports.chart = (function abakus$reports$chart(var_args){
 var args__5775__auto__ = [];
-var len__5769__auto___13931 = arguments.length;
-var i__5770__auto___13932 = (0);
+var len__5769__auto___21591 = arguments.length;
+var i__5770__auto___21592 = (0);
 while(true){
-if((i__5770__auto___13932 < len__5769__auto___13931)){
-args__5775__auto__.push((arguments[i__5770__auto___13932]));
+if((i__5770__auto___21592 < len__5769__auto___21591)){
+args__5775__auto__.push((arguments[i__5770__auto___21592]));
 
-var G__13933 = (i__5770__auto___13932 + (1));
-i__5770__auto___13932 = G__13933;
+var G__21594 = (i__5770__auto___21592 + (1));
+i__5770__auto___21592 = G__21594;
 continue;
 } else {
 }
@@ -116,28 +116,28 @@ return abakus.reports.chart.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]
 
 (abakus.reports.chart.cljs$core$IFn$_invoke$arity$variadic = (function (independent_var,dependent_var,title,opts){
 var options = cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentHashSet.EMPTY,opts);
-var prop = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"prop-info","prop-info",-1596130956)], null))),independent_var,(function (){var G__13912 = abakus.reports.recompute(cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"prop-info","prop-info",-1596130956)], null))));
-return (independent_var.cljs$core$IFn$_invoke$arity$1 ? independent_var.cljs$core$IFn$_invoke$arity$1(G__13912) : independent_var.call(null,G__13912));
+var prop = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"prop-info","prop-info",-1596130956)], null))),independent_var,(function (){var G__21520 = abakus.reports.recompute(cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"prop-info","prop-info",-1596130956)], null))));
+return (independent_var.cljs$core$IFn$_invoke$arity$1 ? independent_var.cljs$core$IFn$_invoke$arity$1(G__21520) : independent_var.call(null,G__21520));
 })());
 var steps = (5);
 var span = 1.0;
 var current_val = ((cljs.core.contains_QMARK_(options,new cljs.core.Keyword(null,"show-break-even","show-break-even",-263147276)))?abakus.reports.compute_break_even(prop,independent_var,dependent_var):(independent_var.cljs$core$IFn$_invoke$arity$1 ? independent_var.cljs$core$IFn$_invoke$arity$1(prop) : independent_var.call(null,prop)));
-var points = cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13902_SHARP_){
-return ((1.0 + ((p1__13902_SHARP_ / (steps - (1))) - (0.5 * span))) * current_val);
+var points = cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__21506_SHARP_){
+return ((1.0 + ((p1__21506_SHARP_ / (steps - (1))) - (0.5 * span))) * current_val);
 }),cljs.core.range.cljs$core$IFn$_invoke$arity$1(steps));
-var values = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__13903_SHARP_,p2__13904_SHARP_){
-return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(p1__13903_SHARP_,abakus.reports.recompute(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(prop,independent_var,p2__13904_SHARP_)));
+var values = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__21507_SHARP_,p2__21508_SHARP_){
+return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(p1__21507_SHARP_,abakus.reports.recompute(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(prop,independent_var,p2__21508_SHARP_)));
 }),cljs.core.PersistentVector.EMPTY,points);
-var labels = cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13905_SHARP_){
-return abakus.number_utils.localize((p1__13905_SHARP_ | (0)));
+var labels = cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__21509_SHARP_){
+return abakus.number_utils.localize((p1__21509_SHARP_ | (0)));
 }),points);
-var data = cljs.core.clj__GT_js(new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"labels","labels",-626734591),labels,new cljs.core.Keyword(null,"datasets","datasets",1896364419),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"data","data",-232669377),(function (){var G__13913 = cljs.core.map.cljs$core$IFn$_invoke$arity$2(dependent_var,values);
+var data = cljs.core.clj__GT_js(new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"labels","labels",-626734591),labels,new cljs.core.Keyword(null,"datasets","datasets",1896364419),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"data","data",-232669377),(function (){var G__21528 = cljs.core.map.cljs$core$IFn$_invoke$arity$2(dependent_var,values);
 if(cljs.core.contains_QMARK_(options,new cljs.core.Keyword(null,"percent","percent",2031453817))){
-return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13906_SHARP_){
-return (100.0 * p1__13906_SHARP_);
-}),G__13913);
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__21510_SHARP_){
+return (100.0 * p1__21510_SHARP_);
+}),G__21528);
 } else {
-return G__13913;
+return G__21528;
 }
 })(),new cljs.core.Keyword(null,"strokeWidth","strokeWidth",-2130848332),(2)], null)], null)], null));
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([points], 0));
@@ -158,27 +158,27 @@ return "rgba(255,255,255,1)";
 (abakus.reports.chart.cljs$lang$maxFixedArity = (3));
 
 /** @this {Function} */
-(abakus.reports.chart.cljs$lang$applyTo = (function (seq13907){
-var G__13908 = cljs.core.first(seq13907);
-var seq13907__$1 = cljs.core.next(seq13907);
-var G__13909 = cljs.core.first(seq13907__$1);
-var seq13907__$2 = cljs.core.next(seq13907__$1);
-var G__13910 = cljs.core.first(seq13907__$2);
-var seq13907__$3 = cljs.core.next(seq13907__$2);
+(abakus.reports.chart.cljs$lang$applyTo = (function (seq21514){
+var G__21515 = cljs.core.first(seq21514);
+var seq21514__$1 = cljs.core.next(seq21514);
+var G__21516 = cljs.core.first(seq21514__$1);
+var seq21514__$2 = cljs.core.next(seq21514__$1);
+var G__21517 = cljs.core.first(seq21514__$2);
+var seq21514__$3 = cljs.core.next(seq21514__$2);
 var self__5754__auto__ = this;
-return self__5754__auto__.cljs$core$IFn$_invoke$arity$variadic(G__13908,G__13909,G__13910,seq13907__$3);
+return self__5754__auto__.cljs$core$IFn$_invoke$arity$variadic(G__21515,G__21516,G__21517,seq21514__$3);
 }));
 
 abakus.reports.summary_section = (function abakus$reports$summary_section(var_args){
 var args__5775__auto__ = [];
-var len__5769__auto___13934 = arguments.length;
-var i__5770__auto___13935 = (0);
+var len__5769__auto___21605 = arguments.length;
+var i__5770__auto___21607 = (0);
 while(true){
-if((i__5770__auto___13935 < len__5769__auto___13934)){
-args__5775__auto__.push((arguments[i__5770__auto___13935]));
+if((i__5770__auto___21607 < len__5769__auto___21605)){
+args__5775__auto__.push((arguments[i__5770__auto___21607]));
 
-var G__13936 = (i__5770__auto___13935 + (1));
-i__5770__auto___13935 = G__13936;
+var G__21608 = (i__5770__auto___21607 + (1));
+i__5770__auto___21607 = G__21608;
 continue;
 } else {
 }
@@ -197,9 +197,9 @@ return or__5045__auto__;
 return new cljs.core.Keyword(null,"currency","currency",-898327568);
 }
 })();
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([abakus.styles.summary_section_view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(2)], null)], 0))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(5)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.summary_title], null),title], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(5)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.summary_details], null),(cljs.core.truth_(show_blank_QMARK_)?"---":(function (){var G__13918 = value_type;
-var G__13918__$1 = (((G__13918 instanceof cljs.core.Keyword))?G__13918.fqn:null);
-switch (G__13918__$1) {
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([abakus.styles.summary_section_view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(2)], null)], 0))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(5)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.summary_title], null),title], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.view,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"flex","flex",-1425124628),(5)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [abakus.rn.text,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),abakus.styles.summary_details], null),(cljs.core.truth_(show_blank_QMARK_)?"---":(function (){var G__21544 = value_type;
+var G__21544__$1 = (((G__21544 instanceof cljs.core.Keyword))?G__21544.fqn:null);
+switch (G__21544__$1) {
 case "currency":
 return abakus.number_utils.localize(value);
 
@@ -209,7 +209,7 @@ return abakus.number_utils.percentize(value);
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__13918__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__21544__$1)].join('')));
 
 }
 })())], null)], null)], null);
@@ -218,15 +218,15 @@ throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$ari
 (abakus.reports.summary_section.cljs$lang$maxFixedArity = (3));
 
 /** @this {Function} */
-(abakus.reports.summary_section.cljs$lang$applyTo = (function (seq13914){
-var G__13915 = cljs.core.first(seq13914);
-var seq13914__$1 = cljs.core.next(seq13914);
-var G__13916 = cljs.core.first(seq13914__$1);
-var seq13914__$2 = cljs.core.next(seq13914__$1);
-var G__13917 = cljs.core.first(seq13914__$2);
-var seq13914__$3 = cljs.core.next(seq13914__$2);
+(abakus.reports.summary_section.cljs$lang$applyTo = (function (seq21533){
+var G__21534 = cljs.core.first(seq21533);
+var seq21533__$1 = cljs.core.next(seq21533);
+var G__21535 = cljs.core.first(seq21533__$1);
+var seq21533__$2 = cljs.core.next(seq21533__$1);
+var G__21536 = cljs.core.first(seq21533__$2);
+var seq21533__$3 = cljs.core.next(seq21533__$2);
 var self__5754__auto__ = this;
-return self__5754__auto__.cljs$core$IFn$_invoke$arity$variadic(G__13915,G__13916,G__13917,seq13914__$3);
+return self__5754__auto__.cljs$core$IFn$_invoke$arity$variadic(G__21534,G__21535,G__21536,seq21533__$3);
 }));
 
 abakus.reports.break_even_summary = (function abakus$reports$break_even_summary(prop){

@@ -222,23 +222,23 @@ goog.loadModule(function(exports) {
         combinedAttributes[name] = fixedAttributes[name];
       }
     }
-    for (var name$11 in defaultAttributes) {
-      if (Object.prototype.hasOwnProperty.call(defaultAttributes, name$11)) {
-        asserts.assert(name$11.toLowerCase() == name$11, "Must be lower case");
-        combinedAttributes[name$11] = defaultAttributes[name$11];
+    for (var name$13 in defaultAttributes) {
+      if (Object.prototype.hasOwnProperty.call(defaultAttributes, name$13)) {
+        asserts.assert(name$13.toLowerCase() == name$13, "Must be lower case");
+        combinedAttributes[name$13] = defaultAttributes[name$13];
       }
     }
     if (attributes) {
-      for (var name$12 in attributes) {
-        if (Object.prototype.hasOwnProperty.call(attributes, name$12)) {
-          var nameLower = name$12.toLowerCase();
+      for (var name$14 in attributes) {
+        if (Object.prototype.hasOwnProperty.call(attributes, name$14)) {
+          var nameLower = name$14.toLowerCase();
           if (nameLower in fixedAttributes) {
-            throw new Error(SafeHtml.ENABLE_ERROR_MESSAGES ? 'Cannot override "' + nameLower + '" attribute, got "' + name$12 + '" with value "' + attributes[name$12] + '"' : "");
+            throw new Error(SafeHtml.ENABLE_ERROR_MESSAGES ? 'Cannot override "' + nameLower + '" attribute, got "' + name$14 + '" with value "' + attributes[name$14] + '"' : "");
           }
           if (nameLower in defaultAttributes) {
             delete combinedAttributes[nameLower];
           }
-          combinedAttributes[name$12] = attributes[name$12];
+          combinedAttributes[name$14] = attributes[name$14];
         }
       }
     }
